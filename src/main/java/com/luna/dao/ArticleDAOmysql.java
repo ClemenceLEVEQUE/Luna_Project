@@ -42,7 +42,6 @@ public class ArticleDAOmysql implements ArticleDAO {
 	@Override
 	public Article getArticle(int idArticle) {
 		return null;
-
 	}
 
 	public List<Article> getAllArticle() {
