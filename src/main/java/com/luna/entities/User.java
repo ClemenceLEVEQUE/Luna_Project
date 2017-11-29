@@ -2,20 +2,20 @@ package com.luna.entities;
 
 public class User {
 	private int id;
-	private String Login;
-	private String MdP;
-	private int Rang;
+	private String login;
+	private String mdp;
+	private int rang;
 	
 	public User() {
 		super();
 	}
 
-	public User(int id, String login, String mdP, int rang) {
+	public User(int id, String login, String mdp, int rang) {
 		super();
 		this.id = id;
-		Login = login;
-		MdP = mdP;
-		Rang = rang;
+		this.login = login;
+		this.mdp = mdp;
+		this.rang = rang;
 	}
 
 	public int getId() {
@@ -27,30 +27,28 @@ public class User {
 	}
 
 	public String getLogin() {
-		return Login;
+		return login;
 	}
 
 	public void setLogin(String login) {
-		Login = login;
+		this.login = login;
 	}
 
 	public String getMdP() {
-		return MdP;
+		return mdp;
 	}
 
-	public void setMdP(String mdP) {
-		MdP = mdP;
+	public void setMdP(String mdp) {
+		this.mdp = mdp;
 	}
 
 	public int getRang() {
-		return Rang;
+		return rang;
 	}
 
 	public void setRang(int rang) {
-		Rang = rang;
+		this.rang = rang;
 	}
-	
-	
-	}
+}
 
 

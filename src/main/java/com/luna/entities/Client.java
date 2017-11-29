@@ -9,8 +9,8 @@ public class Client {
 	private String ville;
 	private String rue;
 	private int codePostal;
-	private String Tel;
-	private String Mail;
+	private String tel;
+	private String mail;
 	private Date date_creation;
 
 	public Client() {
@@ -26,8 +26,8 @@ public class Client {
 		this.ville = ville;
 		this.rue = rue;
 		this.codePostal = codePostal;
-		Tel = tel;
-		Mail = mail;
+		this.tel = tel;
+		this.mail = mail;
 		this.date_creation = date_creation;
 	}
 
@@ -80,19 +80,19 @@ public class Client {
 	}
 
 	public String getTel() {
-		return Tel;
+		return tel;
 	}
 
 	public void setTel(String tel) {
-		Tel = tel;
+		this.tel = tel;
 	}
 
 	public String getMail() {
-		return Mail;
+		return mail;
 	}
 
 	public void setMail(String mail) {
-		Mail = mail;
+		this.mail = mail;
 	}
 
 	public Date getDate_creation() {
@@ -102,6 +102,4 @@ public class Client {
 	public void setDate_creation(Date date_creation) {
 		this.date_creation = date_creation;
 	}
-	
-	
 }

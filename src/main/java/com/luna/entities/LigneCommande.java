@@ -1,6 +1,6 @@
 package com.luna.entities;
 
-public class Ligne {
+public class LigneCommande {
 	
 	private int idCommande;
 	private int idLigne;
@@ -9,13 +9,13 @@ public class Ligne {
 
 	
 	
-	public Ligne() {
+	public LigneCommande() {
 		super();
 	}
 
 
 
-	public Ligne(int idCommande, int idLigne, int idArticle, int quantite) {
+	public LigneCommande(int idCommande, int idLigne, int idArticle, int quantite) {
 		super();
 		this.idCommande = idCommande;
 		this.idLigne = idLigne;
