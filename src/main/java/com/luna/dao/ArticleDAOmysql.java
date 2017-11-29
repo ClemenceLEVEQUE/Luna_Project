@@ -31,7 +31,13 @@ public class ArticleDAOmysql implements ArticleDAO {
 
 	@Override
 	public void updateArticle(Article article) {
-
+		try {
+			state = conn.createStatement();
+			state.executeQuery("UPDATE Article SET categorie = " + article.getCategorie() + "','" + article.getCodeArt() + "','"
+					+ article.getNomArticle() +"'," + article.getPrixUnitaire() + "," + article.getStock());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
