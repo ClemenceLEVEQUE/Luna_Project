@@ -5,7 +5,7 @@ public class User {
 	private String login;
 	private String mdp;
 	private int rang;
-	
+
 	public User() {
 		super();
 	}
@@ -50,5 +50,3 @@ public class User {
 		this.rang = rang;
 	}
 }
-
-

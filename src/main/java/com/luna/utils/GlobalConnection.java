@@ -9,7 +9,7 @@ public class GlobalConnection {
 	private String user = "root";
 	private String passwd = "";
 	private static Connection connect;
-	
+
 	public GlobalConnection() {
 		try {
 			connect = DriverManager.getConnection(url, user, passwd);
@@ -17,14 +17,14 @@ public class GlobalConnection {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
-	 * Méthode qui va nous retourner notr instance
-	 * et la créer si elle n'existe pas
+	 * Méthode qui va nous retourner notr instance et la créer si elle n'existe pas
+	 * 
 	 * @return
 	 */
 	public static Connection getInstance() {
-		if(connect == null) {
+		if (connect == null) {
 			new GlobalConnection();
 		}
 		return connect;
