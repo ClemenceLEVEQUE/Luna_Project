@@ -36,7 +36,7 @@ public class InterfaceConnect extends JFrame {
 	public InterfaceConnect() {
 
 		setTitle("Bienvenue sur SARL Luna");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(InterfaceConnect.class.getResource("/luna/Moon-32.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(InterfaceConnect.class.getResource("/com/luna/graphique/Moon-32.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
