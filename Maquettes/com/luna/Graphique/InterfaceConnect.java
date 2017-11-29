@@ -1,4 +1,4 @@
-package com.luna.Graphique;
+package com.luna.graphique;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.luna.Graphique.*;
+import com.luna.graphique.*;
 
 public class InterfaceConnect extends JFrame {
 
@@ -37,7 +37,7 @@ public class InterfaceConnect extends JFrame {
 		
 		
 		setTitle("Bienvenue sur SARL Luna");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(InterfaceConnect.class.getResource("Moon-32.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(InterfaceConnect.class.getResource("\\src\\main\\resources\\Moon-32.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
