@@ -1,4 +1,4 @@
-package com.luna.Graphique;
+package com.luna.graphique;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.luna.Graphique.*;
+import com.luna.graphique.*;
 
 public class InterfaceConnect extends JFrame {
 
