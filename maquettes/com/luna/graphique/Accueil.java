@@ -2,15 +2,15 @@ package com.luna.graphique;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import javax.swing.ImageIcon;
+import java.awt.Color;
 
-import luna.*;
-
-public class InterfaceConnect extends JFrame {
+public class Accueil extends JFrame {
 
 	private JPanel contentPane;
 
@@ -21,7 +21,7 @@ public class InterfaceConnect extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					InterfaceConnect frame = new InterfaceConnect();
+					Accueil frame = new Accueil();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,16 +33,16 @@ public class InterfaceConnect extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public InterfaceConnect() {
-
-		setTitle("Bienvenue sur SARL Luna");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(InterfaceConnect.class.getResource("/luna/Moon-32.png")));
+	public Accueil() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JButton btnNewButton_4 = ew JButton("New button");
+		btnNewButton_4.setBounds(173, 160, 89, 23);
+		contentPane.add(btnNewButton_4);
 	}
-
 }
