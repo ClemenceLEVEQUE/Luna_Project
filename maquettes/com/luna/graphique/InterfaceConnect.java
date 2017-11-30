@@ -30,6 +30,7 @@ public class InterfaceConnect extends JFrame {
 	private JPanel contentPane;
 	private JPasswordField passwordField;
 	private JPasswordField passwordField_2;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -60,6 +61,11 @@ public class InterfaceConnect extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		
+		//Label qui contient le titre en haut
+		
+		
 		
 		JButton btnValider = new JButton("Valider");
 		btnValider.addActionListener(new ActionListener() {
@@ -102,5 +108,10 @@ public class InterfaceConnect extends JFrame {
 		passwordField_2 = new JPasswordField();
 		passwordField_2.setBounds(227, 255, 136, 22);
 		contentPane.add(passwordField_2);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(227, 165, 136, 20);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
 	}
 }
