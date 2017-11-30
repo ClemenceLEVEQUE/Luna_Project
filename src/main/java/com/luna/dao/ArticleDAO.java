@@ -1,5 +1,6 @@
 package com.luna.dao;
 
+import java.sql.ResultSet;
 import java.util.List;
 import com.luna.entities.Article;
 
@@ -11,7 +12,7 @@ public interface ArticleDAO {
 
 	public void removeArticle(int idArticle);
 
-	public Article getArticle(int idArticle);
+	public ResultSet getArticle(int idArticle);
 
 	public List<Article> getAllArticle();
 

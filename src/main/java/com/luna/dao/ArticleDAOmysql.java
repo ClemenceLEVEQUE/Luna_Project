@@ -52,21 +52,14 @@ public class ArticleDAOmysql implements ArticleDAO {
 	}
 
 	@Override
-	public Article getArticle(int idArticle) {
-		Article art = new Article();
+	public ResultSet getArticle(int idArticle) {
 		try {
 			state = conn.createStatement();
 			result = state.executeQuery("SELECT * FROM Article WHERE idArticle = " + idArticle);
-			art.setCategorie(result.getString("categorie"));
-			art.setCodeArt(result.getString("codeArt"));
-			art.setIdArticle(idArticle);
-			art.setNomArticle(result.getString("nomArticle"));
-			art.setPrixUnitaire(result.getFloat("prixUnitaire"));
-			art.setStock(result.getInt("stock"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return art;
+		return result;
 	}
 
 	public List<Article> getAllArticle() {
