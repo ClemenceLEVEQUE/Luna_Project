@@ -78,8 +78,9 @@ public class ArticleDAOmysql implements ArticleDAO {
 
 			while (result.next()) {
 				article = new Article();
+				article.setIdArticle(result.getInt("idArticle"));
 				article.setCategorie(result.getString("categorie"));
-				article.setCodeArt(result.getString("codeArticle"));
+				article.setCodeArt(result.getString("codeArt"));
 				article.setNomArticle(result.getString("nomArticle"));
 				article.setPrixUnitaire(result.getFloat("prixUnitaire"));
 				article.setStock(result.getInt("stock"));
