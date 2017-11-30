@@ -14,6 +14,10 @@ public class ClientDAOmysql implements ClientDAO {
 	Statement state = null;
 	ResultSet result = null;
 
+	public ClientDAOmysql(Connection connection) {
+		this.conn = connection;
+	}
+	
 	@Override
 	public void insertClient(Client Cli) {
 		try {

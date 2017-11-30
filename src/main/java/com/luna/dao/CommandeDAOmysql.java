@@ -14,6 +14,10 @@ public class CommandeDAOmysql implements CommandeDAO {
 	Statement state = null;
 	ResultSet result = null;
 
+	public CommandeDAOmysql(Connection connection) {
+		this.conn = connection;
+	}
+	
 	@Override
 	public void insertCommande(Commande Comm) {
 		try {

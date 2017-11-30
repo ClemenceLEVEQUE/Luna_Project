@@ -14,6 +14,10 @@ public class LigneCommandeDAOmysql implements LigneCommandeDAO {
 	Statement state = null;
 	ResultSet result = null;
 
+	public LigneCommandeDAOmysql(Connection connection) {
+		this.conn = connection;
+	}
+	
 	@Override
 	public void insertLigneCommande(LigneCommande ligneCo) {
 		try {
