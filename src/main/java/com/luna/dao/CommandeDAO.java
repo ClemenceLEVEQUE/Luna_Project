@@ -8,9 +8,9 @@ import com.luna.entities.Commande;
 public interface CommandeDAO {
 
 
-	public void insertCommande(Commande Art);
+	public void insertCommande(Commande Comm);
 
-	public void updateCommande(Commande Art);
+	public void updateCommande(Commande Comm);
 
 	public void removeCommande(int idCommande);
 

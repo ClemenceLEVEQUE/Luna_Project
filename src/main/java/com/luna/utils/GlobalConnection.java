@@ -19,7 +19,7 @@ public class GlobalConnection {
 	}
 
 	/**
-	 * Méthode qui va nous retourner notr instance et la créer si elle n'existe pas
+	 * Méthode qui va nous retourner notre instance et la créer si elle n'existe pas
 	 * 
 	 * @return
 	 */

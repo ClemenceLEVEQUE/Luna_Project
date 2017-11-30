@@ -5,9 +5,9 @@ import com.luna.entities.Client;
 
 public interface ClientDAO {
 
-	public void insertClient(Client Art);
+	public void insertClient(Client Cli);
 
-	public void updateClient(Client Art);
+	public void updateClient(Client Cli);
 
 	public void removeClient(int idClient);
 
