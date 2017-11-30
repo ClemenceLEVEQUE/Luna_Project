@@ -29,7 +29,7 @@ import java.awt.Component;
 import java.awt.Panel;
 import java.awt.Dimension;
 
-public class Accueil extends JFrame {
+public class Acceuil extends JFrame {
 
 	private JPanel contentPane;
 
@@ -40,7 +40,7 @@ public class Accueil extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Accueil frame = new Accueil();
+					Acceuil frame = new Acceuil();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,7 +52,7 @@ public class Accueil extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Accueil() {
+	public Acceuil() {
 		setResizable(false);
 		setTitle("Bienvenue sur SARL Luna");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(InterfaceConnect.class.getResource("/com/luna/graphique/Moon-32.png")));
@@ -91,7 +91,7 @@ public class Accueil extends JFrame {
 			}
 		});
 		btnProducts.setBorder(new EmptyBorder(0, 0, 0, 0));
-		btnProducts.setIcon(new ImageIcon(Accueil.class.getResource("/accueil/Product-128.png")));
+		btnProducts.setIcon(new ImageIcon(Acceuil.class.getResource("/accueil/Product-128.png")));
 		btnProducts.setContentAreaFilled(false);
 		JButton btnPeople = new JButton("");
 		btnPeople.setBounds(10, 197, 128, 128);
@@ -104,7 +104,7 @@ public class Accueil extends JFrame {
 			}
 		});
 		btnPeople.setBorder(new EmptyBorder(0, 0, 0, 0));
-		btnPeople.setIcon(new ImageIcon(Accueil.class.getResource("/accueil/People-128.png")));
+		btnPeople.setIcon(new ImageIcon(Acceuil.class.getResource("/accueil/People-128.png")));
 		btnPeople.setContentAreaFilled(false);
 		
 		JButton btnShopping = new JButton("");
@@ -118,7 +118,7 @@ public class Accueil extends JFrame {
 			}
 		});
 		btnShopping.setBorder(new EmptyBorder(0, 0, 0, 0));
-		btnShopping.setIcon(new ImageIcon(Accueil.class.getResource("/accueil/Shopping-Bag-128.png")));
+		btnShopping.setIcon(new ImageIcon(Acceuil.class.getResource("/accueil/Shopping-Bag-128.png")));
 		btnShopping.setContentAreaFilled(false);
 		
 		JButton btnSettings = new JButton("");
@@ -132,7 +132,7 @@ public class Accueil extends JFrame {
 			}
 		});
 		btnSettings.setBorder(new EmptyBorder(0, 0, 0, 0));
-		btnSettings.setIcon(new ImageIcon(Accueil.class.getResource("/accueil/Settings-02-128.png")));
+		btnSettings.setIcon(new ImageIcon(Acceuil.class.getResource("/accueil/Settings-02-128.png")));
 		btnSettings.setContentAreaFilled(false);
 		
 		JButton btnDiagram = new JButton("");
@@ -146,7 +146,7 @@ public class Accueil extends JFrame {
 			}
 		});
 		btnDiagram.setBorder(new EmptyBorder(0, 0, 0, 0));
-		btnDiagram.setIcon(new ImageIcon(Accueil.class.getResource("/accueil/Diagram-128.png")));
+		btnDiagram.setIcon(new ImageIcon(Acceuil.class.getResource("/accueil/Diagram-128.png")));
 		btnDiagram.setContentAreaFilled(false);
 	}
 }
