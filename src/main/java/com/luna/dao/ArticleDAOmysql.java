@@ -33,8 +33,9 @@ public class ArticleDAOmysql implements ArticleDAO {
 	public void updateArticle(Article article) {
 		try {
 			state = conn.createStatement();
-			state.executeQuery("UPDATE Article SET categorie = " + article.getCategorie() + "','" + article.getCodeArt() + "','"
-					+ article.getNomArticle() +"'," + article.getPrixUnitaire() + "," + article.getStock());
+			state.executeQuery("UPDATE Article SET categorie = '" + article.getCategorie() + "', codeArt = '" + article.getCodeArt() + "', nomArticle = '"
+					+ article.getNomArticle() +"', prixUnitaire = " + article.getPrixUnitaire() + ", stock = " + article.getStock() + " WHERE idArticle = "
+					+ article.getIdArticle());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -42,12 +43,30 @@ public class ArticleDAOmysql implements ArticleDAO {
 
 	@Override
 	public void removeArticle(int idArticle) {
-
+		try {
+			state = conn.createStatement();
+			state.executeQuery("DELETE FROM Article WHERE idArticle = "+ idArticle);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public Article getArticle(int idArticle) {
-		return null;
+		Article art = new Article();
+		try {
+			state = conn.createStatement();
+			result = state.executeQuery("SELECT * FROM Article WHERE idArticle = " + idArticle);
+			art.setCategorie(result.getString("categorie"));
+			art.setCodeArt(result.getString("codeArt"));
+			art.setIdArticle(result.getInt("idArticle"));
+			art.setNomArticle(result.getString("nomArticle"));
+			art.setPrixUnitaire(result.getFloat("prixUnitaire"));
+			art.setStock(result.getInt("stock"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return art;
 	}
 
 	public List<Article> getAllArticle() {
