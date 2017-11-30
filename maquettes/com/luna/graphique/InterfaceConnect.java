@@ -75,7 +75,7 @@ public class InterfaceConnect extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				UsersTraitement auth = new UsersTraitement(login.getText(), password.getText(), GlobalConnection.getInstance());
 				if(auth.Authentification()){
-					Acceuil fen = new Acceuil();
+					FAcceuil fen = new FAcceuil();
 					fen.setVisible(true);
 					close();
 				} else {
