@@ -17,10 +17,9 @@ public class Client {
 		super();
 	}
 
-	public Client(int idClient, String nom, String prenom, String ville, String rue, int codePostal, String tel,
+	public Client(String nom, String prenom, String ville, String rue, int codePostal, String tel,
 			String mail, Date date_creation) {
 		super();
-		this.idClient = idClient;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.ville = ville;

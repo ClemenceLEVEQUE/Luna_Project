@@ -10,12 +10,17 @@ public class User {
 		super();
 	}
 
-	public User(int id, String login, String mdp, int rang) {
+	public User(String login, String mdp, int rang) {
 		super();
-		this.id = id;
 		this.login = login;
 		this.mdp = mdp;
 		this.rang = rang;
+	}
+	
+	public User(String login, String pwd) {
+		this.login = login;
+		this.mdp = pwd;
+		this.rang = 0;
 	}
 
 	public int getId() {
