@@ -59,7 +59,7 @@ public class ArticleDAOmysql implements ArticleDAO {
 			result = state.executeQuery("SELECT * FROM Article WHERE idArticle = " + idArticle);
 			art.setCategorie(result.getString("categorie"));
 			art.setCodeArt(result.getString("codeArt"));
-			art.setIdArticle(result.getInt("idArticle"));
+			art.setIdArticle(idArticle);
 			art.setNomArticle(result.getString("nomArticle"));
 			art.setPrixUnitaire(result.getFloat("prixUnitaire"));
 			art.setStock(result.getInt("stock"));
@@ -73,7 +73,6 @@ public class ArticleDAOmysql implements ArticleDAO {
 		List<Article> articles = new ArrayList<Article>();
 		Article article = null;
 		try {
-
 			state = conn.createStatement();
 			result = state.executeQuery("SELECT * FROM Article");
 
@@ -86,7 +85,6 @@ public class ArticleDAOmysql implements ArticleDAO {
 				article.setStock(result.getInt("stock"));
 				articles.add(article);
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

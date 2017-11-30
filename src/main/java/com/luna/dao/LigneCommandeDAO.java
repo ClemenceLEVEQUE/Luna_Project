@@ -5,7 +5,6 @@ import java.util.List;
 import com.luna.entities.LigneCommande;
 
 public interface LigneCommandeDAO {
-	
 
 	public void insertLigneCommande(LigneCommande ligneCo);
 
@@ -16,6 +15,5 @@ public interface LigneCommandeDAO {
 	public LigneCommande getLigneCommande(int idLigneCommande);
 
 	public List<LigneCommande> getAllLigneCommande();
-
 
 }
