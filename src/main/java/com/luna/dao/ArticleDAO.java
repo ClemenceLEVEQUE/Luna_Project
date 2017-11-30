@@ -12,7 +12,7 @@ public interface ArticleDAO {
 
 	public void removeArticle(int idArticle);
 
-	public ResultSet getArticle(int idArticle);
+	public Article getArticle(int idArticle);
 
 	public List<Article> getAllArticle();
 

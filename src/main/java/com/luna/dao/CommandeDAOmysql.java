@@ -58,6 +58,7 @@ public class CommandeDAOmysql implements CommandeDAO {
 		try {
 			state = conn.createStatement();
 			result = state.executeQuery("SELECT * FROM Commande WHERE idCommande = " + idCommande);
+			result.first();
 			cde.setDateCom(result.getDate("dateCom"));
 			cde.setDateLivraison(result.getDate("dateLivraison"));
 			cde.setEtat(result.getString("etat").charAt(0));

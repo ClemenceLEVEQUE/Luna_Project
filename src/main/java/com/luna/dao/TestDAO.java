@@ -1,5 +1,6 @@
 package com.luna.dao;
 
+import java.sql.ResultSet;
 import java.util.List;
 
 import com.luna.entities.Article;
@@ -10,14 +11,16 @@ public class TestDAO {
 		try {
 
 			ArticleDAO articleDao = new ArticleDAOmysql(GlobalConnection.getInstance());
+			Article article = new Article();
+			article = articleDao.getArticle(3);
+			
 			System.out.println(
 					"\n---------------------------------------------------------------------------------------------------------------------------------------------------");
-			System.out.print("\t" + articleDao.getArticle(3).getString("NomArticle") + "\t|");
-
-			System.out.print("\t" + articleDao.getArticle(3).getString("CodeArt") + "\t|");
-			System.out.print("\t" + articleDao.getArticle(3).getString("Categorie") + "\t|");
-			System.out.print("\t" + articleDao.getArticle(3).getFloat("PrixUnitaire") + "\t|");
-			System.out.print("\t" + articleDao.getArticle(3).getInt("Stock") + "\t|");
+			System.out.print("\t" + article.getNomArticle() + "\t|");
+			System.out.print("\t" + article.getCodeArt() + "\t|");
+			System.out.print("\t" + article.getCategorie() + "\t|");
+			System.out.print("\t" + article.getPrixUnitaire() + "\t|");
+			System.out.print("\t" + article.getStock() + "\t|");
 			System.out.println(
 					"\n--------------------------------------------------------------------------------------------------------------------------------------------------");
 		} catch (Exception e) {

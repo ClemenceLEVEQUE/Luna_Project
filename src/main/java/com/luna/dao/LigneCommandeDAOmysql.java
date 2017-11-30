@@ -57,6 +57,7 @@ public class LigneCommandeDAOmysql implements LigneCommandeDAO {
 		try {
 			state = conn.createStatement();
 			result = state.executeQuery("SELECT * FROM LigneCommande WHERE idLigneCommande = " + idLigneCommande);
+			result.first();
 			cde.setIdCommande(result.getInt("idCommande"));
 			cde.setIdLigne(result.getInt("idLigne"));
 			cde.setIdArticle(result.getInt("idArticle"));
