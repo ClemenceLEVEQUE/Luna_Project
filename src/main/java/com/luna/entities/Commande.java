@@ -13,9 +13,8 @@ public class Commande {
 		super();
 	}
 
-	public Commande(int idCommande, int idClient, Date dateLivraison, Date dateCom, char etat) {
+	public Commande(int idClient, Date dateLivraison, Date dateCom, char etat) {
 		super();
-		this.idCommande = idCommande;
 		this.idClient = idClient;
 		this.dateLivraison = dateLivraison;
 		this.dateCom = dateCom;

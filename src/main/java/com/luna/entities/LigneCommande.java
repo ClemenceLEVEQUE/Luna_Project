@@ -11,10 +11,9 @@ public class LigneCommande {
 		super();
 	}
 
-	public LigneCommande(int idCommande, int idLigne, int idArticle, int quantite) {
+	public LigneCommande(int idCommande, int idArticle, int quantite) {
 		super();
 		this.idCommande = idCommande;
-		this.idLigne = idLigne;
 		this.idArticle = idArticle;
 		this.quantite = quantite;
 	}

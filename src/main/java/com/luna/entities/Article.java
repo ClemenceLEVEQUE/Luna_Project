@@ -10,12 +10,10 @@ public class Article {
 
 	public Article() {
 		super();
-
 	}
 
-	public Article(int idArticle, String categorie, String codeArt, String nomArticle, float prixUnitaire, int stock) {
+	public Article(String categorie, String codeArt, String nomArticle, float prixUnitaire, int stock) {
 		super();
-		this.idArticle = idArticle;
 		this.categorie = categorie;
 		this.codeArt = codeArt;
 		this.nomArticle = nomArticle;
