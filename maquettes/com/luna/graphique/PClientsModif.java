@@ -120,13 +120,13 @@ public class PClientsModif extends JPanel {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(160, 0, 590, 560);
 		panel_1.setLayout(null);
-		panel_1.setBackground(new Color(173, 216, 230));
+		panel_1.setBackground(new Color(197, 234, 249));
 		add(panel_1);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setLayout(null);
 		panel_2.setBorder(new TitledBorder(null, "Client", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_2.setBackground(new Color(173, 216, 230));
+		panel_2.setBackground(new Color(197, 234, 249));
 		panel_2.setBounds(12, 11, 564, 55);
 		panel_1.add(panel_2);
 		
@@ -153,7 +153,7 @@ public class PClientsModif extends JPanel {
 		JPanel panel_3 = new JPanel();
 		panel_3.setLayout(null);
 		panel_3.setBorder(new TitledBorder(null, "Etat civil", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_3.setBackground(new Color(173, 216, 230));
+		panel_3.setBackground(new Color(197, 234, 249));
 		panel_3.setBounds(12, 77, 564, 109);
 		panel_1.add(panel_3);
 		
@@ -210,7 +210,7 @@ public class PClientsModif extends JPanel {
 		JPanel panel_4 = new JPanel();
 		panel_4.setLayout(null);
 		panel_4.setBorder(new TitledBorder(null, "Coordon\u00E9es", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_4.setBackground(new Color(173, 216, 230));
+		panel_4.setBackground(new Color(197, 234, 249));
 		panel_4.setBounds(12, 197, 564, 55);
 		panel_1.add(panel_4);
 		
@@ -237,7 +237,7 @@ public class PClientsModif extends JPanel {
 		JPanel panel_5 = new JPanel();
 		panel_5.setLayout(null);
 		panel_5.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Remarques", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_5.setBackground(new Color(173, 216, 230));
+		panel_5.setBackground(new Color(197, 234, 249));
 		panel_5.setBounds(12, 263, 564, 279);
 		panel_1.add(panel_5);
 		

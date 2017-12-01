@@ -121,14 +121,14 @@ public class PClientsSearch extends JPanel {
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(160, 0, 590, 560);
-		panel_1.setBackground(new Color(173, 216, 230));
+		panel_1.setBackground(new Color(197, 234, 249));
 		add(panel_1);
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(12, 11, 564, 246);
 		panel_2.setLayout(null);
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2.setBackground(new Color(173, 216, 230));
+		panel_2.setBackground(new Color(197, 234, 249));
 
 		JLabel label_1 = new JLabel("Cr\u00E9\u00E9 le :");
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
