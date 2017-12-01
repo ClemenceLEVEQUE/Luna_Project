@@ -13,13 +13,13 @@ public class Client {
 	private String mail;
 	private String date_creation;
 	private String codeClient;
-	private String remarque;
+	private String remarques;
 	public Client() {
 		super();
 	}
 
 	public Client(String nom, String prenom, String ville, String rue, int codePostal, String tel,
-			String mail, String date_creation) {
+			String mail, String date_creation, String codeClient,String remarques) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
@@ -30,6 +30,7 @@ public class Client {
 		this.mail = mail;
 		this.date_creation = date_creation;
 		this.codeClient = codeClient;
+		this.remarques = remarques;
 	}
 
 	public int getIdClient() {
@@ -112,12 +113,13 @@ public class Client {
 		this.codeClient = codeClient;
 	}
 
-	public String getRemarque() {
-		return remarque;
+	public String getRemarques() {
+		return remarques;
 	}
 
-	public void setRemarque(String remarque) {
-		this.remarque = remarque;
+	public void setRemarques(String remarque) {
+		this.remarques = remarques;
 	}
+
 	
 }

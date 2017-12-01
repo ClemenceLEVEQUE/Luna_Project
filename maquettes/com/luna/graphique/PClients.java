@@ -310,7 +310,7 @@ public class PClients extends JPanel {
 
 		model = new MyTableModel();
 
-		table = new JTable(model);		
+		table = new JTable(model);
 		scrollPane.setViewportView(table);
 		panel_1.add(lblTrierLaListe);
 		panel_1.add(comboBox);

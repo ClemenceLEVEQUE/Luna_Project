@@ -26,7 +26,7 @@ public class ClientDAOmysql implements ClientDAO {
 					"INSERT INTO Client(nom, prenom, ville, rue, codePostal, tel, mail, date_creation) VALUES ('"
 							+ Cli.getNom() + "','" + Cli.getPrenom() + "','" + Cli.getVille() + "','" + Cli.getRue()
 							+ "'," + Cli.getCodePostal() + ",'" + Cli.getTel() + "','" + Cli.getMail() + "','"
-							+ Cli.getDate_creation() + "'"+ Cli.getCodeClient()+ "'"+ Cli.getRemarque());
+							+ Cli.getDate_creation() + "'"+ Cli.getCodeClient()+ "'"+ Cli.getRemarques());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -39,8 +39,12 @@ public class ClientDAOmysql implements ClientDAO {
 			state.executeUpdate("UPDATE Client SET nom = '" + Cli.getNom() + "', prenom = '" + Cli.getPrenom()
 					+ "', ville = '" + Cli.getVille() + "', rue = '" + Cli.getRue() + "', codePostal = "
 					+ Cli.getCodePostal() + ", tel = '" + Cli.getTel() + "', mail = '" + Cli.getMail()
+<<<<<<< HEAD
 					+ "', date_creation = '" + Cli.getDate_creation() + "', remarques = '" + Cli.getRemarque() + "', codeClient = '" + Cli.getCodeClient()
 					+ "' WHERE idClient = " + Cli.getIdClient()+"' Code Client = "+  Cli.getCodeClient()+ "'"+ Cli.getRemarque());
+=======
+					+ "', date_creation = '" + Cli.getDate_creation() + "' WHERE idClient = " + Cli.getIdClient()+"' Code Client = "+  Cli.getCodeClient()+ "'"+ Cli.getRemarques());
+>>>>>>> branch 'master' of https://github.com/ClemenceLEVEQUE/Luna_Project
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -73,7 +77,11 @@ public class ClientDAOmysql implements ClientDAO {
 			cli.setMail(result.getString("mail"));
 			cli.setDate_creation(result.getString("date_creation"));
 			cli.setCodeClient(result.getString("codeClient"));
+<<<<<<< HEAD
 			cli.setRemarque(result.getString("remarques"));
+=======
+			cli.setRemarques(result.getString("remarques"));
+>>>>>>> branch 'master' of https://github.com/ClemenceLEVEQUE/Luna_Project
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -100,7 +108,11 @@ public class ClientDAOmysql implements ClientDAO {
 				cli.setMail(result.getString("mail"));
 				cli.setDate_creation(result.getString("date_creation"));
 				cli.setCodeClient(result.getString("codeClient"));
+<<<<<<< HEAD
 				cli.setRemarque(result.getString("remarques"));
+=======
+				cli.setRemarques(result.getString("remarque"));
+>>>>>>> branch 'master' of https://github.com/ClemenceLEVEQUE/Luna_Project
 				clients.add(cli);
 			}
 		} catch (SQLException e) {
