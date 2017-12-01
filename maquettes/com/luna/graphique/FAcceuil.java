@@ -142,7 +142,6 @@ public class FAcceuil extends JFrame {
 		
 		JButton btnProducts = new JButton("");
 		panelProducts.add(btnProducts);
-		btnProducts.setToolTipText("");
 		btnProducts.setFocusable(false);
 		btnProducts.addMouseListener(new MouseAdapter() {
 			@Override
@@ -167,7 +166,6 @@ public class FAcceuil extends JFrame {
 		panelBoutons.add(panelPeople);
 		JButton btnPeople = new JButton("");
 		panelPeople.add(btnPeople);
-		btnPeople.setToolTipText("");
 		btnPeople.setFocusable(false);
 		btnPeople.addMouseListener(new MouseAdapter() {
 			@Override
@@ -195,7 +193,6 @@ public class FAcceuil extends JFrame {
 		
 		JButton btnDiagram = new JButton("");
 		panelDiagram.add(btnDiagram);
-		btnDiagram.setToolTipText("");
 		btnDiagram.setFocusable(false);
 		btnDiagram.addMouseListener(new MouseAdapter() {
 			@Override
@@ -218,7 +215,6 @@ public class FAcceuil extends JFrame {
 		
 		JButton btnShopping = new JButton("");
 		panelShopping.add(btnShopping);
-		btnShopping.setToolTipText("");
 		btnShopping.setFocusable(false);
 		btnShopping.addMouseListener(new MouseAdapter() {
 			@Override
@@ -245,7 +241,6 @@ public class FAcceuil extends JFrame {
 		JButton btnSettings = new JButton("");
 		panelSettings.add(btnSettings);
 		btnSettings.setFocusable(false);
-		btnSettings.setToolTipText("");
 		btnSettings.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
