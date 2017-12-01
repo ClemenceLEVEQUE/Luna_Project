@@ -36,15 +36,12 @@ public class ClientDAOmysql implements ClientDAO {
 	public void updateClient(Client Cli) {
 		try {
 			state = conn.createStatement();
-//			state.executeUpdate("UPDATE Client SET nom = '" + Cli.getNom() + "', prenom = '" + Cli.getPrenom()
-//					+ "', ville = '" + Cli.getVille() + "', rue = '" + Cli.getRue() + "', codePostal = "
-//					+ Cli.getCodePostal() + ", tel = '" + Cli.getTel() + "', mail = '" + Cli.getMail()
-//
-//					+ "', date_creation = '" + Cli.getDate_creation() + "', remarques = '" + Cli.getRemarque() + "', codeClient = '" + Cli.getCodeClient()
-//					+ "' WHERE idClient = " + Cli.getIdClient()+"' Code Client = "+  Cli.getCodeClient()+ "'"+ Cli.getRemarque());
-//
-//					+ "', date_creation = '" + Cli.getDate_creation() + "' WHERE idClient = " + Cli.getIdClient()+"' Code Client = "+  Cli.getCodeClient()+ "'"+ Cli.getRemarques());
+			state.executeUpdate("UPDATE Client SET nom = '" + Cli.getNom() + "', prenom = '" + Cli.getPrenom()
+					+ "', ville = '" + Cli.getVille() + "', rue = '" + Cli.getRue() + "', codePostal = "
+					+ Cli.getCodePostal() + ", tel = '" + Cli.getTel() + "', mail = '" + Cli.getMail()
 
+					+ "', date_creation = '" + Cli.getDate_creation() + "', remarques = '" + Cli.getRemarques() + "', codeClient = '" + Cli.getCodeClient()
+					+ "' WHERE idClient = " + Cli.getIdClient()+"' Code Client = "+  Cli.getCodeClient()+ "'"+ Cli.getRemarques());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -77,11 +74,7 @@ public class ClientDAOmysql implements ClientDAO {
 			cli.setMail(result.getString("mail"));
 			cli.setDate_creation(result.getString("date_creation"));
 			cli.setCodeClient(result.getString("codeClient"));
-<<<<<<< HEAD
-			cli.setRemarque(result.getString("remarques"));
-=======
 			cli.setRemarques(result.getString("remarques"));
->>>>>>> branch 'master' of https://github.com/ClemenceLEVEQUE/Luna_Project
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -108,11 +101,7 @@ public class ClientDAOmysql implements ClientDAO {
 				cli.setMail(result.getString("mail"));
 				cli.setDate_creation(result.getString("date_creation"));
 				cli.setCodeClient(result.getString("codeClient"));
-<<<<<<< HEAD
-				cli.setRemarque(result.getString("remarques"));
-=======
-				cli.setRemarques(result.getString("remarque"));
->>>>>>> branch 'master' of https://github.com/ClemenceLEVEQUE/Luna_Project
+				cli.setRemarques(result.getString("remarques"));
 				clients.add(cli);
 			}
 		} catch (SQLException e) {
