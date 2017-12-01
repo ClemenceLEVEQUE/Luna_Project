@@ -26,7 +26,7 @@ public class ClientDAOmysql implements ClientDAO {
 					"INSERT INTO Client(nom, prenom, ville, rue, codePostal, tel, mail, date_creation) VALUES ('"
 							+ Cli.getNom() + "','" + Cli.getPrenom() + "','" + Cli.getVille() + "','" + Cli.getRue()
 							+ "'," + Cli.getCodePostal() + ",'" + Cli.getTel() + "','" + Cli.getMail() + "','"
-							+ Cli.getDate_creation() + "'");
+							+ Cli.getDate_creation() + "'"+ Cli.getCodeClient()+ "'"+ Cli.getRemarque());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -39,7 +39,7 @@ public class ClientDAOmysql implements ClientDAO {
 			state.executeQuery("UPDATE Client SET nom = '" + Cli.getNom() + "', prenom = '" + Cli.getPrenom()
 					+ "', ville = '" + Cli.getVille() + "', rue = '" + Cli.getRue() + "', codePostal = "
 					+ Cli.getCodePostal() + ", tel = '" + Cli.getTel() + "', mail = '" + Cli.getMail()
-					+ "', date_creation = '" + Cli.getDate_creation() + "' WHERE idClient = " + Cli.getIdClient());
+					+ "', date_creation = '" + Cli.getDate_creation() + "' WHERE idClient = " + Cli.getIdClient()+"' Code Client = "+  Cli.getCodeClient()+ "'"+ Cli.getRemarque());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -61,6 +61,7 @@ public class ClientDAOmysql implements ClientDAO {
 		try {
 			state = conn.createStatement();
 			result = state.executeQuery("SELECT * FROM Client WHERE idClient = " + idClient);
+			result.first();
 			cli.setIdClient(idClient);
 			cli.setNom(result.getString("nom"));
 			cli.setPrenom(result.getString("prenom"));
@@ -69,7 +70,9 @@ public class ClientDAOmysql implements ClientDAO {
 			cli.setCodePostal(result.getInt("codePostal"));
 			cli.setTel(result.getString("tel"));
 			cli.setMail(result.getString("mail"));
-			cli.setDate_creation(result.getDate("date"));
+			cli.setDate_creation(result.getString("date"));
+			cli.setCodeClient(result.getString("codeClient"));
+			cli.setRemarque(result.getString("remarque"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -94,7 +97,9 @@ public class ClientDAOmysql implements ClientDAO {
 				cli.setCodePostal(result.getInt("codePostal"));
 				cli.setTel(result.getString("tel"));
 				cli.setMail(result.getString("mail"));
-				cli.setDate_creation(result.getDate("date"));
+				cli.setDate_creation(result.getString("date"));
+				cli.setCodeClient(result.getString("codeClient"));
+				cli.setRemarque(result.getString("remarque"));
 				clients.add(cli);
 			}
 		} catch (SQLException e) {
