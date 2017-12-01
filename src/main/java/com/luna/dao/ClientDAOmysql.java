@@ -36,10 +36,11 @@ public class ClientDAOmysql implements ClientDAO {
 	public void updateClient(Client Cli) {
 		try {
 			state = conn.createStatement();
-			state.executeQuery("UPDATE Client SET nom = '" + Cli.getNom() + "', prenom = '" + Cli.getPrenom()
+			state.executeUpdate("UPDATE Client SET nom = '" + Cli.getNom() + "', prenom = '" + Cli.getPrenom()
 					+ "', ville = '" + Cli.getVille() + "', rue = '" + Cli.getRue() + "', codePostal = "
 					+ Cli.getCodePostal() + ", tel = '" + Cli.getTel() + "', mail = '" + Cli.getMail()
-					+ "', date_creation = '" + Cli.getDate_creation() + "' WHERE idClient = " + Cli.getIdClient()+"' Code Client = "+  Cli.getCodeClient()+ "'"+ Cli.getRemarque());
+					+ "', date_creation = '" + Cli.getDate_creation() + "', remarques = '" + Cli.getRemarque() + "', codeClient = '" + Cli.getCodeClient()
+					+ "' WHERE idClient = " + Cli.getIdClient()+"' Code Client = "+  Cli.getCodeClient()+ "'"+ Cli.getRemarque());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -70,9 +71,9 @@ public class ClientDAOmysql implements ClientDAO {
 			cli.setCodePostal(result.getInt("codePostal"));
 			cli.setTel(result.getString("tel"));
 			cli.setMail(result.getString("mail"));
-			cli.setDate_creation(result.getString("date"));
+			cli.setDate_creation(result.getString("date_creation"));
 			cli.setCodeClient(result.getString("codeClient"));
-			cli.setRemarque(result.getString("remarque"));
+			cli.setRemarque(result.getString("remarques"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -97,9 +98,9 @@ public class ClientDAOmysql implements ClientDAO {
 				cli.setCodePostal(result.getInt("codePostal"));
 				cli.setTel(result.getString("tel"));
 				cli.setMail(result.getString("mail"));
-				cli.setDate_creation(result.getString("date"));
+				cli.setDate_creation(result.getString("date_creation"));
 				cli.setCodeClient(result.getString("codeClient"));
-				cli.setRemarque(result.getString("remarque"));
+				cli.setRemarque(result.getString("remarques"));
 				clients.add(cli);
 			}
 		} catch (SQLException e) {

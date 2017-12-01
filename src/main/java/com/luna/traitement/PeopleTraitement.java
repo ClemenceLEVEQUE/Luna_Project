@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JTable;
+import javax.swing.table.TableModel;
 
 import com.luna.dao.ClientDAO;
 import com.luna.dao.ClientDAOmysql;
@@ -17,8 +18,5 @@ public class PeopleTraitement {
 		client = new ClientDAOmysql(GlobalConnection.getInstance());
 	}
 
-	public void RemplirTableau(JTable table) {
-		List<Client> clients = client.getAllClient(); // Récupère les données
-		List<String> headers = new ArrayList<String>(); // Entêtes
-	}
+	
 }
