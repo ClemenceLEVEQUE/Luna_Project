@@ -144,9 +144,14 @@ public class FAcceuil extends JFrame {
 		panelProducts.add(btnProducts);
 		btnProducts.setToolTipText("");
 		btnProducts.setFocusable(false);
-		btnProducts.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(btnProducts, "Vous avez cliqué sur un bouton.");
+		btnProducts.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnProducts.setIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Product-128-actif.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnProducts.setIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Product-128.png")));
 			}
 		});
 		btnProducts.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -162,9 +167,14 @@ public class FAcceuil extends JFrame {
 		panelPeople.add(btnPeople);
 		btnPeople.setToolTipText("");
 		btnPeople.setFocusable(false);
-		btnPeople.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(btnProducts, "Vous avez cliqué sur un bouton.");
+		btnPeople.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnPeople.setIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/People-128-actif.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnPeople.setIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/People-128.png")));
 			}
 		});
 		btnPeople.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -178,9 +188,14 @@ public class FAcceuil extends JFrame {
 		panelDiagram.add(btnDiagram);
 		btnDiagram.setToolTipText("");
 		btnDiagram.setFocusable(false);
-		btnDiagram.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(btnProducts, "Vous avez cliqué sur un bouton.");
+		btnDiagram.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnDiagram.setIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Diagram-128-actif.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnDiagram.setIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Diagram-128.png")));
 			}
 		});
 		btnDiagram.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -194,9 +209,14 @@ public class FAcceuil extends JFrame {
 		panelShopping.add(btnShopping);
 		btnShopping.setToolTipText("");
 		btnShopping.setFocusable(false);
-		btnShopping.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(btnProducts, "Vous avez cliqué sur un bouton.");
+		btnShopping.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnShopping.setIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Shopping-Bag-128-actif.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnShopping.setIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Shopping-Bag-128.png")));
 			}
 		});
 		btnShopping.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -213,9 +233,14 @@ public class FAcceuil extends JFrame {
 		panelSettings.add(btnSettings);
 		btnSettings.setFocusable(false);
 		btnSettings.setToolTipText("");
-		btnSettings.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(btnProducts, "Vous avez cliqué sur un bouton.");
+		btnSettings.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnSettings.setIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Settings-02-128-actif.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnSettings.setIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Settings-02-128.png")));
 			}
 		});
 		btnSettings.setBorder(new EmptyBorder(0, 0, 0, 0));
