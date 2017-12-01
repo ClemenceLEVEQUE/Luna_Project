@@ -22,7 +22,7 @@ public class ClientDAOmysql implements ClientDAO {
 	public void insertClient(Client Cli) {
 		try {
 			state = conn.createStatement();
-			state.executeQuery(
+			state.executeUpdate(
 					"INSERT INTO Client(nom, prenom, ville, rue, codePostal, tel, mail, date_creation) VALUES ('"
 							+ Cli.getNom() + "','" + Cli.getPrenom() + "','" + Cli.getVille() + "','" + Cli.getRue()
 							+ "'," + Cli.getCodePostal() + ",'" + Cli.getTel() + "','" + Cli.getMail() + "','"
