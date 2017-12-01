@@ -11,7 +11,7 @@ import com.luna.utils.GlobalConnection;
 		public static void main(String[] args) {
 			ClientDAO clientDao = new ClientDAOmysql(GlobalConnection.getInstance());
 			List<Client> clients = clientDao.getAllClient();
-			System.out.println("\n-------------------------------------------------");
+			System.out.println("\n--------------------------------------------------------------------------------------------------");
 			for(Client cli:clients) {
 				System.out.print("\t" + cli.getIdClient() + "\t|");
 				System.out.print("\t" + cli.getNom() + "\t|");
@@ -21,8 +21,8 @@ import com.luna.utils.GlobalConnection;
 				System.out.print("\t" + cli.getCodePostal() + "\t|");
 				System.out.print("\t" + cli.getTel() + "\t|");
 				System.out.print("\t" + cli.getMail() + "\t|");
-				System.out.print("\t" + cli.getDate_creation() + "\t|");
-				System.out.println("\n-------------------------------------------------");
+				//System.out.print("\t" + cli.getDate_creation() + "\t|");//
+				System.out.println("\n----------------------------------------------------------------------------------------------");
 			}
 		}
 	}

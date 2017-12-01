@@ -59,8 +59,8 @@ public class CommandeDAOmysql implements CommandeDAO {
 			state = conn.createStatement();
 			result = state.executeQuery("SELECT * FROM Commande WHERE idCommande = " + idCommande);
 			result.first();
-			cde.setDateCom(result.getDate("dateCom"));
-			cde.setDateLivraison(result.getDate("dateLivraison"));
+			cde.setDateCom(result.getString("dateCom"));
+			cde.setDateLivraison(result.getString("dateLivraison"));
 			cde.setEtat(result.getString("etat").charAt(0));
 			cde.setIdClient(result.getInt("idClient"));
 			cde.setIdCommande(idCommande);
@@ -80,8 +80,8 @@ public class CommandeDAOmysql implements CommandeDAO {
 
 			while (result.next()) {
 				cde = new Commande();
-				cde.setDateCom(result.getDate("dateCom"));
-				cde.setDateLivraison(result.getDate("dateLivraison"));
+				cde.setDateCom(result.getString("dateCom"));
+				cde.setDateLivraison(result.getString("dateLivraison"));
 				cde.setEtat(result.getString("etat").charAt(0));
 				cde.setIdClient(result.getInt("idClient"));
 				cde.setIdCommande(result.getInt("idCommande"));

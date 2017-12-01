@@ -12,7 +12,8 @@ public class Client {
 	private String tel;
 	private String mail;
 	private String date_creation;
-
+	private String codeClient;
+	private String remarque;
 	public Client() {
 		super();
 	}
@@ -28,6 +29,7 @@ public class Client {
 		this.tel = tel;
 		this.mail = mail;
 		this.date_creation = date_creation;
+		this.codeClient = codeClient;
 	}
 
 	public int getIdClient() {
@@ -101,4 +103,21 @@ public class Client {
 	public void setDate_creation(String date_creation) {
 		this.date_creation = date_creation;
 	}
+
+	public String getCodeClient() {
+		return codeClient;
+	}
+
+	public void setCodeClient(String codeClient) {
+		this.codeClient = codeClient;
+	}
+
+	public String getRemarque() {
+		return remarque;
+	}
+
+	public void setRemarque(String remarque) {
+		this.remarque = remarque;
+	}
+	
 }
