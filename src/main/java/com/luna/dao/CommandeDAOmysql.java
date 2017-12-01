@@ -20,11 +20,16 @@ public class CommandeDAOmysql implements CommandeDAO {
 	
 	@Override
 	public void insertCommande(Commande Comm) {
+		String DateLivraison =Comm.getDateLivraison();
+		String DateCom=Comm.getDateCom();
+		char Etat = Comm.getEtat();
+		int IdClient = Comm.getIdClient();
+		
 		try {
 			state = conn.createStatement();
-			state.executeQuery(
-					"INSERT INTO Commande(idClient, dateLivraison, dateCom, etat) VALUES (" + Comm.getIdClient() + ",'"
-							+ Comm.getDateLivraison() + "','" + Comm.getDateCom() + "','" + Comm.getEtat() + "'");
+			state.executeUpdate(
+					"INSERT INTO Commande(idClient, dateLivraison, dateCom, etat) VALUES (" + IdClient + ",'"
+							+ DateLivraison + "','" + DateCom + "','" + Etat + "'");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -32,10 +37,15 @@ public class CommandeDAOmysql implements CommandeDAO {
 
 	@Override
 	public void updateCommande(Commande Comm) {
+		String DateLivraison =Comm.getDateLivraison();
+		String IDateCom=Comm.getDateCom();
+		char Etat = Comm.getEtat();
+		int IdClient = Comm.getIdClient();
+		
 		try {
 			state = conn.createStatement();
-			state.executeQuery("UPDATE Commande SET idClient = " + Comm.getIdClient() + ", dateLivraison = '"
-					+ Comm.getDateLivraison() + "', dateCom = '" + Comm.getDateCom() + "', etat = '" + Comm.getEtat()
+			state.executeQuery("UPDATE Commande SET idClient = " + IdClient + ", dateLivraison = '"
+					+  DateLivraison + "', dateCom = '" + IDateCom + "', etat = '" + Etat
 					+ "' WHERE idClient = " + Comm.getIdCommande());
 		} catch (SQLException e) {
 			e.printStackTrace();

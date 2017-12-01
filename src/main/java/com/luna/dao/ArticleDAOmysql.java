@@ -22,7 +22,7 @@ public class ArticleDAOmysql implements ArticleDAO {
 	public void insertArticle(Article article) {
 		try {
 			state = conn.createStatement();
-			state.executeQuery("INSERT INTO Article(categorie, codeArt, nomArticle, prixUnitaire, stock) VALUES ('" + article.getCategorie() + "','" + article.getCodeArt() + "','"
+			state.executeUpdate("INSERT INTO Article(categorie, codeArt, nomArticle, prixUnitaire, stock) VALUES ('" + article.getCategorie() + "','" + article.getCodeArt() + "','"
 					+ article.getNomArticle() +"'," + article.getPrixUnitaire() + "," + article.getStock());
 		} catch (SQLException e) {
 			e.printStackTrace();
