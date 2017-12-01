@@ -13,7 +13,7 @@ import com.luna.entities.LigneCommande;
 				
 				LigneCommande LigneCo=new LigneCommande(2,2, 1);
 				ligneCommandeDAO.insertLigneCommande(LigneCo);
-				ligneCommandeDAO.getLigneCommande(6);
+				ligneCommandeDAO.getLigneCommande(3);
 				
 				System.out.println("\n--------------------------------------------------------------------------------------------------");
 				//for(LigneCommande Ligne:ligneCommandes) {

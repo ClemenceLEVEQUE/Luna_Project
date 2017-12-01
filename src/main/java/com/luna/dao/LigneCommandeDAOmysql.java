@@ -20,12 +20,16 @@ public class LigneCommandeDAOmysql implements LigneCommandeDAO {
 	
 	@Override
 	public void insertLigneCommande(LigneCommande ligneCo) {
+		int IdCommande =ligneCo.getIdCommande();
+		int IdArticle=ligneCo.getIdArticle();
+		int Quantite = ligneCo.getQuantite();
+		
 		try {
 			state = conn.createStatement();
 			
-			String str = "INSERT INTO LigneCommande(idCommande, idArticle, quantite) VALUES (" + ligneCo.getIdCommande() + ","
-					+ ligneCo.getIdArticle() + "," + ligneCo.getQuantite()+")";
-			state.executeQuery(str);
+			String str = "INSERT INTO LigneCommande(idCommande, idArticle, quantite) VALUES (" + IdCommande + ","
+					+ IdArticle + "," + Quantite+")";
+			state.executeUpdate(str);
 					
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -34,10 +38,15 @@ public class LigneCommandeDAOmysql implements LigneCommandeDAO {
 
 	@Override
 	public void updateLigneCommande(LigneCommande ligneCo) {
+		
+		int IdCommande =ligneCo.getIdCommande();
+		int IdArticle=ligneCo.getIdArticle();
+		int Quantite = ligneCo.getQuantite();
+		int IdLigne = ligneCo.getIdLigne();
 		try {
 			state = conn.createStatement();
-			state.executeQuery("UPDATE LigneCommande SET idCommande = " + ligneCo.getIdCommande() + ", idArticle = "
-					+ ligneCo.getIdArticle() + ", quantite = " + ligneCo.getQuantite() + " WHERE idLigne = " + ligneCo.getIdLigne());
+			state.executeQuery("UPDATE LigneCommande SET idCommande = " + IdCommande + ", idArticle = "
+					+ IdArticle + ", quantite = " + Quantite + " WHERE idLigne = " + IdLigne);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -45,9 +54,10 @@ public class LigneCommandeDAOmysql implements LigneCommandeDAO {
 
 	@Override
 	public void removeLigneCommande(int idLigneCommande) {
+		
 		try {
 			state = conn.createStatement();
-			state.executeQuery("DELETE FROM LigneCommande WHERE idLigneCommande = " + idLigneCommande);
+			state.executeQuery("DELETE FROM LigneCommande WHERE idLigne = " + idLigneCommande);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -58,7 +68,7 @@ public class LigneCommandeDAOmysql implements LigneCommandeDAO {
 		LigneCommande cde = new LigneCommande();
 		try {
 			state = conn.createStatement();
-			result = state.executeQuery("SELECT * FROM LigneCommande WHERE idLigneCommande = " + idLigneCommande);
+			result = state.executeQuery("SELECT * FROM LigneCommande WHERE idLigne = '" + idLigneCommande+ "'");
 			cde.setIdCommande(result.getInt("idCommande"));
 			cde.setIdLigne(result.getInt("idLigne"));
 			cde.setIdArticle(result.getInt("idArticle"));
