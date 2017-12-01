@@ -36,15 +36,15 @@ public class ClientDAOmysql implements ClientDAO {
 	public void updateClient(Client Cli) {
 		try {
 			state = conn.createStatement();
-			state.executeUpdate("UPDATE Client SET nom = '" + Cli.getNom() + "', prenom = '" + Cli.getPrenom()
-					+ "', ville = '" + Cli.getVille() + "', rue = '" + Cli.getRue() + "', codePostal = "
-					+ Cli.getCodePostal() + ", tel = '" + Cli.getTel() + "', mail = '" + Cli.getMail()
-<<<<<<< HEAD
-					+ "', date_creation = '" + Cli.getDate_creation() + "', remarques = '" + Cli.getRemarque() + "', codeClient = '" + Cli.getCodeClient()
-					+ "' WHERE idClient = " + Cli.getIdClient()+"' Code Client = "+  Cli.getCodeClient()+ "'"+ Cli.getRemarque());
-=======
-					+ "', date_creation = '" + Cli.getDate_creation() + "' WHERE idClient = " + Cli.getIdClient()+"' Code Client = "+  Cli.getCodeClient()+ "'"+ Cli.getRemarques());
->>>>>>> branch 'master' of https://github.com/ClemenceLEVEQUE/Luna_Project
+//			state.executeUpdate("UPDATE Client SET nom = '" + Cli.getNom() + "', prenom = '" + Cli.getPrenom()
+//					+ "', ville = '" + Cli.getVille() + "', rue = '" + Cli.getRue() + "', codePostal = "
+//					+ Cli.getCodePostal() + ", tel = '" + Cli.getTel() + "', mail = '" + Cli.getMail()
+//
+//					+ "', date_creation = '" + Cli.getDate_creation() + "', remarques = '" + Cli.getRemarque() + "', codeClient = '" + Cli.getCodeClient()
+//					+ "' WHERE idClient = " + Cli.getIdClient()+"' Code Client = "+  Cli.getCodeClient()+ "'"+ Cli.getRemarque());
+//
+//					+ "', date_creation = '" + Cli.getDate_creation() + "' WHERE idClient = " + Cli.getIdClient()+"' Code Client = "+  Cli.getCodeClient()+ "'"+ Cli.getRemarques());
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
