@@ -141,20 +141,9 @@ public class FAcceuil extends JFrame {
 		panelProducts.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnProducts = new JButton("");
+		btnProducts.setRolloverIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Product-128-actif.png")));
 		panelProducts.add(btnProducts);
 		btnProducts.setFocusable(false);
-		btnProducts.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				btnProducts.setIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Product-128-actif.png")));
-				labelDescr.setText("<html>Gestion des<br/>produits</html>");
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				btnProducts.setIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Product-128.png")));
-				labelDescr.setText("");
-			}
-		});
 		btnProducts.setBorder(new EmptyBorder(0, 0, 0, 0));
 		btnProducts.setIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Product-128.png")));
 		btnProducts.setContentAreaFilled(false);
@@ -165,23 +154,15 @@ public class FAcceuil extends JFrame {
 		JPanel panelPeople = new JPanel();
 		panelBoutons.add(panelPeople);
 		JButton btnPeople = new JButton("");
+		btnPeople.setRolloverIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/People-128-actif.png")));
 		panelPeople.add(btnPeople);
 		btnPeople.setFocusable(false);
 		btnPeople.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseEntered(MouseEvent e) {
-				btnPeople.setIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/People-128-actif.png")));
-				labelDescr.setText("<html>Gestion des<br/>clients</html>");
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				btnPeople.setIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/People-128.png")));
-				labelDescr.setText("");
-			}
-			@Override
 			public void mouseClicked(MouseEvent e) {
 				FClient client = new FClient();
 				client.setVisible(true);
+				close();
 			}
 		});
 		btnPeople.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -192,20 +173,9 @@ public class FAcceuil extends JFrame {
 		panelBoutons.add(panelDiagram);
 		
 		JButton btnDiagram = new JButton("");
+		btnDiagram.setRolloverIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Diagram-128-actif.png")));
 		panelDiagram.add(btnDiagram);
 		btnDiagram.setFocusable(false);
-		btnDiagram.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				btnDiagram.setIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Diagram-128-actif.png")));
-				labelDescr.setText("Statistiques");
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				btnDiagram.setIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Diagram-128.png")));
-				labelDescr.setText("");
-			}
-		});
 		btnDiagram.setBorder(new EmptyBorder(0, 0, 0, 0));
 		btnDiagram.setIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Diagram-128.png")));
 		btnDiagram.setContentAreaFilled(false);
@@ -214,20 +184,9 @@ public class FAcceuil extends JFrame {
 		panelBoutons.add(panelShopping);
 		
 		JButton btnShopping = new JButton("");
+		btnShopping.setRolloverIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Shopping-Bag-128-actif.png")));
 		panelShopping.add(btnShopping);
 		btnShopping.setFocusable(false);
-		btnShopping.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				btnShopping.setIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Shopping-Bag-128-actif.png")));
-				labelDescr.setText("<html>Gestion des<br/>achats</html>");
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				btnShopping.setIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Shopping-Bag-128.png")));
-				labelDescr.setText("");
-			}
-		});
 		btnShopping.setBorder(new EmptyBorder(0, 0, 0, 0));
 		btnShopping.setIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Shopping-Bag-128.png")));
 		btnShopping.setContentAreaFilled(false);
@@ -239,25 +198,18 @@ public class FAcceuil extends JFrame {
 		panelBoutons.add(panelSettings);
 		
 		JButton btnSettings = new JButton("");
+		btnSettings.setRolloverIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Settings-02-128-actif.png")));
 		panelSettings.add(btnSettings);
 		btnSettings.setFocusable(false);
-		btnSettings.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				btnSettings.setIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Settings-02-128-actif.png")));
-				labelDescr.setText("Paramètres");
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				btnSettings.setIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Settings-02-128.png")));
-				labelDescr.setText("");
-			}
-		});
 		btnSettings.setBorder(new EmptyBorder(0, 0, 0, 0));
 		btnSettings.setIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Settings-02-128.png")));
 		btnSettings.setContentAreaFilled(false);
 		
 		JLabel sep4 = new JLabel("");
 		panelBoutons.add(sep4);
+	}
+	
+	public void close() {
+		this.dispose();
 	}
 }
