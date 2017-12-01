@@ -1,19 +1,17 @@
 package com.luna.entities;
 
-import java.sql.Date;
-
 public class Commande {
 	private int idCommande;
 	private int idClient;
-	private Date dateLivraison;
-	private Date dateCom;
+	private String dateLivraison;
+	private String dateCom;
 	private char etat;
 
 	public Commande() {
 		super();
 	}
 
-	public Commande(int idClient, Date dateLivraison, Date dateCom, char etat) {
+	public Commande(int idClient, String dateLivraison, String dateCom, char etat) {
 		super();
 		this.idClient = idClient;
 		this.dateLivraison = dateLivraison;
@@ -37,19 +35,19 @@ public class Commande {
 		this.idClient = idClient;
 	}
 
-	public Date getDateLivraison() {
+	public String getDateLivraison() {
 		return dateLivraison;
 	}
 
-	public void setDateLivraison(Date dateLivraison) {
+	public void setDateLivraison(String dateLivraison) {
 		this.dateLivraison = dateLivraison;
 	}
 
-	public Date getDateCom() {
+	public String getDateCom() {
 		return dateCom;
 	}
 
-	public void setDateCom(Date dateCom) {
+	public void setDateCom(String dateCom) {
 		this.dateCom = dateCom;
 	}
 

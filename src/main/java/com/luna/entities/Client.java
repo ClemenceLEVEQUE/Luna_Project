@@ -11,14 +11,14 @@ public class Client {
 	private int codePostal;
 	private String tel;
 	private String mail;
-	private Date date_creation;
+	private String date_creation;
 
 	public Client() {
 		super();
 	}
 
 	public Client(String nom, String prenom, String ville, String rue, int codePostal, String tel,
-			String mail, Date date_creation) {
+			String mail, String date_creation) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
@@ -94,11 +94,11 @@ public class Client {
 		this.mail = mail;
 	}
 
-	public Date getDate_creation() {
+	public String getDate_creation() {
 		return date_creation;
 	}
 
-	public void setDate_creation(Date date_creation) {
+	public void setDate_creation(String date_creation) {
 		this.date_creation = date_creation;
 	}
 }
