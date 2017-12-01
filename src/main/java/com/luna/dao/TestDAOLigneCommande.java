@@ -9,11 +9,11 @@ import com.luna.utils.GlobalConnection;
 			LigneCommandeDAO ligneCommandeDAO = new LigneCommandeDAOmysql(GlobalConnection.getInstance());
 			List<LigneCommande> ligneCommandes = ligneCommandeDAO.getAllLigneCommande();
 			System.out.println("\n--------------------------------------------------------------------------------------------------");
-			for(LigneCommande Ligne:ligneCommandes) {
-				System.out.print("\t" + Ligne.getIdCommande() + "\t|");
-				System.out.print("\t" + Ligne.getIdLigne() + "\t|");
-				System.out.print("\t" + Ligne.getIdArticle() + "\t|");
-				System.out.print("\t" + Ligne.getQuantite() + "\t|");
+			for(LigneCommande LigneCo:ligneCommandes) {
+				System.out.print("\t" + LigneCo.getIdCommande() + "\t|");
+				System.out.print("\t" + LigneCo.getIdLigne() + "\t|");
+				System.out.print("\t" + LigneCo.getIdArticle() + "\t|");
+				System.out.print("\t" + LigneCo.getQuantite() + "\t|");
 	
 				//System.out.print("\t" + cli.getDate_creation() + "\t|");//
 				System.out.println("\n----------------------------------------------------------------------------------------------");

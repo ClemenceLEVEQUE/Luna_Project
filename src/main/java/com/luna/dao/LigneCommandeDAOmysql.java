@@ -22,9 +22,11 @@ public class LigneCommandeDAOmysql implements LigneCommandeDAO {
 	public void insertLigneCommande(LigneCommande ligneCo) {
 		try {
 			state = conn.createStatement();
-			state.executeQuery(
-					"INSERT INTO LigneCommande(idCommande, idArticle, quantite) VALUES (" + ligneCo.getIdCommande() + ","
-							+ ligneCo.getIdArticle() + "," + ligneCo.getQuantite());
+			
+			String str = "INSERT INTO LigneCommande(idCommande, idArticle, quantite) VALUES (" + ligneCo.getIdCommande() + ","
+					+ ligneCo.getIdArticle() + "," + ligneCo.getQuantite()+")";
+			state.executeQuery(str);
+					
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -57,7 +59,6 @@ public class LigneCommandeDAOmysql implements LigneCommandeDAO {
 		try {
 			state = conn.createStatement();
 			result = state.executeQuery("SELECT * FROM LigneCommande WHERE idLigneCommande = " + idLigneCommande);
-			result.first();
 			cde.setIdCommande(result.getInt("idCommande"));
 			cde.setIdLigne(result.getInt("idLigne"));
 			cde.setIdArticle(result.getInt("idArticle"));
