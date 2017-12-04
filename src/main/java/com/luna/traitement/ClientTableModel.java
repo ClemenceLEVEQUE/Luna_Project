@@ -1,5 +1,6 @@
 package com.luna.traitement;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.luna.entities.Client;
 import com.luna.utils.GlobalConnection;
@@ -9,7 +10,7 @@ import javax.swing.table.AbstractTableModel;
 
 public class ClientTableModel extends AbstractTableModel {
 	private String[] columnNames = {"Id", "Nom", "Prénom", "Code client", "Tel", "Mail"};
-	private List<Client> clients;
+	private ArrayList<Client> clients;
 
 	public ClientTableModel() {
 		ClientDAO dao = new ClientDAOmysql(GlobalConnection.getInstance());
@@ -22,8 +23,7 @@ public class ClientTableModel extends AbstractTableModel {
 
 	@Override
 	public int getRowCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return clients.size();
 	}
 
 	@Override

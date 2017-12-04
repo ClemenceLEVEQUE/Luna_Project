@@ -81,6 +81,10 @@ public class ArticleTraitement {
 	}
 	
 	public void Verif(JTextField prix, JTextField categ, JSlider qte, JTextField Id) {
-
+		try {
+			
+		} catch (Exception e){
+			
+		}
 	}
 }
