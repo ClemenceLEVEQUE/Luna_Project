@@ -24,11 +24,14 @@ public class CommandeDAOmysql implements CommandeDAO {
 		String DateCom=Comm.getDateCom();
 		char Etat = Comm.getEtat();
 		int IdClient = Comm.getIdClient();
+		String numCom=Comm.getNumCom();
+		float total=Comm.getTotal();
+		
 		
 		try {
 			state = conn.createStatement();
-			String str= "INSERT INTO Commande(idClient, dateLivraison, dateCom, etat) VALUES (" + IdClient + ",'"
-							+ DateLivraison + "','" + DateCom + "','" + Etat + "')";
+			String str= "INSERT INTO Commande(idClient, dateLivraison, dateCom, etat, NumCom, Total) VALUES (" + IdClient + ",'"
+							+ DateLivraison + "','" + DateCom + "','" + Etat + "','"+ numCom +"','"+ total+ "')";
 			state.executeUpdate(str);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -41,11 +44,12 @@ public class CommandeDAOmysql implements CommandeDAO {
 		String IDateCom=Comm.getDateCom();
 		char Etat = Comm.getEtat();
 		int IdClient = Comm.getIdClient();
-		
+		String numCom=Comm.getNumCom();
+		float total=Comm.getTotal();
 		try {
 			state = conn.createStatement();
 			state.executeUpdate("UPDATE Commande SET idClient = " + IdClient + ", dateLivraison = '"
-					+  DateLivraison + "', dateCom = '" + IDateCom + "', etat = '" + Etat
+					+  DateLivraison + "', dateCom = '" + IDateCom + "', etat = '" + Etat + "', numCom= '"+ numCom +"', total = '"+ total
 					+ "' WHERE idClient = " + Comm.getIdCommande());
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -73,7 +77,10 @@ public class CommandeDAOmysql implements CommandeDAO {
 			cde.setDateLivraison(result.getString("dateLivraison"));
 			cde.setEtat(result.getString("etat").charAt(0));
 			cde.setIdClient(result.getInt("idClient"));
+			cde.setNumCom(result.getString("numCom"));
+			cde.setTotal(result.getInt("Total"));
 			cde.setIdCommande(idCommande);
+			
 		} 
 			}catch (SQLException e) {
 			e.printStackTrace();
@@ -96,6 +103,9 @@ public class CommandeDAOmysql implements CommandeDAO {
 				cde.setEtat(result.getString("etat").charAt(0));
 				cde.setIdClient(result.getInt("idClient"));
 				cde.setIdCommande(result.getInt("idCommande"));
+				cde.setNumCom(result.getString("numCom"));
+				cde.setTotal(result.getInt("Total"));
+				
 				cdes.add(cde);
 			}
 		} catch (SQLException e) {

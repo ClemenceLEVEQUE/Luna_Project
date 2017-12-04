@@ -6,17 +6,20 @@ public class Commande {
 	private String dateLivraison;
 	private String dateCom;
 	private char etat;
-
+	private String numCom;
+	private float total;
 	public Commande() {
 		super();
 	}
 
-	public Commande(int idClient, String dateLivraison, String dateCom, char etat) {
+	public Commande(int idClient, String dateLivraison, String dateCom, char etat, String numCom, float total) {
 		super();
 		this.idClient = idClient;
 		this.dateLivraison = dateLivraison;
 		this.dateCom = dateCom;
 		this.etat = etat;
+		this.numCom=numCom;
+		this.total=total;
 	}
 
 	public int getIdCommande() {
@@ -58,14 +61,33 @@ public class Commande {
 	public void setEtat(char etat) {
 		this.etat = etat;
 	}
+	
 
-	public Commande(int idCommande, int idClient, String dateLivraison, String dateCom, char etat) {
+	public String getNumCom() {
+		return numCom;
+	}
+
+	public void setNumCom(String numCom) {
+		this.numCom = numCom;
+	}
+
+	public float getTotal() {
+		return total;
+	}
+
+	public void setTotal(float total) {
+		this.total = total;
+	}
+
+	public Commande(int idCommande, int idClient, String dateLivraison, String dateCom, char etat, String numCom, float total) {
 		super();
 		this.idCommande = idCommande;
 		this.idClient = idClient;
 		this.dateLivraison = dateLivraison;
 		this.dateCom = dateCom;
 		this.etat = etat;
+		this.numCom=numCom;
+		this.total=total;
 	}
 
 }
