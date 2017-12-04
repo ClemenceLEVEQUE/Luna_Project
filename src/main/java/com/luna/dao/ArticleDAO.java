@@ -9,7 +9,7 @@ public interface ArticleDAO {
 
 	public void updateArticle(Article Art);
 
-	public void removeArticle(int idArticle);
+	public boolean removeArticle(int idArticle);
 
 	public Article getArticle(int idArticle);
 

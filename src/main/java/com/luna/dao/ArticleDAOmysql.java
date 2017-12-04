@@ -7,6 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import com.luna.entities.Article;
 
 public class ArticleDAOmysql implements ArticleDAO {
@@ -48,12 +50,21 @@ public class ArticleDAOmysql implements ArticleDAO {
 	}
 
 	@Override
-	public void removeArticle(int idArticle) {
+	public boolean removeArticle(int idArticle) {
 		try {
 			state = conn.createStatement();
-			state.executeUpdate("DELETE FROM Article WHERE idArticle = "+ idArticle);
+			result = state.executeQuery("SELECT * FROM LigneCommande WHERE idArticle = " + idArticle);
+			if(result.first()) {
+				// Il y a un résultat
+				return false;
+			} else {
+				state = conn.createStatement();
+				state.executeUpdate("DELETE FROM Article WHERE idArticle = "+ idArticle);
+				return true;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 

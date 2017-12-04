@@ -38,6 +38,7 @@ import java.awt.event.MouseEvent;
 import java.text.NumberFormat;
 
 import javax.swing.JFormattedTextField;
+import java.awt.Toolkit;
 
 public class FProduit extends JFrame {
 	private JPanel contentPane;
@@ -71,6 +72,8 @@ public class FProduit extends JFrame {
 	 * Create the frame.
 	 */
 	public FProduit() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FProduit.class.getResource("/com/luna/graphique/Moon-32.png")));
+		setTitle("Gestion des Articles");
 		ArticleTraitement art = new ArticleTraitement();
 		ArticleDAO dao = new ArticleDAOmysql(GlobalConnection.getInstance());
 		setResizable(false);

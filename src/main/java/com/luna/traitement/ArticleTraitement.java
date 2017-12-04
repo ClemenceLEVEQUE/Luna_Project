@@ -2,6 +2,7 @@ package com.luna.traitement;
 
 import javax.swing.JOptionPane;
 import javax.swing.JSlider;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import com.luna.dao.ArticleDAO;
@@ -40,13 +41,17 @@ public class ArticleTraitement {
 
 	public void Supprimer(JTextField code, JTextField designation, JTextField prix, JTextField categ, JSlider qte,
 			JTextField id, int idArticle) {
-		dao.removeArticle(idArticle);
-		code.setText("");
-		designation.setText("");
-		prix.setText("");
-		categ.setText("");
-		qte.setValue(0);
-		id.setText("");
+		if(dao.removeArticle(idArticle)) {
+			code.setText("");
+			designation.setText("");
+			prix.setText("");
+			categ.setText("");
+			qte.setValue(0);
+			id.setText("");
+		} else {
+			JOptionPane.showMessageDialog(code, "L'article est utilisé dans une commande.", "Suppression impossible",
+					JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 	public void Modifier(JTextField code, JTextField designation, JTextField prix, JTextField categ, JSlider qte,
