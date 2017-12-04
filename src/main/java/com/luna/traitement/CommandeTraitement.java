@@ -29,13 +29,13 @@ public class CommandeTraitement {
 			result = state.executeQuery("SELECT * FROM LigneCommande, Article WHERE LigneCommande.idArticle = Article.idArticle");
 			int i = 1;
 			while(result.next()) {
-				table.setValueAt(result.getInt("idLigne"), i, 0);
-				table.setValueAt(result.getString("codeArt"),i,1);
-				table.setValueAt(result.getString("categorie"),i,2);
-				table.setValueAt(result.getInt("quantite"),i,3);
-				table.setValueAt(result.getFloat("prixUnitaire"),i,4);
-				float prix = result.getInt("quantite") * result.getFloat("prixUnitaire");
-				table.setValueAt(prix,i,5);
+//				table.setValueAt(result.getInt("idLigne"), i, 0);
+//				table.setValueAt(result.getString("codeArt"),i,1);
+//				table.setValueAt(result.getString("categorie"),i,2);
+//				table.setValueAt(result.getInt("quantite"),i,3);
+//				table.setValueAt(result.getFloat("prixUnitaire"),i,4);
+//				float prix = result.getInt("quantite") * result.getFloat("prixUnitaire");
+//				table.setValueAt(prix,i,5);
 				i++;
 			}
 		} catch (SQLException e) {

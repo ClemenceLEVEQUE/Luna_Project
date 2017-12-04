@@ -149,6 +149,16 @@ public class FAcceuil extends JFrame {
 			}
 		});
 		btnProducts.setRolloverIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Product-128-actif.png")));
+		btnProducts.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				labelDescr.setText("<html>Gestion<br/>des articles</html>");
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				labelDescr.setText("");
+			}
+		});
 		panelProducts.add(btnProducts);
 		btnProducts.setFocusable(false);
 		btnProducts.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -161,15 +171,24 @@ public class FAcceuil extends JFrame {
 		JPanel panelPeople = new JPanel();
 		panelBoutons.add(panelPeople);
 		JButton btnPeople = new JButton("");
+		btnPeople.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FClient client = new FClient();
+				client.setVisible(true);
+				close();
+			}
+		});
 		btnPeople.setRolloverIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/People-128-actif.png")));
 		panelPeople.add(btnPeople);
 		btnPeople.setFocusable(false);
 		btnPeople.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				FClient client = new FClient();
-				client.setVisible(true);
-				close();
+			public void mouseEntered(MouseEvent e) {
+				labelDescr.setText("<html>Gestion<br/>des clients</html>");
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				labelDescr.setText("");
 			}
 		});
 		btnPeople.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -180,6 +199,16 @@ public class FAcceuil extends JFrame {
 		panelBoutons.add(panelDiagram);
 		
 		JButton btnDiagram = new JButton("");
+		btnDiagram.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				labelDescr.setText("<html>Statistiques</html>");
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				labelDescr.setText("");
+			}
+		});
 		btnDiagram.setRolloverIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Diagram-128-actif.png")));
 		panelDiagram.add(btnDiagram);
 		btnDiagram.setFocusable(false);
@@ -199,6 +228,16 @@ public class FAcceuil extends JFrame {
 			}
 		});
 		btnShopping.setRolloverIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Shopping-Bag-128-actif.png")));
+		btnShopping.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				labelDescr.setText("<html>Gestion<br/>des commandes</html>");
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				labelDescr.setText("");
+			}
+		});
 		panelShopping.add(btnShopping);
 		btnShopping.setFocusable(false);
 		btnShopping.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -212,6 +251,16 @@ public class FAcceuil extends JFrame {
 		panelBoutons.add(panelSettings);
 		
 		JButton btnSettings = new JButton("");
+		btnSettings.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				labelDescr.setText("<html>Paramètres</html>");
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				labelDescr.setText("");
+			}
+		});
 		btnSettings.setRolloverIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Settings-02-128-actif.png")));
 		panelSettings.add(btnSettings);
 		btnSettings.setFocusable(false);
