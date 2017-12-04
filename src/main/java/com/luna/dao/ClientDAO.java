@@ -1,5 +1,6 @@
 package com.luna.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.luna.entities.Client;
 
@@ -13,6 +14,6 @@ public interface ClientDAO {
 
 	public Client getClient(int idClient);
 
-	public List<Client> getAllClient();
+	public ArrayList<Client> getAllClient();
 
 }

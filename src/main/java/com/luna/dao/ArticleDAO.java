@@ -15,5 +15,4 @@ public interface ArticleDAO {
 	public Article getArticle(int idArticle);
 
 	public List<Article> getAllArticle();
-
 }

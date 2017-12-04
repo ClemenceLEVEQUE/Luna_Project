@@ -1,5 +1,6 @@
 package com.luna.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.luna.entities.LigneCommande;
@@ -14,6 +15,6 @@ public interface LigneCommandeDAO {
 
 	public LigneCommande getLigneCommande(int idLigneCommande);
 
-	public List<LigneCommande> getAllLigneCommande();
+	public ArrayList<LigneCommande> getAllLigneCommande();
 
 }

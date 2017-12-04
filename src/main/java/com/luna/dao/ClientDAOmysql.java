@@ -94,8 +94,8 @@ public class ClientDAOmysql implements ClientDAO {
 	}
 
 	@Override
-	public List<Client> getAllClient() {
-		List<Client> clients = new ArrayList<Client>();
+	public ArrayList<Client> getAllClient() {
+		ArrayList<Client> clients = new ArrayList<Client>();
 		Client cli = null;
 		try {
 			state = conn.createStatement();

@@ -1,5 +1,6 @@
 package com.luna.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.luna.entities.Commande;
 
@@ -13,6 +14,6 @@ public interface CommandeDAO {
 
 	public Commande getCommande(int idCommande);
 
-	public List<Commande> getAllCommande();
+	public ArrayList<Commande> getAllCommande();
 
 }

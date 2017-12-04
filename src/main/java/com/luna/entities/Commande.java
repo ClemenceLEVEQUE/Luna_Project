@@ -59,4 +59,13 @@ public class Commande {
 		this.etat = etat;
 	}
 
+	public Commande(int idCommande, int idClient, String dateLivraison, String dateCom, char etat) {
+		super();
+		this.idCommande = idCommande;
+		this.idClient = idClient;
+		this.dateLivraison = dateLivraison;
+		this.dateCom = dateCom;
+		this.etat = etat;
+	}
+
 }

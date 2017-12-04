@@ -81,8 +81,8 @@ public class LigneCommandeDAOmysql implements LigneCommandeDAO {
 	}
 
 	@Override
-	public List<LigneCommande> getAllLigneCommande() {
-		List<LigneCommande> cdes = new ArrayList<LigneCommande>();
+	public ArrayList<LigneCommande> getAllLigneCommande() {
+		ArrayList<LigneCommande> cdes = new ArrayList<LigneCommande>();
 		LigneCommande cde = null;
 		try {
 			state = conn.createStatement();

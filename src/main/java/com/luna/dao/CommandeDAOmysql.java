@@ -27,9 +27,9 @@ public class CommandeDAOmysql implements CommandeDAO {
 		
 		try {
 			state = conn.createStatement();
-			state.executeUpdate(
-					"INSERT INTO Commande(idClient, dateLivraison, dateCom, etat) VALUES (" + IdClient + ",'"
-							+ DateLivraison + "','" + DateCom + "','" + Etat + "'");
+			String str= "INSERT INTO Commande(idClient, dateLivraison, dateCom, etat) VALUES (" + IdClient + ",'"
+							+ DateLivraison + "','" + DateCom + "','" + Etat + "')";
+			state.executeUpdate(str);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -44,7 +44,7 @@ public class CommandeDAOmysql implements CommandeDAO {
 		
 		try {
 			state = conn.createStatement();
-			state.executeQuery("UPDATE Commande SET idClient = " + IdClient + ", dateLivraison = '"
+			state.executeUpdate("UPDATE Commande SET idClient = " + IdClient + ", dateLivraison = '"
 					+  DateLivraison + "', dateCom = '" + IDateCom + "', etat = '" + Etat
 					+ "' WHERE idClient = " + Comm.getIdCommande());
 		} catch (SQLException e) {
@@ -56,7 +56,7 @@ public class CommandeDAOmysql implements CommandeDAO {
 	public void removeCommande(int idCommande) {
 		try {
 			state = conn.createStatement();
-			state.executeQuery("DELETE FROM Commande WHERE idCommande = " + idCommande);
+			state.executeUpdate("DELETE FROM Commande WHERE idCommande = " + idCommande);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -68,21 +68,22 @@ public class CommandeDAOmysql implements CommandeDAO {
 		try {
 			state = conn.createStatement();
 			result = state.executeQuery("SELECT * FROM Commande WHERE idCommande = " + idCommande);
-			result.first();
+			if(result.first()) {
 			cde.setDateCom(result.getString("dateCom"));
 			cde.setDateLivraison(result.getString("dateLivraison"));
 			cde.setEtat(result.getString("etat").charAt(0));
 			cde.setIdClient(result.getInt("idClient"));
 			cde.setIdCommande(idCommande);
-		} catch (SQLException e) {
+		} 
+			}catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return cde;
 	}
 
 	@Override
-	public List<Commande> getAllCommande() {
-		List<Commande> cdes = new ArrayList<Commande>();
+	public ArrayList<Commande> getAllCommande() {
+		ArrayList<Commande> cdes = new ArrayList<Commande>();
 		Commande cde = null;
 		try {
 			state = conn.createStatement();
@@ -95,6 +96,7 @@ public class CommandeDAOmysql implements CommandeDAO {
 				cde.setEtat(result.getString("etat").charAt(0));
 				cde.setIdClient(result.getInt("idClient"));
 				cde.setIdCommande(result.getInt("idCommande"));
+				cdes.add(cde);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
