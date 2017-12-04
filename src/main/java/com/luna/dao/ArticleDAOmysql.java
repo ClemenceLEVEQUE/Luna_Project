@@ -77,8 +77,8 @@ public class ArticleDAOmysql implements ArticleDAO {
 		return art;
 	}
 
-	public List<Article> getAllArticle() {
-		List<Article> articles = new ArrayList<Article>();
+	public ArrayList<Article> getAllArticle() {
+		ArrayList<Article> articles = new ArrayList<Article>();
 		Article article = null;
 		try {
 			state = conn.createStatement();
