@@ -20,10 +20,16 @@ public class ArticleDAOmysql implements ArticleDAO {
 
 	@Override
 	public void insertArticle(Article article) {
+	String NomArticle=	article.getNomArticle();
+	float PrixUnitaire= article.getPrixUnitaire();
+	int Stock= article.getStock();
+	String Categorie= article.getCategorie();
+	String CodeArt= article.getCodeArt();
 		try {
 			state = conn.createStatement();
-			state.executeUpdate("INSERT INTO Article(categorie, codeArt, nomArticle, prixUnitaire, stock) VALUES ('" + article.getCategorie() + "','" + article.getCodeArt() + "','"
-					+ article.getNomArticle() +"'," + article.getPrixUnitaire() + "," + article.getStock());
+			String stra ="INSERT INTO Article(categorie, codeArt, nomArticle, prixUnitaire, stock) VALUES ('" + Categorie + "','" + CodeArt + "','"
+					+ NomArticle +"'," + PrixUnitaire + "," + Stock+")";
+			state.executeUpdate(stra);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -33,7 +39,7 @@ public class ArticleDAOmysql implements ArticleDAO {
 	public void updateArticle(Article article) {
 		try {
 			state = conn.createStatement();
-			state.executeQuery("UPDATE Article SET categorie = '" + article.getCategorie() + "', codeArt = '" + article.getCodeArt() + "', nomArticle = '"
+			state.executeUpdate("UPDATE Article SET categorie = '" + article.getCategorie() + "', codeArt = '" + article.getCodeArt() + "', nomArticle = '"
 					+ article.getNomArticle() +"', prixUnitaire = " + article.getPrixUnitaire() + ", stock = " + article.getStock() + " WHERE idArticle = "
 					+ article.getIdArticle());
 		} catch (SQLException e) {
@@ -45,7 +51,7 @@ public class ArticleDAOmysql implements ArticleDAO {
 	public void removeArticle(int idArticle) {
 		try {
 			state = conn.createStatement();
-			state.executeQuery("DELETE FROM Article WHERE idArticle = "+ idArticle);
+			state.executeUpdate("DELETE FROM Article WHERE idArticle = "+ idArticle);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -57,13 +63,14 @@ public class ArticleDAOmysql implements ArticleDAO {
 		try {
 			state = conn.createStatement();
 			result = state.executeQuery("SELECT * FROM Article WHERE idArticle = " + idArticle);
-			result.first();
-			art.setIdArticle(result.getInt("idArticle"));
-			art.setCategorie(result.getString("categorie"));
-			art.setCodeArt(result.getString("codeArt"));
-			art.setNomArticle(result.getString("nomArticle"));
-			art.setPrixUnitaire(result.getFloat("prixUnitaire"));
-			art.setStock(result.getInt("stock"));
+			if (result.first()) {
+				art.setIdArticle(result.getInt("idArticle"));
+				art.setCategorie(result.getString("categorie"));
+				art.setCodeArt(result.getString("codeArt"));
+				art.setNomArticle(result.getString("nomArticle"));
+				art.setPrixUnitaire(result.getFloat("prixUnitaire"));
+				art.setStock(result.getInt("stock"));
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -50,4 +50,15 @@ public class LigneCommande {
 		this.quantite = quantite;
 	}
 
+	public LigneCommande(int idCommande, int idLigne, int idArticle, int quantite) {
+		super();
+		this.idCommande = idCommande;
+		this.idLigne = idLigne;
+		this.idArticle = idArticle;
+		this.quantite = quantite;
+	}
+
+	
+	
+	
 }
