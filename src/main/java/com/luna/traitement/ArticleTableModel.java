@@ -77,8 +77,4 @@ public class ArticleTableModel extends AbstractTableModel {
 			throw new IllegalArgumentException();
 		}
 	}
-	
-	public void setListArticle(ArrayList<Article> articles) {
-		this.articles = articles;
-	}
 }

@@ -8,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
@@ -33,6 +35,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.NumberFormat;
+
 import javax.swing.JFormattedTextField;
 
 public class FProduit extends JFrame {
@@ -244,6 +248,13 @@ public class FProduit extends JFrame {
 		panel_2.add(toolBar);
 		
 		JButton btnAjouter = new JButton("Ajouter     ");
+		btnAjouter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				art.Ajouter(txtCode, txtDsignation, txtPrixUnitaire, txtCatgorie, slider, txtId);
+				ArticleTableModel model2 = new ArticleTableModel(dao.getAllArticle());
+				table.setModel(model2);
+			}
+		});
 		toolBar.add(btnAjouter);
 		btnAjouter.setIcon(new ImageIcon(FProduit.class.getResource("/gestion/Add-New-48.png")));
 		btnAjouter.setRolloverIcon(new ImageIcon(FProduit.class.getResource("/gestion/Add-New-48-actif.png")));
@@ -255,6 +266,20 @@ public class FProduit extends JFrame {
 		btnAjouter.setBorder(new EmptyBorder(0, 0, 0, 0));
 		
 		JButton btnModifier = new JButton("Modifier     ");
+		btnModifier.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int i = (int) table.getSelectedRow();
+				if(i == -1) {
+					JOptionPane.showMessageDialog(btnModifier, "Aucun article de sélectionné.",
+							"Modification impossible", JOptionPane.ERROR_MESSAGE);
+				} else {
+					art.Modifier(txtCode, txtDsignation, txtPrixUnitaire, txtCatgorie, slider, (int) table.getValueAt(table.getSelectedRow(),0));
+					ArticleTableModel model2 = new ArticleTableModel(dao.getAllArticle());
+					table.setModel(model2);
+					table.changeSelection(i, 0, false, false);
+				}
+			}
+		});
 		toolBar.add(btnModifier);
 		btnModifier.setRolloverIcon(new ImageIcon(FProduit.class.getResource("/gestion/Data-Edit-48-actif.png")));
 		btnModifier.setIcon(new ImageIcon(FProduit.class.getResource("/gestion/Data-Edit-48.png")));
@@ -268,9 +293,15 @@ public class FProduit extends JFrame {
 		JButton btnSupprimer = new JButton("Supprimer     ");
 		btnSupprimer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				art.Supprimer(txtCode, txtDsignation, txtPrixUnitaire, txtCatgorie, slider, txtId, (int) table.getValueAt(table.getSelectedRow(),0));
-				model.setListArticle(dao.getAllArticle());
-				table.setModel(model);
+				int i = table.getSelectedRow();
+				if(i == -1) {
+					JOptionPane.showMessageDialog(btnModifier, "Aucun article de sélectionné.",
+							"Suppression impossible", JOptionPane.ERROR_MESSAGE);
+				} else {
+					art.Supprimer(txtCode, txtDsignation, txtPrixUnitaire, txtCatgorie, slider, txtId, (int) table.getValueAt(table.getSelectedRow(),0));
+					ArticleTableModel model2 = new ArticleTableModel(dao.getAllArticle());
+					table.setModel(model2);
+				}
 			}
 		});
 		toolBar.add(btnSupprimer);
@@ -281,12 +312,12 @@ public class FProduit extends JFrame {
 		btnSupprimer.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnSupprimer.setFocusable(false);
 		btnSupprimer.setContentAreaFilled(false);
-		btnSupprimer.setBorder(new EmptyBorder(0, 0, 0, 0));
-		
+		btnSupprimer.setBorder(new EmptyBorder(0, 0, 0, 0));		
 		JButton btnEffacer = new JButton("Effacer     ");
 		btnEffacer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				art.Effacer(txtCode, txtDsignation, txtPrixUnitaire, txtCatgorie, slider, txtId);
+				table.clearSelection();
 			}
 		});
 		toolBar.add(btnEffacer);
