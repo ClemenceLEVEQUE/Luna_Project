@@ -11,12 +11,13 @@ import com.luna.utils.GlobalConnection;
 
 public class ArticleTraitement {
 	ArticleDAO dao;
-	
+
 	public ArticleTraitement() {
 		this.dao = new ArticleDAOmysql(GlobalConnection.getInstance());
 	}
-	
-	public void AfficherArticle(JTextField code, JTextField designation, JTextField prix, JTextField categ, JSlider qte, JTextField id, int idArticle) {
+
+	public void AfficherArticle(JTextField code, JTextField designation, JTextField prix, JTextField categ, JSlider qte,
+			JTextField id, int idArticle) {
 		Article art = new Article();
 		art = dao.getArticle(idArticle);
 		code.setText(art.getCodeArt());
@@ -26,8 +27,9 @@ public class ArticleTraitement {
 		qte.setValue(art.getStock());
 		id.setText("" + art.getIdArticle());
 	}
-	
-	public void Effacer(JTextField code, JTextField designation, JTextField prix, JTextField categ, JSlider qte, JTextField id) {
+
+	public void Effacer(JTextField code, JTextField designation, JTextField prix, JTextField categ, JSlider qte,
+			JTextField id) {
 		code.setText("");
 		designation.setText("");
 		prix.setText("");
@@ -35,8 +37,9 @@ public class ArticleTraitement {
 		qte.setValue(0);
 		id.setText("");
 	}
-	
-	public void Supprimer(JTextField code, JTextField designation, JTextField prix, JTextField categ, JSlider qte, JTextField id, int idArticle) {
+
+	public void Supprimer(JTextField code, JTextField designation, JTextField prix, JTextField categ, JSlider qte,
+			JTextField id, int idArticle) {
 		dao.removeArticle(idArticle);
 		code.setText("");
 		designation.setText("");
@@ -45,8 +48,9 @@ public class ArticleTraitement {
 		qte.setValue(0);
 		id.setText("");
 	}
-	
-	public void Modifier(JTextField code, JTextField designation, JTextField prix, JTextField categ, JSlider qte, int idArticle) {
+
+	public void Modifier(JTextField code, JTextField designation, JTextField prix, JTextField categ, JSlider qte,
+			int idArticle) {
 		Article Art = new Article();
 		Art.setCodeArt(code.getText());
 		Art.setNomArticle(designation.getText());
@@ -56,35 +60,40 @@ public class ArticleTraitement {
 		Art.setIdArticle(idArticle);
 		dao.updateArticle(Art);
 	}
-	
-	public void Ajouter(JTextField code, JTextField designation, JTextField prix, JTextField categ, JSlider qte, JTextField Id) {
-		if(Id.getText().equals("")) {
-			if(code.getText().equals("")  || designation.getText().equals("") || prix.getText().equals("") || categ.getText().equals("")) {
-				JOptionPane.showMessageDialog(Id, "Veuillez compléter tous les champs.",
-						"Ajout impossible", JOptionPane.ERROR_MESSAGE);
+
+	public void Ajouter(JTextField code, JTextField designation, JTextField prix, JTextField categ, JSlider qte,
+			JTextField Id) {
+		if (Id.getText().equals("")) {
+			if (code.getText().equals("") || designation.getText().equals("") || prix.getText().equals("")
+					|| categ.getText().equals("")) {
+				JOptionPane.showMessageDialog(Id, "Veuillez compléter tous les champs.", "Ajout impossible",
+						JOptionPane.ERROR_MESSAGE);
 			} else {
-				if(true) {
-					
+				if (VerifPrix(prix)) {
+					Article Art = new Article();
+					Art.setCodeArt(code.getText());
+					Art.setNomArticle(designation.getText());
+					Art.setPrixUnitaire(Float.parseFloat(prix.getText()));
+					Art.setCategorie(categ.getText());
+					Art.setStock(qte.getValue());
+					dao.insertArticle(Art);
 				}
-				Article Art = new Article();
-				Art.setCodeArt(code.getText());
-				Art.setNomArticle(designation.getText());
-				Art.setPrixUnitaire(Float.parseFloat(prix.getText()));
-				Art.setCategorie(categ.getText());
-				Art.setStock(qte.getValue());
-				dao.insertArticle(Art);
 			}
 		} else {
-			JOptionPane.showMessageDialog(Id, "Avant d'ajouter un article, réinitialiser les champs en cliquant sur \"Effacer\"",
+			JOptionPane.showMessageDialog(Id,
+					"Avant d'ajouter un article, réinitialiser les champs en cliquant sur \"Effacer\"",
 					"Ajout impossible", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-	
-	public void Verif(JTextField prix, JTextField categ, JSlider qte, JTextField Id) {
+
+	public boolean VerifPrix(JTextField prix) {
 		try {
-			
-		} catch (Exception e){
-			
+			float f = Float.parseFloat(prix.getText());
+			return true;
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(prix, "Le prix doit être au format \"999.99\"", "Ajout impossible",
+					JOptionPane.ERROR_MESSAGE);
+			return false;
 		}
 	}
 }
