@@ -339,7 +339,7 @@ public class PCommande extends JPanel {
 		
 		table = new JTable();
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
-		model.addRow(new String[] {"id", "Code article", "Cat\u00E9gorie", "Quantit\u00E9", "Prix unitaire", "Total"});
+		model.addColumn(new String[] {"id", "Code article", "Cat\u00E9gorie", "Quantit\u00E9", "Prix unitaire", "Total"});
 		model = cde.getLigneCommandeArticle(model);
 		table.setModel(model);
 		table.getColumn("id").setMinWidth(0);

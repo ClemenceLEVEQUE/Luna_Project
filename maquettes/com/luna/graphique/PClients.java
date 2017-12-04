@@ -16,24 +16,27 @@ import javax.swing.JScrollPane;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import com.luna.traitement.ClientTableModel;
+import com.luna.traitement.ClientTraitement;
 
 import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PClients extends JPanel {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
+	private JTextField txtCreation;
+	private JTextField txtCodeclient;
+	private JTextField txtRemarques;
+	private JTextField txtRue;
+	private JTextField txtTel;
+	private JTextField txtNom;
+	private JTextField txtVille;
+	private JTextField txtMail;
+	private JTextField txtCp;
+	private JTextField txtPrenom;
 
 	private PClientsModif modif;
 	private PClientsAjout ajout;
@@ -45,6 +48,7 @@ public class PClients extends JPanel {
 	 */
 	public PClients(FClient cli) {
 		setLayout(null);
+		ClientTraitement client = new ClientTraitement();
 
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 160, 560);
@@ -195,25 +199,25 @@ public class PClients extends JPanel {
 		label_1.setBounds(295, 11, 46, 14);
 		panel_2.add(label_1);
 
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(379, 9, 175, 20);
-		panel_2.add(textField);
+		txtCreation = new JTextField();
+		txtCreation.setColumns(10);
+		txtCreation.setBounds(379, 9, 175, 20);
+		panel_2.add(txtCreation);
 
 		JLabel lblCodeClient = new JLabel("Code client :");
 		lblCodeClient.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblCodeClient.setBounds(10, 11, 77, 14);
 		panel_2.add(lblCodeClient);
 
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(97, 9, 175, 20);
-		panel_2.add(textField_1);
+		txtCodeclient = new JTextField();
+		txtCodeclient.setColumns(10);
+		txtCodeclient.setBounds(97, 9, 175, 20);
+		panel_2.add(txtCodeclient);
 
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(97, 134, 457, 102);
-		panel_2.add(textField_2);
+		txtRemarques = new JTextField();
+		txtRemarques.setColumns(10);
+		txtRemarques.setBounds(97, 134, 457, 102);
+		panel_2.add(txtRemarques);
 
 		JLabel lblRemarques = new JLabel("Remarques : ");
 		lblRemarques.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -225,20 +229,20 @@ public class PClients extends JPanel {
 		lblRue.setBounds(10, 86, 46, 14);
 		panel_2.add(lblRue);
 
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(97, 84, 457, 20);
-		panel_2.add(textField_3);
+		txtRue = new JTextField();
+		txtRue.setColumns(10);
+		txtRue.setBounds(97, 84, 457, 20);
+		panel_2.add(txtRue);
 
 		JLabel lblTel = new JLabel("Tel :");
 		lblTel.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblTel.setBounds(10, 111, 46, 14);
 		panel_2.add(lblTel);
 
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(97, 109, 175, 20);
-		panel_2.add(textField_4);
+		txtTel = new JTextField();
+		txtTel.setColumns(10);
+		txtTel.setBounds(97, 109, 175, 20);
+		panel_2.add(txtTel);
 
 		JLabel lblVille = new JLabel("Ville :");
 		lblVille.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -250,40 +254,40 @@ public class PClients extends JPanel {
 		label_7.setBounds(295, 36, 47, 14);
 		panel_2.add(label_7);
 
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(379, 34, 175, 20);
-		panel_2.add(textField_5);
+		txtNom = new JTextField();
+		txtNom.setColumns(10);
+		txtNom.setBounds(379, 34, 175, 20);
+		panel_2.add(txtNom);
 
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(97, 59, 175, 20);
-		panel_2.add(textField_6);
+		txtVille = new JTextField();
+		txtVille.setColumns(10);
+		txtVille.setBounds(97, 59, 175, 20);
+		panel_2.add(txtVille);
 
 		JLabel label_8 = new JLabel("Mail :");
 		label_8.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		label_8.setBounds(295, 111, 46, 14);
 		panel_2.add(label_8);
 
-		textField_7 = new JTextField();
-		textField_7.setColumns(10);
-		textField_7.setBounds(379, 109, 175, 20);
-		panel_2.add(textField_7);
+		txtMail = new JTextField();
+		txtMail.setColumns(10);
+		txtMail.setBounds(379, 109, 175, 20);
+		panel_2.add(txtMail);
 
 		JLabel label_9 = new JLabel("Code postal :");
 		label_9.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		label_9.setBounds(295, 61, 83, 14);
 		panel_2.add(label_9);
 
-		textField_8 = new JTextField();
-		textField_8.setColumns(10);
-		textField_8.setBounds(379, 59, 175, 20);
-		panel_2.add(textField_8);
+		txtCp = new JTextField();
+		txtCp.setColumns(10);
+		txtCp.setBounds(379, 59, 175, 20);
+		panel_2.add(txtCp);
 
-		textField_9 = new JTextField();
-		textField_9.setColumns(10);
-		textField_9.setBounds(97, 34, 175, 20);
-		panel_2.add(textField_9);
+		txtPrenom = new JTextField();
+		txtPrenom.setColumns(10);
+		txtPrenom.setBounds(97, 34, 175, 20);
+		panel_2.add(txtPrenom);
 
 		JLabel lblPrnom = new JLabel("Pr\u00E9nom :");
 		lblPrnom.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -308,12 +312,19 @@ public class PClients extends JPanel {
 		model = new ClientTableModel();
 
 		table = new JTable(model);
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int i = table.getSelectedRow();
+				client.AfficherPClient(txtCodeclient, txtCreation, txtPrenom, txtNom, txtVille, txtCp, txtRue, txtTel, txtMail, txtRemarques,(int) table.getValueAt(i, 0));
+			}
+		});
 		scrollPane.setViewportView(table);
 		panel_1.add(lblTrierLaListe);
 		panel_1.add(comboBox);
-		panel_1.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[] { panel_2, label_1, textField,
-				lblCodeClient, textField_1, textField_2, lblRemarques, lblRue, textField_3, lblTel, textField_4,
-				lblVille, label_7, textField_5, textField_6, label_8, textField_7, label_9, textField_8, textField_9,
+		panel_1.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[] { panel_2, label_1, txtCreation,
+				lblCodeClient, txtCodeclient, txtRemarques, lblRemarques, lblRue, txtRue, lblTel, txtTel,
+				lblVille, label_7, txtNom, txtVille, label_8, txtMail, label_9, txtCp, txtPrenom,
 				lblPrnom, scrollPane, lblTrierLaListe, comboBox }));
 
 	}
