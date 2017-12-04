@@ -42,7 +42,7 @@ public class FClient extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		PClients cli = new PClients();
+		PClients cli = new PClients(this);
 		cli.setBounds(0,0,750,560);
 		getContentPane().add(cli);
 

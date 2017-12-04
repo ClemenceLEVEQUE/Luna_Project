@@ -64,7 +64,7 @@ public class FAcceuil extends JFrame {
 	public FAcceuil() {
 		setResizable(false);
 		setTitle("Bienvenue sur SARL Luna");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(InterfaceConnect.class.getResource("/com/luna/graphique/Moon-32.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FConnect.class.getResource("/com/luna/graphique/Moon-32.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 475);
 		
@@ -141,6 +141,13 @@ public class FAcceuil extends JFrame {
 		panelProducts.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnProducts = new JButton("");
+		btnProducts.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FProduit produit = new FProduit();
+				produit.setVisible(true);
+				close();
+			}
+		});
 		btnProducts.setRolloverIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Product-128-actif.png")));
 		panelProducts.add(btnProducts);
 		btnProducts.setFocusable(false);
@@ -184,6 +191,13 @@ public class FAcceuil extends JFrame {
 		panelBoutons.add(panelShopping);
 		
 		JButton btnShopping = new JButton("");
+		btnShopping.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FCommande cmde = new FCommande();
+				cmde.setVisible(true);
+				close();
+			}
+		});
 		btnShopping.setRolloverIcon(new ImageIcon(FAcceuil.class.getResource("/accueil/Shopping-Bag-128-actif.png")));
 		panelShopping.add(btnShopping);
 		btnShopping.setFocusable(false);

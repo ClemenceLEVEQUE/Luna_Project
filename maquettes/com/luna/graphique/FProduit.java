@@ -26,6 +26,8 @@ import com.luna.traitement.ArticleTableModel;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.JRadioButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class FProduit extends JFrame {
 	private JPanel contentPane;
@@ -119,6 +121,13 @@ public class FProduit extends JFrame {
 		panel.add(button_2);
 		
 		JButton button_3 = new JButton("Acceuil");
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FAcceuil fen = new FAcceuil();
+				fen.setVisible(true);
+				close();
+			}
+		});
 		button_3.setRolloverIcon(new ImageIcon(FProduit.class.getResource("/gestion/Home-48-actif.png")));
 		button_3.setIcon(new ImageIcon(FProduit.class.getResource("/gestion/Home-48.png")));
 		button_3.setHorizontalAlignment(SwingConstants.LEFT);
@@ -299,6 +308,9 @@ public class FProduit extends JFrame {
 		textField.setBounds(387, 525, 189, 20);
 		panel_1.add(textField);
 		textField.setColumns(10);
-		
+	}
+	
+	public void close() {
+		this.dispose();
 	}
 }

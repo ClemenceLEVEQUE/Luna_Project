@@ -4,18 +4,12 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.border.EmptyBorder;
-import java.awt.BorderLayout;
-import javax.swing.border.LineBorder;
 import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
 import javax.swing.UIManager;
 import java.awt.event.ActionListener;
@@ -97,7 +91,7 @@ public class PClientsAjout extends JPanel {
 		btnExporter.setContentAreaFilled(false);
 		btnExporter.setBorder(new EmptyBorder(0, 0, 0, 0));
 		btnExporter.setIcon(new ImageIcon(FAcceuil.class.getResource("/gestion/Data-Export-48.png")));
-		btnExporter.setBounds(12, 420, 113, 49);
+		btnExporter.setBounds(12, 410, 113, 49);
 		panel.add(btnExporter);
 		
 		JButton btnAcceuil = new JButton("Annuler");

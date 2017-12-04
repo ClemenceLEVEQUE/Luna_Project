@@ -4,22 +4,15 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.border.EmptyBorder;
-import java.awt.BorderLayout;
 import javax.swing.border.LineBorder;
-import javax.swing.table.TableModel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JScrollPane;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import com.luna.traitement.ClientTableModel;
@@ -30,7 +23,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.table.DefaultTableModel;
 
 public class PClients extends JPanel {
 	private JTextField textField;
@@ -52,7 +44,7 @@ public class PClients extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PClients() {
+	public PClients(FClient cli) {
 		PeopleTraitement people = new PeopleTraitement();
 		setLayout(null);
 
@@ -165,10 +157,17 @@ public class PClients extends JPanel {
 		btnExporter.setContentAreaFilled(false);
 		btnExporter.setBorder(new EmptyBorder(0, 0, 0, 0));
 		btnExporter.setIcon(new ImageIcon(FAcceuil.class.getResource("/gestion/Data-Export-48.png")));
-		btnExporter.setBounds(12, 420, 113, 49);
+		btnExporter.setBounds(12, 410, 113, 49);
 		panel.add(btnExporter);
 
 		JButton btnAcceuil = new JButton("Acceuil");
+		btnAcceuil.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FAcceuil fen = new FAcceuil();
+				fen.setVisible(true);
+				cli.dispose();
+			}
+		});
 		btnAcceuil.setRolloverIcon(new ImageIcon(PClients.class.getResource("/gestion/Home-48-actif.png")));
 		btnAcceuil.setHorizontalAlignment(SwingConstants.LEFT);
 		btnAcceuil.setForeground(Color.WHITE);
