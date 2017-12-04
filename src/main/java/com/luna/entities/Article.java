@@ -69,4 +69,16 @@ public class Article {
 		this.stock = stock;
 	}
 
+	public Article(int idArticle, String categorie, String codeArt, String nomArticle, float prixUnitaire, int stock) {
+		super();
+		this.idArticle = idArticle;
+		this.categorie = categorie;
+		this.codeArt = codeArt;
+		this.nomArticle = nomArticle;
+		this.prixUnitaire = prixUnitaire;
+		this.stock = stock;
+	}
+
+	
+	
 }
