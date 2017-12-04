@@ -121,5 +121,23 @@ public class Client {
 		this.remarques = remarques;
 	}
 
+	public Client(int idClient, String nom, String prenom, String ville, String rue, int codePostal, String tel,
+			String mail, String date_creation, String codeClient, String remarques) {
+		super();
+		this.idClient = idClient;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.ville = ville;
+		this.rue = rue;
+		this.codePostal = codePostal;
+		this.tel = tel;
+		this.mail = mail;
+		this.date_creation = date_creation;
+		this.codeClient = codeClient;
+		this.remarques = remarques;
+	}
+
+
+
 	
 }
