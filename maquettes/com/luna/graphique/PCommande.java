@@ -45,8 +45,7 @@ public class PCommande extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PCommande() {
-		PeopleTraitement people = new PeopleTraitement();
+	public PCommande(FCommande cmde) {
 		setLayout(null);
 
 		JPanel panel = new JPanel();
@@ -157,6 +156,13 @@ public class PCommande extends JPanel {
 		panel.add(btnExporter);
 
 		JButton btnAcceuil = new JButton("Acceuil");
+		btnAcceuil.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FAcceuil fen = new FAcceuil();
+				fen.setVisible(true);
+				cmde.dispose();
+			}
+		});
 		btnAcceuil.setRolloverIcon(new ImageIcon(PCommande.class.getResource("/gestion/Home-48-actif.png")));
 		btnAcceuil.setHorizontalAlignment(SwingConstants.LEFT);
 		btnAcceuil.setForeground(Color.WHITE);

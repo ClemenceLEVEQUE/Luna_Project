@@ -59,25 +59,29 @@ public class FCommande extends JFrame {
 	 */
 	public FCommande() {
 		setResizable(false);
-		setMinimumSize(new Dimension(750, 586));
+		setMinimumSize(new Dimension(800, 560));
 		setMaximumSize(new Dimension(1000, 1000));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 750, 586);
+		setBounds(100, 100, 799, 586);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(227, 241, 182));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		PCommande cmde = new PCommande();
-		cmde.setBounds(0,0,750,560);
+		PCommande cmde = new PCommande(this);
+		cmde.setBounds(0,0,800,560);
 		getContentPane().add(cmde);
 		
 		PCommandeSearch search = new PCommandeSearch(cmde);
-		search.setBounds(0,0,750,560);
+		search.setBounds(0,0,800,560);
 		getContentPane().add(search);
 		search.setVisible(false);
 		
 		cmde.setPCommandeSearch(search);
+	}
+	
+	public void close() {
+		this.dispose();
 	}
 }

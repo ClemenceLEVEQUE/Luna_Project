@@ -34,7 +34,7 @@ public class PCommandeSearch extends JPanel {
 		setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 160, 560);
+		panel.setBounds(0, 0, 210, 560);
 		panel.setLayout(null);
 		panel.setBackground(new Color(255,136,9));
 		add(panel);
@@ -43,7 +43,7 @@ public class PCommandeSearch extends JPanel {
 		lblClients.setIcon(new ImageIcon(PCommandeSearch.class.getResource("/gestion/commande/Shopping-Bag-64-actif.png")));
 		lblClients.setHorizontalAlignment(SwingConstants.CENTER);
 		lblClients.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblClients.setBounds(0, 5, 160, 64);
+		lblClients.setBounds(0, 5, 210, 64);
 		panel.add(lblClients);
 
 		JButton btnAperu = new JButton("Aper\u00E7u");
@@ -55,7 +55,7 @@ public class PCommandeSearch extends JPanel {
 		btnAperu.setContentAreaFilled(false);
 		btnAperu.setBorder(new EmptyBorder(0, 0, 0, 0));
 		btnAperu.setIcon(new ImageIcon(FAcceuil.class.getResource("/gestion/Preview-48.png")));
-		btnAperu.setBounds(12, 310, 113, 49);
+		btnAperu.setBounds(10, 310, 113, 49);
 		panel.add(btnAperu);
 
 		JButton btnImprimer = new JButton("Imprimer");
@@ -67,7 +67,7 @@ public class PCommandeSearch extends JPanel {
 		btnImprimer.setContentAreaFilled(false);
 		btnImprimer.setBorder(new EmptyBorder(0, 0, 0, 0));
 		btnImprimer.setIcon(new ImageIcon(FAcceuil.class.getResource("/gestion/Printer-48.png")));
-		btnImprimer.setBounds(12, 360, 113, 49);
+		btnImprimer.setBounds(10, 360, 113, 49);
 		panel.add(btnImprimer);
 
 		JButton btnExporter = new JButton("Exporter");
@@ -80,7 +80,7 @@ public class PCommandeSearch extends JPanel {
 		btnExporter.setContentAreaFilled(false);
 		btnExporter.setBorder(new EmptyBorder(0, 0, 0, 0));
 		btnExporter.setIcon(new ImageIcon(FAcceuil.class.getResource("/gestion/Data-Export-48.png")));
-		btnExporter.setBounds(12, 420, 113, 49);
+		btnExporter.setBounds(10, 410, 113, 49);
 		panel.add(btnExporter);
 
 		JButton btnAcceuil = new JButton("Annuler");
@@ -113,7 +113,7 @@ public class PCommandeSearch extends JPanel {
 		panel.add(btnSupprimer);
 
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(160, 0, 590, 560);
+		panel_1.setBounds(210, 0, 590, 560);
 		panel_1.setBackground(new Color(255,236,192));
 		add(panel_1);
 		panel_1.setLayout(null);
