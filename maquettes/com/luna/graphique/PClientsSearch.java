@@ -10,11 +10,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import com.luna.traitement.ClientTableModel;
+
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTable;
 
 public class PClientsSearch extends JPanel {
 	private JTextField textField;
@@ -27,6 +31,7 @@ public class PClientsSearch extends JPanel {
 	private JTextField textField_7;
 	private JTextField textField_8;
 	private JTextField textField_9;
+	private JTable table;
 
 	/**
 	 * Create the panel.
@@ -230,12 +235,19 @@ public class PClientsSearch extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(12, 263, 564, 251);
 
+		
+		
 		JLabel lblTrierLaListe = new JLabel("Trier la liste par :");
 		lblTrierLaListe.setBounds(12, 528, 100, 14);
 		lblTrierLaListe.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		panel_1.setLayout(null);
 		panel_1.add(panel_2);
 		panel_1.add(scrollPane);
+		
+		ClientTableModel model = new ClientTableModel();
+
+		table = new JTable(model);
+		scrollPane.setViewportView(table);
 		panel_1.add(lblTrierLaListe);
 		panel_1.add(comboBox);
 	}

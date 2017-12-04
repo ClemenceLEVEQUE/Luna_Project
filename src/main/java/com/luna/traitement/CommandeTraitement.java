@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import com.luna.dao.*;
 import com.luna.utils.GlobalConnection;
@@ -23,24 +24,34 @@ public class CommandeTraitement {
 		this.article = new ArticleDAOmysql(conn);
 	}
 	
-	public void getLigneCommandeArticle(JTable table) {
+	public DefaultTableModel getLigneCommandeArticle(DefaultTableModel table) {
 		try {
 			state = conn.createStatement();
 			result = state.executeQuery("SELECT * FROM LigneCommande, Article WHERE LigneCommande.idArticle = Article.idArticle");
 			int i = 1;
 			while(result.next()) {
-//				table.setValueAt(result.getInt("idLigne"), i, 0);
-//				table.setValueAt(result.getString("codeArt"),i,1);
-//				table.setValueAt(result.getString("categorie"),i,2);
-//				table.setValueAt(result.getInt("quantite"),i,3);
-//				table.setValueAt(result.getFloat("prixUnitaire"),i,4);
-//				float prix = result.getInt("quantite") * result.getFloat("prixUnitaire");
-//				table.setValueAt(prix,i,5);
+				int id = result.getInt("idLigne");
+				String code = new String(result.getString("codeArt"));
+				String categorie = new String(result.getString("categorie"));
+				int qte = result.getInt("quantite");
+				float prix = result.getFloat("prixUnitaire");
+				float total = prix * qte;
+				
+				table.addRow(new Object[] {id,code,categorie,qte,prix,total});
+				
+			//	table.setValueAt(id,i,6);
+			//	table.setValueAt(code, i, 1);
+			//	table.setValueAt(categorie, i, 2);
+			//	table.setValueAt(qte, i, 3);
+			//	table.setValueAt(prix, i, 4);
+			//	table.setValueAt(total, i, 5);
+				
 				i++;
 			}
+			return table;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+		return null;
 	}
 }

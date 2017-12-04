@@ -338,17 +338,14 @@ public class PCommande extends JPanel {
 		panel_3.add(scrollPane);
 		
 		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"id", "Code article", "Cat\u00E9gorie", "Quantit\u00E9", "Prix unitaire", "Total"
-			}
-		));
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		model.addRow(new String[] {"id", "Code article", "Cat\u00E9gorie", "Quantit\u00E9", "Prix unitaire", "Total"});
+		model = cde.getLigneCommandeArticle(model);
+		table.setModel(model);
 		table.getColumn("id").setMinWidth(0);
 		table.getColumn("id").setMaxWidth(0);
-		cde.getLigneCommandeArticle(table);
 		scrollPane.setViewportView(table);
+		//cde.getLigneCommandeArticle(table);
 		
 		JButton button = new JButton("Valider la commande");
 		button.setRolloverIcon(new ImageIcon(PCommande.class.getResource("/gestion/commande/Shopping-Cart-05-48-actif.png")));
