@@ -13,6 +13,7 @@ import javax.swing.border.EmptyBorder;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import com.luna.traitement.ArticleTableModel;
+import com.luna.traitement.CommandeTraitement;
 
 import java.awt.Component;
 import java.awt.event.ActionListener;
@@ -47,6 +48,7 @@ public class PCommande extends JPanel {
 	 */
 	public PCommande(FCommande cmde) {
 		setLayout(null);
+		CommandeTraitement cde = new CommandeTraitement();
 
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 210, 560);
@@ -345,6 +347,7 @@ public class PCommande extends JPanel {
 		));
 		table.getColumn("id").setMinWidth(0);
 		table.getColumn("id").setMaxWidth(0);
+		cde.getLigneCommandeArticle(table);
 		scrollPane.setViewportView(table);
 		
 		JButton button = new JButton("Valider la commande");
