@@ -22,7 +22,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
-import com.luna.traitement.MyTableModel;
+import com.luna.traitement.ClientTableModel;
 import com.luna.traitement.PeopleTraitement;
 
 import java.awt.Component;
@@ -48,7 +48,7 @@ public class PClients extends JPanel {
 	private PClientsAjout ajout;
 	private PClientsSearch search;
 	private JTable table;
-	private MyTableModel model;
+	private ClientTableModel model;
 	/**
 	 * Create the panel.
 	 */
@@ -308,7 +308,7 @@ public class PClients extends JPanel {
 		panel_1.add(panel_2);
 		panel_1.add(scrollPane);
 
-		model = new MyTableModel();
+		model = new ClientTableModel();
 
 		table = new JTable(model);
 		scrollPane.setViewportView(table);

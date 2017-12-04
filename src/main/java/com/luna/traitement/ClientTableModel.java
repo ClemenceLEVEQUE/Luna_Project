@@ -7,11 +7,11 @@ import com.luna.dao.*;
 
 import javax.swing.table.AbstractTableModel;
 
-public class MyTableModel extends AbstractTableModel {
+public class ClientTableModel extends AbstractTableModel {
 	private String[] columnNames = {"Id", "Nom", "Prénom", "Code client", "Tel", "Mail"};
 	private List<Client> clients;
 
-	public MyTableModel() {
+	public ClientTableModel() {
 		ClientDAO dao = new ClientDAOmysql(GlobalConnection.getInstance());
 		this.clients = dao.getAllClient();
 	}
