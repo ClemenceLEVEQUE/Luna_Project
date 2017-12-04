@@ -8,9 +8,9 @@ import javax.swing.table.AbstractTableModel;
 
 public class ArticleTableModel extends AbstractTableModel {
 	private String[] columnNames = {"Id", "Code", "Catégorie", "Désignation", "Stock", "Prix unitaire"};
-	private List<Article> articles;
+	private ArrayList<Article> articles;
 
-	public ArticleTableModel(List<Article> articles) {
+	public ArticleTableModel(ArrayList<Article> articles) {
 		this.articles = articles;
 	}
 	

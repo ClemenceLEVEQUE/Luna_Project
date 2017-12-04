@@ -28,6 +28,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.event.AncestorListener;
 import javax.swing.event.AncestorEvent;
+import javax.swing.table.DefaultTableModel;
 
 public class PCommande extends JPanel {
 
@@ -335,6 +336,15 @@ public class PCommande extends JPanel {
 		panel_3.add(scrollPane);
 		
 		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"id", "Code article", "Cat\u00E9gorie", "Quantit\u00E9", "Prix unitaire", "Total"
+			}
+		));
+		table.getColumn("id").setMinWidth(0);
+		table.getColumn("id").setMaxWidth(0);
 		scrollPane.setViewportView(table);
 		
 		JButton button = new JButton("Valider la commande");
