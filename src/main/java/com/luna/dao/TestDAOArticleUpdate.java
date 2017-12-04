@@ -2,24 +2,25 @@ package com.luna.dao;
 
 import java.util.List;
 
-import com.luna.entities.LigneCommande;
+import com.luna.entities.Article;
 import com.luna.utils.GlobalConnection;
 
 public class TestDAOArticleUpdate {
 
 	public static void main(String[] args) {
-		public static void main(String[] args) {
-			ArticleDAO ligneCommandeDAO = new LigneCommandeDAOmysql(GlobalConnection.getInstance());
-			LigneCommande LigneCo=new LigneCommande(2,2,2,3);
-			ligneCommandeDAO.updateLigneCommande(LigneCo);
-				List<LigneCommande> ligneCommandes = ligneCommandeDAO.getAllLigneCommande();
+		
+			ArticleDAO articleDAO = new ArticleDAOmysql(GlobalConnection.getInstance());
+			Article Art=new Article(2,"Telephone","TEL500","Samsung S8",599.99f, 85);
+			articleDAO.updateArticle(Art);
+				List<Article> articles = articleDAO.getAllArticle();
 				System.out.println("\n--------------------------------------------------------------------------------------------------");
-				for(LigneCommande LigneCo1:ligneCommandes) {
-					System.out.print("\t" + LigneCo1.getIdCommande() + "\t|");
-					System.out.print("\t" + LigneCo1.getIdLigne() + "\t|");
-					System.out.print("\t" + LigneCo1.getIdArticle() + "\t|");
-					System.out.print("\t" + LigneCo1.getQuantite() + "\t|");
-
+				for(Article Art1:articles) {
+					System.out.print("\t" + Art1.getIdArticle() + "\t|");
+					System.out.print("\t" + Art1.getCategorie() + "\t|");
+					System.out.print("\t" + Art1.getCodeArt() + "\t|");
+					System.out.print("\t" + Art1.getNomArticle() + "\t|");
+					System.out.print("\t" + Art1.getPrixUnitaire() + "\t|");
+					System.out.print("\t" + Art1.getStock() + "\t|");
 					//System.out.print("\t" + cli.getDate_creation() + "\t|");//
 					System.out.println("\n----------------------------------------------------------------------------------------------");
 				}
@@ -27,9 +28,9 @@ public class TestDAOArticleUpdate {
 
 			}
 
-		}
+		
 	
 
 	}
 
-}
+

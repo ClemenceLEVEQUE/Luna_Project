@@ -17,16 +17,28 @@ public class ClientDAOmysql implements ClientDAO {
 	public ClientDAOmysql(Connection connection) {
 		this.conn = connection;
 	}
-	
+
 	@Override
 	public void insertClient(Client Cli) {
+		String Nom = Cli.getNom();
+		String Prenom = Cli.getPrenom();
+		String Ville = Cli.getVille();
+		String Rue = Cli.getRue();
+		int CodePostal = Cli.getCodePostal();
+		String Tel = Cli.getTel();
+		String Mail = Cli.getMail();
+		String Date_creation = Cli.getDate_creation();
+		String CodeClient = Cli.getCodeClient();
+		String Remarques = Cli.getRemarques();
+
 		try {
 			state = conn.createStatement();
-			state.executeUpdate(
-					"INSERT INTO Client(nom, prenom, ville, rue, codePostal, tel, mail, date_creation) VALUES ('"
-							+ Cli.getNom() + "','" + Cli.getPrenom() + "','" + Cli.getVille() + "','" + Cli.getRue()
-							+ "'," + Cli.getCodePostal() + ",'" + Cli.getTel() + "','" + Cli.getMail() + "','"
-							+ Cli.getDate_creation() + "'"+ Cli.getCodeClient()+ "'"+ Cli.getRemarques());
+			
+					String str = "INSERT INTO Client(nom, prenom, ville, rue, codePostal, tel, mail, date_creation, CodeClient, Remarques) VALUES ('"
+							+ Nom + "','" + Prenom + "','" + Ville + "','" + Rue + "',"
+							+ CodePostal + ",'" + Tel + "','" + Mail + "','"
+							+ Date_creation + "','" + CodeClient + "','" + Remarques+"')";
+					state.executeUpdate(str);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -40,8 +52,8 @@ public class ClientDAOmysql implements ClientDAO {
 					+ "', ville = '" + Cli.getVille() + "', rue = '" + Cli.getRue() + "', codePostal = "
 					+ Cli.getCodePostal() + ", tel = '" + Cli.getTel() + "', mail = '" + Cli.getMail()
 
-					+ "', date_creation = '" + Cli.getDate_creation() + "', remarques = '" + Cli.getRemarques() + "', codeClient = '" + Cli.getCodeClient()
-					+ "' WHERE idClient = " + Cli.getIdClient()+"' Code Client = "+  Cli.getCodeClient()+ "'"+ Cli.getRemarques());
+					+ "', date_creation = '" + Cli.getDate_creation() + "', remarques = '" + Cli.getRemarques()
+					+ "', codeClient = '" + Cli.getCodeClient() + "' WHERE idClient = " + Cli.getIdClient());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -51,7 +63,7 @@ public class ClientDAOmysql implements ClientDAO {
 	public void removeClient(int idClient) {
 		try {
 			state = conn.createStatement();
-			state.executeQuery("DELETE FROM Client WHERE idClient = " + idClient);
+			state.executeUpdate("DELETE FROM Client WHERE idClient = " + idClient);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
