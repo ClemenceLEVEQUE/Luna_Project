@@ -1,23 +1,23 @@
 package com.luna.traitement;
 
 import java.util.List;
-import com.luna.entities.Article;
+import com.luna.entities.LigneCommande;
 import com.luna.utils.GlobalConnection;
 import com.luna.dao.*;
 
 import javax.swing.table.AbstractTableModel;
 
-public class ArticleTableModel extends AbstractTableModel {
+public class LigneCommandeTableModel extends AbstractTableModel {
 	private String[] columnNames = {"Id", "Code", "Catégorie", "Désignation", "Stock", "Prix unitaire"};
-	private List<Article> articles;
+	private List<LigneCommande> ligneCommandes;
 
-	public ArticleTableModel() {
-		ArticleDAO dao = new ArticleDAOmysql(GlobalConnection.getInstance());
-		this.articles = dao.getAllArticle();
+	public LigneCommandeTableModel() {
+		LigneCommandeDAO dao = new LigneCommandeDAOmysql(GlobalConnection.getInstance());
+		this.ligneCommandes = dao.getAllLigneCommande();
 	}
 	
-	public List<Article> getArticle(){
-		return articles;
+	public List<LigneCommande> getLigneCommande(){
+		return ligneCommandes;
 	}
 
 	@Override
@@ -39,10 +39,10 @@ public class ArticleTableModel extends AbstractTableModel {
 			case 1:
 				return String.class;
 	
-			case 2:
+			case 3:
 				return String.class;
 	
-			case 3:
+			case 2:
 				return String.class;
 	
 			case 4:
@@ -65,17 +65,13 @@ public class ArticleTableModel extends AbstractTableModel {
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		switch(columnIndex) {
 		case 0: // Id
-			return articles.get(rowIndex).getIdArticle();
+			return ligneCommandes.get(rowIndex).getIdArticle();
 		case 1: // Nom
-			return articles.get(rowIndex).getCodeArt();
+			return ligneCommandes.get(rowIndex).getIdArticle();
 		case 2: // Prenom
-			return articles.get(rowIndex).getCategorie();
+			return ligneCommandes.get(rowIndex).getIdArticle();
 		case 3: // Code client
-			return articles.get(rowIndex).getNomArticle();
-		case 4: // Tel
-			return articles.get(rowIndex).getStock();
-		case 5: // Mail
-			return articles.get(rowIndex).getPrixUnitaire();
+			return ligneCommandes.get(rowIndex).getIdArticle();
 		default:
 			throw new IllegalArgumentException();
 		}

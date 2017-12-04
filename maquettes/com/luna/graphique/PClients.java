@@ -16,7 +16,6 @@ import javax.swing.JScrollPane;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import com.luna.traitement.ClientTableModel;
-import com.luna.traitement.PeopleTraitement;
 
 import java.awt.Component;
 import java.awt.event.ActionListener;
@@ -45,7 +44,6 @@ public class PClients extends JPanel {
 	 * Create the panel.
 	 */
 	public PClients(FClient cli) {
-		PeopleTraitement people = new PeopleTraitement();
 		setLayout(null);
 
 		JPanel panel = new JPanel();

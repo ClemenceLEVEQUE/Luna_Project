@@ -13,7 +13,6 @@ import javax.swing.border.EmptyBorder;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import com.luna.traitement.ArticleTableModel;
-import com.luna.traitement.PeopleTraitement;
 
 import java.awt.Component;
 import java.awt.event.ActionListener;
