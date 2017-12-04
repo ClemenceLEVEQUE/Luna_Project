@@ -1,7 +1,6 @@
 package com.luna.dao;
 
-import java.sql.ResultSet;
-import java.util.List;
+import java.util.ArrayList;
 import com.luna.entities.Article;
 
 public interface ArticleDAO {
@@ -14,5 +13,5 @@ public interface ArticleDAO {
 
 	public Article getArticle(int idArticle);
 
-	public List<Article> getAllArticle();
+	public ArrayList<Article> getAllArticle();
 }

@@ -356,9 +356,6 @@ public class PCommande extends JPanel {
 		txtTotal.setBounds(440, 455, 126, 43);
 		panel_1.add(txtTotal);
 		txtTotal.setColumns(10);
-
-		model = new ArticleTableModel();
-
 	}
 
 	public void setPCommandeSearch(PCommandeSearch search) {

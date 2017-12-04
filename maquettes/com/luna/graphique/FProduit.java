@@ -8,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
@@ -18,16 +20,24 @@ import javax.swing.border.LineBorder;
 import javax.swing.JTextField;
 import javax.swing.JTable;
 import javax.swing.JToolBar;
-import javax.swing.JToggleButton;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeListener;
 
+import com.luna.dao.ArticleDAO;
+import com.luna.dao.ArticleDAOmysql;
 import com.luna.traitement.ArticleTableModel;
+import com.luna.utils.GlobalConnection;
+import com.luna.traitement.ArticleTraitement;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.JRadioButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.text.NumberFormat;
+
+import javax.swing.JFormattedTextField;
 
 public class FProduit extends JFrame {
 	private JPanel contentPane;
@@ -39,6 +49,7 @@ public class FProduit extends JFrame {
 	private JTextField txtStock;
 	private JTextField textField;
 	private ArticleTableModel model;
+	private JTextField txtId;
 	
 	/**
 	 * Launch the application.
@@ -60,6 +71,8 @@ public class FProduit extends JFrame {
 	 * Create the frame.
 	 */
 	public FProduit() {
+		ArticleTraitement art = new ArticleTraitement();
+		ArticleDAO dao = new ArticleDAOmysql(GlobalConnection.getInstance());
 		setResizable(false);
 		setMinimumSize(new Dimension(750, 586));
 		setMaximumSize(new Dimension(1000, 1000));
@@ -139,6 +152,12 @@ public class FProduit extends JFrame {
 		button_3.setBounds(12, 500, 113, 49);
 		panel.add(button_3);
 		
+		txtId = new JTextField();
+		txtId.setVisible(false);
+		txtId.setBounds(91, 53, 59, 20);
+		panel.add(txtId);
+		txtId.setColumns(10);
+		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(160, 0, 584, 558);
 		panel_1.setBackground(new Color(227, 241, 182));
@@ -149,94 +168,13 @@ public class FProduit extends JFrame {
 		scrollPane.setBounds(12, 204, 564, 310);
 		panel_1.add(scrollPane);
 		
-		model = new ArticleTableModel();
-		
-		table = new JTable(model);
-		scrollPane.setViewportView(table);
-		
 		JPanel panel_2 = new JPanel();
 		panel_2.setLayout(null);
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_2.setBackground(new Color(227, 241, 182));
 		panel_2.setBounds(12, 11, 564, 182);
 		panel_1.add(panel_2);
-		
-		JLabel lblCode = new JLabel("Code :");
-		lblCode.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblCode.setBounds(10, 11, 85, 14);
-		panel_2.add(lblCode);
-		
-		JLabel lblCatgorie = new JLabel("Cat\u00E9gorie :");
-		lblCatgorie.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblCatgorie.setBounds(284, 11, 85, 14);
-		panel_2.add(lblCatgorie);
-		
-		JLabel lblDsignation = new JLabel("D\u00E9signation :");
-		lblDsignation.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblDsignation.setBounds(10, 36, 85, 14);
-		panel_2.add(lblDsignation);
-		
-		JLabel lblPrixUnitaire = new JLabel("Prix unitaire :");
-		lblPrixUnitaire.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblPrixUnitaire.setBounds(10, 61, 85, 14);
-		panel_2.add(lblPrixUnitaire);
-		
-		JLabel lblStock = new JLabel("Stock :");
-		lblStock.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblStock.setBounds(10, 88, 85, 14);
-		panel_2.add(lblStock);
-		
-		JToolBar toolBar = new JToolBar();
-		toolBar.setBorder(new EmptyBorder(0, 0, 0, 0));
-		toolBar.setFloatable(false);
-		toolBar.setBackground(new Color(227, 241, 182));
-		toolBar.setBounds(67, 122, 428, 51);
-		panel_2.add(toolBar);
-		
-		JButton btnAjouter = new JButton("Ajouter");
-		toolBar.add(btnAjouter);
-		btnAjouter.setIcon(new ImageIcon(FProduit.class.getResource("/gestion/Add-New-48.png")));
-		btnAjouter.setRolloverIcon(new ImageIcon(FProduit.class.getResource("/gestion/Add-New-48-actif.png")));
-		btnAjouter.setHorizontalAlignment(SwingConstants.LEFT);
-		btnAjouter.setForeground(Color.BLACK);
-		btnAjouter.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnAjouter.setFocusable(false);
-		btnAjouter.setContentAreaFilled(false);
-		btnAjouter.setBorder(new EmptyBorder(0, 0, 0, 0));
-		
-		JButton btnModifier = new JButton("Modifier");
-		toolBar.add(btnModifier);
-		btnModifier.setRolloverIcon(new ImageIcon(FProduit.class.getResource("/gestion/Data-Edit-48-actif.png")));
-		btnModifier.setIcon(new ImageIcon(FProduit.class.getResource("/gestion/Data-Edit-48.png")));
-		btnModifier.setHorizontalAlignment(SwingConstants.LEFT);
-		btnModifier.setForeground(Color.BLACK);
-		btnModifier.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnModifier.setFocusable(false);
-		btnModifier.setContentAreaFilled(false);
-		btnModifier.setBorder(new EmptyBorder(0, 0, 0, 0));
-		
-		JButton btnSupprimer = new JButton("Supprimer");
-		toolBar.add(btnSupprimer);
-		btnSupprimer.setIcon(new ImageIcon(FProduit.class.getResource("/gestion/Garbage-Open-48.png")));
-		btnSupprimer.setRolloverIcon(new ImageIcon(FProduit.class.getResource("/gestion/Garbage-Open-48-actif.png")));
-		btnSupprimer.setHorizontalAlignment(SwingConstants.LEFT);
-		btnSupprimer.setForeground(Color.BLACK);
-		btnSupprimer.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnSupprimer.setFocusable(false);
-		btnSupprimer.setContentAreaFilled(false);
-		btnSupprimer.setBorder(new EmptyBorder(0, 0, 0, 0));
-		
-		JButton btnEffacer = new JButton("Effacer");
-		toolBar.add(btnEffacer);
-		btnEffacer.setRolloverIcon(new ImageIcon(FProduit.class.getResource("/gestion/Cancel-48-actif.png")));
-		btnEffacer.setIcon(new ImageIcon(FProduit.class.getResource("/gestion/Cancel-48.png")));
-		btnEffacer.setHorizontalAlignment(SwingConstants.LEFT);
-		btnEffacer.setForeground(Color.BLACK);
-		btnEffacer.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnEffacer.setFocusable(false);
-		btnEffacer.setContentAreaFilled(false);
-		btnEffacer.setBorder(new EmptyBorder(0, 0, 0, 0));
-		
+				
 		txtCode = new JTextField();
 		txtCode.setBounds(105, 9, 175, 20);
 		panel_2.add(txtCode);
@@ -275,6 +213,122 @@ public class FProduit extends JFrame {
 		slider.setMaximum(999);
 		slider.setBounds(284, 86, 270, 20);
 		panel_2.add(slider);
+		slider.setValue(0);
+		
+		JLabel lblCode = new JLabel("Code :");
+		lblCode.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblCode.setBounds(10, 11, 85, 14);
+		panel_2.add(lblCode);
+		
+		JLabel lblCatgorie = new JLabel("Cat\u00E9gorie :");
+		lblCatgorie.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblCatgorie.setBounds(284, 11, 85, 14);
+		panel_2.add(lblCatgorie);
+		
+		JLabel lblDsignation = new JLabel("D\u00E9signation :");
+		lblDsignation.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblDsignation.setBounds(10, 36, 85, 14);
+		panel_2.add(lblDsignation);
+		
+		JLabel lblPrixUnitaire = new JLabel("Prix unitaire :");
+		lblPrixUnitaire.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblPrixUnitaire.setBounds(10, 61, 85, 14);
+		panel_2.add(lblPrixUnitaire);
+		
+		JLabel lblStock = new JLabel("Stock :");
+		lblStock.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblStock.setBounds(10, 88, 85, 14);
+		panel_2.add(lblStock);
+		
+		JToolBar toolBar = new JToolBar();
+		toolBar.setBorder(new EmptyBorder(0, 0, 0, 0));
+		toolBar.setFloatable(false);
+		toolBar.setBackground(new Color(227, 241, 182));
+		toolBar.setBounds(45, 120, 480, 51);
+		panel_2.add(toolBar);
+		
+		JButton btnAjouter = new JButton("Ajouter     ");
+		btnAjouter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				art.Ajouter(txtCode, txtDsignation, txtPrixUnitaire, txtCatgorie, slider, txtId);
+				ArticleTableModel model2 = new ArticleTableModel(dao.getAllArticle());
+				table.setModel(model2);
+			}
+		});
+		toolBar.add(btnAjouter);
+		btnAjouter.setIcon(new ImageIcon(FProduit.class.getResource("/gestion/Add-New-48.png")));
+		btnAjouter.setRolloverIcon(new ImageIcon(FProduit.class.getResource("/gestion/Add-New-48-actif.png")));
+		btnAjouter.setHorizontalAlignment(SwingConstants.LEFT);
+		btnAjouter.setForeground(Color.BLACK);
+		btnAjouter.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnAjouter.setFocusable(false);
+		btnAjouter.setContentAreaFilled(false);
+		btnAjouter.setBorder(new EmptyBorder(0, 0, 0, 0));
+		
+		JButton btnModifier = new JButton("Modifier     ");
+		btnModifier.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int i = (int) table.getSelectedRow();
+				if(i == -1) {
+					JOptionPane.showMessageDialog(btnModifier, "Aucun article de sélectionné.",
+							"Modification impossible", JOptionPane.ERROR_MESSAGE);
+				} else {
+					art.Modifier(txtCode, txtDsignation, txtPrixUnitaire, txtCatgorie, slider, (int) table.getValueAt(table.getSelectedRow(),0));
+					ArticleTableModel model2 = new ArticleTableModel(dao.getAllArticle());
+					table.setModel(model2);
+					table.changeSelection(i, 0, false, false);
+				}
+			}
+		});
+		toolBar.add(btnModifier);
+		btnModifier.setRolloverIcon(new ImageIcon(FProduit.class.getResource("/gestion/Data-Edit-48-actif.png")));
+		btnModifier.setIcon(new ImageIcon(FProduit.class.getResource("/gestion/Data-Edit-48.png")));
+		btnModifier.setHorizontalAlignment(SwingConstants.LEFT);
+		btnModifier.setForeground(Color.BLACK);
+		btnModifier.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnModifier.setFocusable(false);
+		btnModifier.setContentAreaFilled(false);
+		btnModifier.setBorder(new EmptyBorder(0, 0, 0, 0));
+		
+		JButton btnSupprimer = new JButton("Supprimer     ");
+		btnSupprimer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int i = table.getSelectedRow();
+				if(i == -1) {
+					JOptionPane.showMessageDialog(btnModifier, "Aucun article de sélectionné.",
+							"Suppression impossible", JOptionPane.ERROR_MESSAGE);
+				} else {
+					art.Supprimer(txtCode, txtDsignation, txtPrixUnitaire, txtCatgorie, slider, txtId, (int) table.getValueAt(table.getSelectedRow(),0));
+					ArticleTableModel model2 = new ArticleTableModel(dao.getAllArticle());
+					table.setModel(model2);
+				}
+			}
+		});
+		toolBar.add(btnSupprimer);
+		btnSupprimer.setIcon(new ImageIcon(FProduit.class.getResource("/gestion/Garbage-Open-48.png")));
+		btnSupprimer.setRolloverIcon(new ImageIcon(FProduit.class.getResource("/gestion/Garbage-Open-48-actif.png")));
+		btnSupprimer.setHorizontalAlignment(SwingConstants.LEFT);
+		btnSupprimer.setForeground(Color.BLACK);
+		btnSupprimer.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnSupprimer.setFocusable(false);
+		btnSupprimer.setContentAreaFilled(false);
+		btnSupprimer.setBorder(new EmptyBorder(0, 0, 0, 0));		
+		JButton btnEffacer = new JButton("Effacer     ");
+		btnEffacer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				art.Effacer(txtCode, txtDsignation, txtPrixUnitaire, txtCatgorie, slider, txtId);
+				table.clearSelection();
+			}
+		});
+		toolBar.add(btnEffacer);
+		btnEffacer.setRolloverIcon(new ImageIcon(FProduit.class.getResource("/gestion/Cancel-48-actif.png")));
+		btnEffacer.setIcon(new ImageIcon(FProduit.class.getResource("/gestion/Cancel-48.png")));
+		btnEffacer.setHorizontalAlignment(SwingConstants.LEFT);
+		btnEffacer.setForeground(Color.BLACK);
+		btnEffacer.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnEffacer.setFocusable(false);
+		btnEffacer.setContentAreaFilled(false);
+		btnEffacer.setBorder(new EmptyBorder(0, 0, 0, 0));
 		
 		JRadioButton rdbtnCode = new JRadioButton("Code");
 		rdbtnCode.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -308,6 +362,17 @@ public class FProduit extends JFrame {
 		textField.setBounds(387, 525, 189, 20);
 		panel_1.add(textField);
 		textField.setColumns(10);
+		
+		model = new ArticleTableModel(dao.getAllArticle());
+		
+		table = new JTable(model);
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				art.AfficherArticle(txtCode, txtDsignation, txtPrixUnitaire, txtCatgorie, slider, txtId, (int) table.getValueAt(table.getSelectedRow(),0));
+			}
+		});
+		scrollPane.setViewportView(table);
 	}
 	
 	public void close() {

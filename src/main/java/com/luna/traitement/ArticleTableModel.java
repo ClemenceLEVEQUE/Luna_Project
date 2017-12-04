@@ -1,9 +1,8 @@
 package com.luna.traitement;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.luna.entities.Article;
-import com.luna.utils.GlobalConnection;
-import com.luna.dao.*;
 
 import javax.swing.table.AbstractTableModel;
 
@@ -11,9 +10,8 @@ public class ArticleTableModel extends AbstractTableModel {
 	private String[] columnNames = {"Id", "Code", "Catégorie", "Désignation", "Stock", "Prix unitaire"};
 	private List<Article> articles;
 
-	public ArticleTableModel() {
-		ArticleDAO dao = new ArticleDAOmysql(GlobalConnection.getInstance());
-		this.articles = dao.getAllArticle();
+	public ArticleTableModel(List<Article> articles) {
+		this.articles = articles;
 	}
 	
 	public List<Article> getArticle(){
@@ -22,8 +20,7 @@ public class ArticleTableModel extends AbstractTableModel {
 
 	@Override
 	public int getRowCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return articles.size();
 	}
 
 	@Override
