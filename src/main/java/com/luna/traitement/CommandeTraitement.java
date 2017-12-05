@@ -102,7 +102,7 @@ public class CommandeTraitement {
 	
 
 	public String[] comboBoxClient(){
-		ArrayList<Client> list = cli.getAllClient();
+		ArrayList<Client> list = cli.getAllClient(0);
 		String[] str = new String[list.size() + 1];
 		int i = 1;
 		str[0] = "Selectionnez un client...";

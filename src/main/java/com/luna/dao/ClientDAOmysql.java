@@ -95,12 +95,25 @@ public class ClientDAOmysql implements ClientDAO {
 	}
 
 	@Override
-	public ArrayList<Client> getAllClient() {
+	public ArrayList<Client> getAllClient(int sortby) {
 		ArrayList<Client> clients = new ArrayList<Client>();
 		Client cli = null;
 		try {
 			state = conn.createStatement();
-			result = state.executeQuery("SELECT * FROM Client");
+			String str = "SELECT * FROM Client ORDER BY ";
+			switch(sortby) {
+			case 1:
+				str += "codeClient asc";
+				break;
+				
+			case 2:
+				str += "nom asc";
+				break;
+				
+			default:
+				str += "codeClient asc";
+			}
+			result = state.executeQuery(str);
 
 			while (result.next()) {
 				cli = new Client();

@@ -12,9 +12,9 @@ public class ClientTableModel extends AbstractTableModel {
 	private String[] columnNames = {"Id", "Nom", "Prénom", "Code client", "Tel", "Mail"};
 	private ArrayList<Client> clients;
 
-	public ClientTableModel() {
+	public ClientTableModel(int sortby) {
 		ClientDAO dao = new ClientDAOmysql(GlobalConnection.getInstance());
-		this.clients = dao.getAllClient();
+		this.clients = dao.getAllClient(sortby);
 	}
 	
 	public List<Client> getClient(){

@@ -22,9 +22,12 @@ import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
+import javax.swing.ComboBoxEditor;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class PClients extends JPanel {
 	private JTextField txtCreation;
@@ -118,13 +121,32 @@ public class PClients extends JPanel {
 		btnModifier.setBounds(12, 180, 99, 49);
 		panel.add(btnModifier);
 
+		JComboBox<String> comboBox = new JComboBox<String>();
+		comboBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if(comboBox.getSelectedIndex() == 0 || comboBox.getSelectedIndex() == -1) {
+					ActuTable(1);
+				} else {
+					ActuTable(2);
+				}
+			}
+		});
+		comboBox.setModel(
+				new DefaultComboBoxModel<String>(new String[] { "Code croissant (a - z)", "Nom croissant (a - z)" }));
+		comboBox.setBounds(114, 525, 175, 20);
+		
 		JButton btnSupprimer = new JButton("Supprimer");
 		btnSupprimer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				client.Suppr(txtCodeclient, txtCreation, txtPrenom, txtNom, txtVille, txtCp, txtRue, txtTel, txtMail,
 						txtRemarques, txtId, (int) table.getValueAt(table.getSelectedRow(), 0));
-				ActuTable();
-				search.ActuTable();
+				if(comboBox.getSelectedIndex() == 0 || comboBox.getSelectedIndex() == -1) {
+					ActuTable(1);
+					search.ActuTable(1);
+				} else {
+					ActuTable(2);
+					search.ActuTable(2);
+				}
 			}
 		});
 		btnSupprimer.setRolloverIcon(new ImageIcon(PClients.class.getResource("/gestion/Garbage-Open-48-actif.png")));
@@ -313,12 +335,6 @@ public class PClients extends JPanel {
 		lblPrnom.setBounds(10, 36, 77, 14);
 		panel_2.add(lblPrnom);
 
-		JComboBox comboBox = new JComboBox();
-		comboBox.setEnabled(false);
-		comboBox.setModel(
-				new DefaultComboBoxModel(new String[] { "Odre croissant (a - z)", "Ordre d\u00E9croissant (z - a)" }));
-		comboBox.setBounds(114, 525, 175, 20);
-
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(12, 263, 564, 251);
 
@@ -329,7 +345,7 @@ public class PClients extends JPanel {
 		panel_1.add(panel_2);
 		panel_1.add(scrollPane);
 
-		model = new ClientTableModel();
+		model = new ClientTableModel(0);
 
 		table = new JTable(model);
 		table.getColumn("Id").setMinWidth(0);
@@ -378,8 +394,8 @@ public class PClients extends JPanel {
 		search.setVisible(true);
 	}
 
-	public void ActuTable() {
-		ClientTableModel model = new ClientTableModel();
+	public void ActuTable(int sortby) {
+		ClientTableModel model = new ClientTableModel(sortby);
 		table.setModel(model);
 		table.getColumn("Id").setMinWidth(0);
 		table.getColumn("Id").setMaxWidth(0);

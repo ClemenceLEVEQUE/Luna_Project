@@ -14,6 +14,6 @@ public interface ClientDAO {
 
 	public Client getClient(int idClient);
 
-	public ArrayList<Client> getAllClient();
+	public ArrayList<Client> getAllClient(int sortby);
 
 }
