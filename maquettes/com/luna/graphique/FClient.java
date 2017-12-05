@@ -1,6 +1,7 @@
 package com.luna.graphique;
 
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -32,6 +33,10 @@ public class FClient extends JFrame {
 	 */
 	public FClient() {
 		setResizable(false);
+		setTitle("Gestion des clients");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FConnect.class.getResource("/com/luna/graphique/Moon-32.png")));
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 550, 475);
 		setMinimumSize(new Dimension(750, 586));
 		setMaximumSize(new Dimension(1000, 1000));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -1,6 +1,26 @@
 package com.luna.entities;
-
+/**
+ * 
+ * <b>@author Clemence et Karim ProjetLuna
+ *<p>
+ * La classe Commande correspond au Commande des clients
+ *<ul>
+ * Il est caractérisé par les informations suivantes:
+ * <li>	idCommande qui est l'identifiant de la commande.
+ * <li>	id Client corresqpondant à l'identifiant du client
+ * <li>	dateLivraison liés à la date de livraison
+ * <li>	dateCom correspondant à la date de la commande 
+ * <li>	etat qui est l'état de la commande spécifié par 1 caractère.
+ * <li>	numComm est le numero de la Commande
+ * <li>	total correspond au prix total de la commande 
+ *
+ */
 public class Commande {
+	/**L'ID Commande n'est pas modifiable
+	 * 
+	 * 
+	 * 
+	 * */
 	private int idCommande;
 	private int idClient;
 	private String dateLivraison;
