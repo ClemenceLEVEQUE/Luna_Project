@@ -94,19 +94,24 @@ public class ClientTraitement {
 	public void Suppr(JTextField code, JTextField creation, JTextField prenom, JTextField nom, JTextField ville,
 			JTextField codep, JTextField rue, JTextField tel, JTextField mail, JTextField remarques, JTextField id,
 			int idClient) {
-		code.setText("");
-		creation.setText("");
-		prenom.setText("");
-		nom.setText("");
-		ville.setText("");
-		codep.setText("");
-		rue.setText("");
-		tel.setText("");
-		mail.setText("");
-		remarques.setText("");
-		id.setText("");
+		if(client.removeClient(idClient)) {
+			code.setText("");
+			creation.setText("");
+			prenom.setText("");
+			nom.setText("");
+			ville.setText("");
+			codep.setText("");
+			rue.setText("");
+			tel.setText("");
+			mail.setText("");
+			remarques.setText("");
+			id.setText("");
 
-		client.removeClient(idClient);
+			client.removeClient(idClient);
+		} else {
+			JOptionPane.showMessageDialog(code, "Le client est utilisé dans une commande.", "Suppression impossible",
+					JOptionPane.ERROR_MESSAGE);
+		}
 	}
 	
 	public boolean VerifCP(JTextField cp) {

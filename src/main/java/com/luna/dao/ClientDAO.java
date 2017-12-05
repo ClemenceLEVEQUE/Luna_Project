@@ -10,7 +10,7 @@ public interface ClientDAO {
 
 	public void updateClient(Client Cli);
 
-	public void removeClient(int idClient);
+	public boolean removeClient(int idClient);
 
 	public Client getClient(int idClient);
 

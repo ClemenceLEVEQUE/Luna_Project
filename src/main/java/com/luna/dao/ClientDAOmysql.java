@@ -60,13 +60,15 @@ public class ClientDAOmysql implements ClientDAO {
 	}
 
 	@Override
-	public void removeClient(int idClient) {
+	public boolean removeClient(int idClient) {
 		try {
 			state = conn.createStatement();
 			state.executeUpdate("DELETE FROM Client WHERE idClient = " + idClient);
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return false;
 	}
 
 	@Override
