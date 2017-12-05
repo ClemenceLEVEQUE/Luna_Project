@@ -66,9 +66,8 @@ public class ClientDAOmysql implements ClientDAO {
 			state.executeUpdate("DELETE FROM Client WHERE idClient = " + idClient);
 			return true;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			return false;
 		}
-		return false;
 	}
 
 	@Override

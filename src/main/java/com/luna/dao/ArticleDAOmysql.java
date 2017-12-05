@@ -63,7 +63,6 @@ public class ArticleDAOmysql implements ArticleDAO {
 				return true;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
 			return false;
 		}
 	}
