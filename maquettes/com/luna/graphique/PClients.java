@@ -44,6 +44,7 @@ public class PClients extends JPanel {
 	private JTable table;
 	private ClientTableModel model;
 	private JTextField txtId;
+
 	/**
 	 * Create the panel.
 	 */
@@ -120,8 +121,10 @@ public class PClients extends JPanel {
 		JButton btnSupprimer = new JButton("Supprimer");
 		btnSupprimer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				client.Suppr(txtCodeclient, txtCreation, txtPrenom, txtNom, txtVille, txtCp, txtRue, txtTel, txtMail, txtRemarques, txtId, (int) table.getValueAt(table.getSelectedRow(), 0));
+				client.Suppr(txtCodeclient, txtCreation, txtPrenom, txtNom, txtVille, txtCp, txtRue, txtTel, txtMail,
+						txtRemarques, txtId, (int) table.getValueAt(table.getSelectedRow(), 0));
 				ActuTable();
+				search.ActuTable();
 			}
 		});
 		btnSupprimer.setRolloverIcon(new ImageIcon(PClients.class.getResource("/gestion/Garbage-Open-48-actif.png")));
@@ -189,7 +192,7 @@ public class PClients extends JPanel {
 		btnAcceuil.setIcon(new ImageIcon(FAcceuil.class.getResource("/gestion/Home-48.png")));
 		btnAcceuil.setBounds(12, 500, 113, 49);
 		panel.add(btnAcceuil);
-		
+
 		txtId = new JTextField();
 		txtId.setVisible(false);
 		txtId.setBounds(74, 60, 86, 20);
@@ -312,7 +315,8 @@ public class PClients extends JPanel {
 
 		JComboBox comboBox = new JComboBox();
 		comboBox.setEnabled(false);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Odre croissant (a - z)", "Ordre d\u00E9croissant (z - a)"}));
+		comboBox.setModel(
+				new DefaultComboBoxModel(new String[] { "Odre croissant (a - z)", "Ordre d\u00E9croissant (z - a)" }));
 		comboBox.setBounds(114, 525, 175, 20);
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -339,10 +343,10 @@ public class PClients extends JPanel {
 		scrollPane.setViewportView(table);
 		panel_1.add(lblTrierLaListe);
 		panel_1.add(comboBox);
-		panel_1.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[] { panel_2, label_1, txtCreation,
-				lblCodeClient, txtCodeclient, txtRemarques, lblRemarques, lblRue, txtRue, lblTel, txtTel,
-				lblVille, label_7, txtNom, txtVille, label_8, txtMail, label_9, txtCp, txtPrenom,
-				lblPrnom, scrollPane, lblTrierLaListe, comboBox }));
+		panel_1.setFocusTraversalPolicy(new FocusTraversalOnArray(
+				new Component[] { panel_2, label_1, txtCreation, lblCodeClient, txtCodeclient, txtRemarques,
+						lblRemarques, lblRue, txtRue, lblTel, txtTel, lblVille, label_7, txtNom, txtVille, label_8,
+						txtMail, label_9, txtCp, txtPrenom, lblPrnom, scrollPane, lblTrierLaListe, comboBox }));
 
 	}
 
@@ -373,16 +377,17 @@ public class PClients extends JPanel {
 		this.setVisible(false);
 		search.setVisible(true);
 	}
-	
+
 	public void ActuTable() {
 		ClientTableModel model = new ClientTableModel();
 		table.setModel(model);
 		table.getColumn("Id").setMinWidth(0);
 		table.getColumn("Id").setMaxWidth(0);
 	}
-	
+
 	public void RemplirChamps(int id) {
 		ClientTraitement client = new ClientTraitement();
-		client.Afficher(txtCodeclient, txtCreation, txtPrenom, txtNom, txtVille, txtCp, txtRue, txtTel, txtMail, txtRemarques, txtId, id);
+		client.Afficher(txtCodeclient, txtCreation, txtPrenom, txtNom, txtVille, txtCp, txtRue, txtTel, txtMail,
+				txtRemarques, txtId, id);
 	}
 }

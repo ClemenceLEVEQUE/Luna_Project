@@ -19,6 +19,7 @@ import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
+import javax.swing.DefaultComboBoxModel;
 
 public class PClientsSearch extends JPanel {
 	private JTextField textField;
@@ -231,6 +232,7 @@ public class PClientsSearch extends JPanel {
 		panel_2.add(lblPrnom);
 
 		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Odre croissant (a - z)", "Ordre d\u00E9croissant (z - a)"}));
 		comboBox.setBounds(114, 525, 175, 20);
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -258,5 +260,12 @@ public class PClientsSearch extends JPanel {
 	public void masquer(PClients cli) {
 		this.setVisible(false);
 		cli.setVisible(true);
+	}
+	
+	public void ActuTable() {
+		ClientTableModel model = new ClientTableModel();
+		table.setModel(model);
+		table.getColumn("Id").setMinWidth(0);
+		table.getColumn("Id").setMaxWidth(0);
 	}
 }

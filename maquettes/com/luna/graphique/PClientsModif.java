@@ -34,7 +34,7 @@ public class PClientsModif extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PClientsModif(PClients cli, JLabel id) {
+	public PClientsModif(PClients cli, PClientsSearch search, JLabel id) {
 		ClientTraitement client = new ClientTraitement();
 		setLayout(null);
 		
@@ -54,10 +54,12 @@ public class PClientsModif extends JPanel {
 		JButton btnSauvegarder = new JButton("Sauvegarder");
 		btnSauvegarder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				client.Save(txtCode, txtCreation, txtPrenom, txtNom, txtVille, txtCp, txtRue, txtTel, txtMail, txtRemarques, txtId);
-				cli.RemplirChamps(Integer.parseInt(id.getText()));
-				cli.ActuTable();
-				masquer(cli);
+				if (client.Save(txtCode, txtCreation, txtPrenom, txtNom, txtVille, txtCp, txtRue, txtTel, txtMail, txtRemarques, txtId)){
+					cli.RemplirChamps(Integer.parseInt(id.getText()));
+					cli.ActuTable();
+					search.ActuTable();
+					masquer(cli);
+				}
 			}
 		});
 		btnSauvegarder.setRolloverIcon(new ImageIcon(PClientsModif.class.getResource("/gestion/Save-48-actif.png")));

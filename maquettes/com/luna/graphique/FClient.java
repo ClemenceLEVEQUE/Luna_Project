@@ -57,20 +57,20 @@ public class FClient extends JFrame {
 		cli.setBounds(0,0,750,560);
 		getContentPane().add(cli);
 
-		PClientsAjout ajout = new PClientsAjout(cli, lblId);
-		ajout.setBounds(0,0,750,560);
-		getContentPane().add(ajout);
-		ajout.setVisible(false);
-
-		PClientsModif modif = new PClientsModif(cli, lblId);
-		modif.setBounds(0,0,750,560);
-		getContentPane().add(modif);
-		modif.setVisible(false);
-
 		PClientsSearch search = new PClientsSearch(cli, lblId);
 		search.setBounds(0,0,750,560);
 		getContentPane().add(search);
 		search.setVisible(false);
+
+		PClientsAjout ajout = new PClientsAjout(cli, search, lblId);
+		ajout.setBounds(0,0,750,560);
+		getContentPane().add(ajout);
+		ajout.setVisible(false);
+
+		PClientsModif modif = new PClientsModif(cli, search, lblId);
+		modif.setBounds(0,0,750,560);
+		getContentPane().add(modif);
+		modif.setVisible(false);
 		
 		cli.setPClientsAjout(ajout);
 		cli.setPClientsModif(modif);
