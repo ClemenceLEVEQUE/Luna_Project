@@ -61,14 +61,16 @@ public class ArticleTraitement {
 			JOptionPane.showMessageDialog(code, "Veuillez compléter tous les champs.", "Ajout impossible",
 					JOptionPane.ERROR_MESSAGE);
 		} else {
-			Article Art = new Article();
-			Art.setCodeArt(code.getText());
-			Art.setNomArticle(designation.getText());
-			Art.setPrixUnitaire(Float.parseFloat(prix.getText()));
-			Art.setCategorie(categ.getText());
-			Art.setStock(qte.getValue());
-			Art.setIdArticle(idArticle);
-			dao.updateArticle(Art);
+			if (VerifPrix(prix)) {
+				Article Art = new Article();
+				Art.setCodeArt(code.getText());
+				Art.setNomArticle(designation.getText());
+				Art.setPrixUnitaire(Float.parseFloat(prix.getText()));
+				Art.setCategorie(categ.getText());
+				Art.setStock(qte.getValue());
+				Art.setIdArticle(idArticle);
+				dao.updateArticle(Art);
+			}
 		}
 	}
 
