@@ -26,6 +26,7 @@ import com.luna.traitement.ArticleTableModel;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.JRadioButton;
+import java.awt.Toolkit;
 
 public class FCommande extends JFrame {
 	private JPanel contentPane;
@@ -58,6 +59,8 @@ public class FCommande extends JFrame {
 	 * Create the frame.
 	 */
 	public FCommande() {
+		setTitle("Gestion des commandes");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FCommande.class.getResource("/com/luna/graphique/Moon-32.png")));
 		setResizable(false);
 		setMinimumSize(new Dimension(800, 560));
 		setMaximumSize(new Dimension(1000, 1000));

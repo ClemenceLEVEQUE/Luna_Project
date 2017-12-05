@@ -149,6 +149,7 @@ public class PClientsModif extends JPanel {
 		panel_2.add(lblCrLe);
 		
 		txtCreation = new JTextField();
+		txtCreation.setEditable(false);
 		txtCreation.setColumns(10);
 		txtCreation.setBounds(379, 24, 175, 20);
 		panel_2.add(txtCreation);

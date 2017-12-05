@@ -16,6 +16,7 @@ import com.luna.traitement.ClientTraitement;
 
 import javax.swing.UIManager;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.awt.event.ActionEvent;
 
 public class PClientsAjout extends JPanel {
@@ -142,6 +143,7 @@ public class PClientsAjout extends JPanel {
 		panel_2.add(lblCrLe);
 		
 		txtCreation = new JTextField();
+		txtCreation.setEditable(false);
 		txtCreation.setColumns(10);
 		txtCreation.setBounds(379, 24, 175, 20);
 		panel_2.add(txtCreation);
@@ -256,5 +258,10 @@ public class PClientsAjout extends JPanel {
 	public void masquer(PClients cli) {
 		this.setVisible(false);
 		cli.setVisible(true);
+	}
+	
+	public void dateCrea() {
+		LocalDate d = LocalDate.now();
+		txtCreation.setText(d.toString());
 	}
 }

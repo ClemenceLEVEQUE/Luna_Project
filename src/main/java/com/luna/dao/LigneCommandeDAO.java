@@ -15,6 +15,5 @@ public interface LigneCommandeDAO {
 
 	public LigneCommande getLigneCommande(int idLigneCommande);
 
-	public ArrayList<LigneCommande> getAllLigneCommande();
-
+	public ArrayList<LigneCommande> getAllLignePourCommande(int idCommande);
 }

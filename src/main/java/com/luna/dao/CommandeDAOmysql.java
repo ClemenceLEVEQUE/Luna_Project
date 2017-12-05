@@ -30,8 +30,8 @@ public class CommandeDAOmysql implements CommandeDAO {
 		
 		try {
 			state = conn.createStatement();
-			String str= "INSERT INTO Commande(idClient, dateLivraison, dateCom, etat, NumCom, Total) VALUES (" + IdClient + ",'"
-							+ DateLivraison + "','" + DateCom + "','" + Etat + "','"+ numCom +"','"+ total+ "')";
+			String str= "INSERT INTO Commande(idClient, dateLivraison, dateCom, etat, numCommande, Total) VALUES (" + IdClient + ",'"
+							+ DateLivraison + "','" + DateCom + "','" + Etat + "','"+ numCom +"',"+ total+ ")";
 			state.executeUpdate(str);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -49,8 +49,8 @@ public class CommandeDAOmysql implements CommandeDAO {
 		try {
 			state = conn.createStatement();
 			state.executeUpdate("UPDATE Commande SET idClient = " + IdClient + ", dateLivraison = '"
-					+  DateLivraison + "', dateCom = '" + IDateCom + "', etat = '" + Etat + "', numCom= '"+ numCom +"', total = '"+ total
-					+ "' WHERE idClient = " + Comm.getIdCommande());
+					+  DateLivraison + "', dateCom = '" + IDateCom + "', etat = '" + Etat + "', numCommande = '"+ numCom +"', total = "+ total
+					+ " WHERE idClient = " + Comm.getIdCommande());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -77,7 +77,7 @@ public class CommandeDAOmysql implements CommandeDAO {
 			cde.setDateLivraison(result.getString("dateLivraison"));
 			cde.setEtat(result.getString("etat").charAt(0));
 			cde.setIdClient(result.getInt("idClient"));
-			cde.setNumCom(result.getString("numCom"));
+			cde.setNumCom(result.getString("numCommande"));
 			cde.setTotal(result.getInt("Total"));
 			cde.setIdCommande(idCommande);
 			
@@ -86,32 +86,6 @@ public class CommandeDAOmysql implements CommandeDAO {
 			e.printStackTrace();
 		}
 		return cde;
-	}
-
-	@Override
-	public ArrayList<Commande> getAllCommande() {
-		ArrayList<Commande> cdes = new ArrayList<Commande>();
-		Commande cde = null;
-		try {
-			state = conn.createStatement();
-			result = state.executeQuery("SELECT * FROM Commande");
-
-			while (result.next()) {
-				cde = new Commande();
-				cde.setDateCom(result.getString("dateCom"));
-				cde.setDateLivraison(result.getString("dateLivraison"));
-				cde.setEtat(result.getString("etat").charAt(0));
-				cde.setIdClient(result.getInt("idClient"));
-				cde.setIdCommande(result.getInt("idCommande"));
-				cde.setNumCom(result.getString("numCom"));
-				cde.setTotal(result.getInt("Total"));
-				
-				cdes.add(cde);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return cdes;
 	}
 
 }

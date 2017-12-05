@@ -215,6 +215,7 @@ public class PClients extends JPanel {
 		panel_2.add(label_1);
 
 		txtCreation = new JTextField();
+		txtCreation.setEditable(false);
 		txtCreation.setColumns(10);
 		txtCreation.setBounds(379, 9, 175, 20);
 		panel_2.add(txtCreation);
@@ -365,6 +366,7 @@ public class PClients extends JPanel {
 	public void ajout() {
 		this.setVisible(false);
 		ajout.setVisible(true);
+		ajout.dateCrea();
 	}
 
 	public void search() {

@@ -135,6 +135,7 @@ public class PClientsSearch extends JPanel {
 		panel_2.add(label_1);
 
 		textField = new JTextField();
+		textField.setEditable(false);
 		textField.setColumns(10);
 		textField.setBounds(379, 9, 175, 20);
 		panel_2.add(textField);
