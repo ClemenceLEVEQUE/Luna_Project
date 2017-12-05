@@ -240,24 +240,66 @@ public class CommandeTraitement {
 		spinner.setValue(0);
 	}
 
-	public void AjoutLigne(int idCommande, int idArt, int qte) {
+	public void AjoutLigne(int idCommande, int idArt, int qte, JTextField total) {
 		LigneCommande ligneCo = new LigneCommande();
+		Article art = new Article();
+		art = article.getArticle(idArt);
 		ligneCo.setIdArticle(idArt);
 		ligneCo.setIdCommande(idCommande);
 		ligneCo.setQuantite(qte);
 		ligne.insertLigneCommande(ligneCo);
+		float t = qte * art.getPrixUnitaire();
+		if(total.getText().isEmpty()) {
+			
+		} else {
+			t += Float.parseFloat(total.getText());
+		}
+		total.setText("" + t);
+		Commande comm = new Commande();
+		comm = cmde.getCommande(idCommande);
+		comm.setTotal(t);
+		cmde.updateCommande(comm);
 	}
 
-	public void UpdateLigne(int idCommande, int idArt, int qte, int idLig) {
+	public void UpdateLigne(int idCommande, int idArt, int qte, int idLig, JTextField total) {
 		LigneCommande ligneCo = new LigneCommande();
+		int oldQte = ligneCo.getQuantite();
+		Article art = new Article();
+		art = article.getArticle(idArt);
+		float t = (qte - oldQte) * art.getPrixUnitaire();
+		if(total.getText().isEmpty()) {
+			
+		} else {
+			t += Float.parseFloat(total.getText());
+		}
 		ligneCo = ligne.getLigneCommande(idLig);
 		ligneCo.setIdArticle(idArt);
 		ligneCo.setIdCommande(idCommande);
 		ligneCo.setQuantite(qte);
 		ligne.updateLigneCommande(ligneCo);
+		total.setText("" + t);
+		Commande comm = new Commande();
+		comm = cmde.getCommande(idCommande);
+		comm.setTotal(t);
+		cmde.updateCommande(comm);
 	}
 
-	public void SupprLig(int idLig) {
+	public void SupprLig(int idLig, JTextField total) {
+		LigneCommande lig = new LigneCommande();
+		lig = ligne.getLigneCommande(idLig);
+		float t = lig.getQuantite();
+		Article art = new Article();
+		article.getArticle(lig.getIdArticle());
+		t = t * art.getPrixUnitaire();
+		if(total.getText().isEmpty()) {
+			
+		} else {
+			t = Float.parseFloat(total.getText()) - t;
+		}
+		Commande comm = new Commande();
+		comm = cmde.getCommande(lig.getIdCommande());
+		comm.setTotal(t);
+		cmde.updateCommande(comm);
 		ligne.removeLigneCommande(idLig);
 	}
 

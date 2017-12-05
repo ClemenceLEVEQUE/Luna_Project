@@ -349,7 +349,7 @@ public class PCommande extends JPanel {
 		btnAjouter_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cde.AjoutLigne(Integer.parseInt(txtId.getText()), Integer.parseInt(txtIdart.getText()),
-						Integer.parseInt(spinner.getValue().toString()));
+						Integer.parseInt(spinner.getValue().toString()), txtTotal);
 				ActuTab();
 			}
 		});
@@ -368,7 +368,7 @@ public class PCommande extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				int lig = table.getSelectedRow();
 				cde.UpdateLigne(Integer.parseInt(txtId.getText()), Integer.parseInt(txtIdart.getText()),
-						Integer.parseInt(spinner.getValue().toString()), (int) table.getValueAt(lig, 0));
+						Integer.parseInt(spinner.getValue().toString()), (int) table.getValueAt(lig, 0), txtTotal);
 				ActuTab();
 				table.changeSelection(lig, 0, false, false);
 			}
@@ -387,7 +387,7 @@ public class PCommande extends JPanel {
 		btnSupprimer_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int n = table.getSelectedRow();
-				cde.SupprLig((int) table.getValueAt(n, 0));
+				cde.SupprLig((int) table.getValueAt(n, 0), txtTotal);
 				ActuTab();
 			}
 		});
