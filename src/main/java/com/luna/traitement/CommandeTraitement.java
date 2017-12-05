@@ -64,7 +64,7 @@ public class CommandeTraitement {
 	public Object[][] getAllCommande() {
 		try {
 			state = conn.createStatement();
-			result = state.executeQuery("SELECT * FROM Commande, Client WHERE Commande.idClient = Client.idClient ORDER BY numCommande");
+			result = state.executeQuery("SELECT * FROM Commande, Client WHERE Commande.idClient = Client.idClient ORDER BY numCommande desc");
 			int i = 0;
 			result.last();
 			int taille = result.getRow();

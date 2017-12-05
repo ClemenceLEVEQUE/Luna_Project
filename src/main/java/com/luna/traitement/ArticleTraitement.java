@@ -56,14 +56,20 @@ public class ArticleTraitement {
 
 	public void Modifier(JTextField code, JTextField designation, JTextField prix, JTextField categ, JSlider qte,
 			int idArticle) {
-		Article Art = new Article();
-		Art.setCodeArt(code.getText());
-		Art.setNomArticle(designation.getText());
-		Art.setPrixUnitaire(Float.parseFloat(prix.getText()));
-		Art.setCategorie(categ.getText());
-		Art.setStock(qte.getValue());
-		Art.setIdArticle(idArticle);
-		dao.updateArticle(Art);
+		if (code.getText().equals("") || designation.getText().equals("") || prix.getText().equals("")
+				|| categ.getText().equals("")) {
+			JOptionPane.showMessageDialog(code, "Veuillez compléter tous les champs.", "Ajout impossible",
+					JOptionPane.ERROR_MESSAGE);
+		} else {
+			Article Art = new Article();
+			Art.setCodeArt(code.getText());
+			Art.setNomArticle(designation.getText());
+			Art.setPrixUnitaire(Float.parseFloat(prix.getText()));
+			Art.setCategorie(categ.getText());
+			Art.setStock(qte.getValue());
+			Art.setIdArticle(idArticle);
+			dao.updateArticle(Art);
+		}
 	}
 
 	public void Ajouter(JTextField code, JTextField designation, JTextField prix, JTextField categ, JSlider qte,
