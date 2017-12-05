@@ -43,10 +43,11 @@ public class PClients extends JPanel {
 	private PClientsSearch search;
 	private JTable table;
 	private ClientTableModel model;
+	private JTextField txtId;
 	/**
 	 * Create the panel.
 	 */
-	public PClients(FClient cli) {
+	public PClients(FClient cli, JLabel id) {
 		setLayout(null);
 		ClientTraitement client = new ClientTraitement();
 
@@ -100,6 +101,8 @@ public class PClients extends JPanel {
 		JButton btnModifier = new JButton("Modifier");
 		btnModifier.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				id.setText(txtId.getText());
+				modif.afficher(id);
 				modif();
 			}
 		});
@@ -115,6 +118,12 @@ public class PClients extends JPanel {
 		panel.add(btnModifier);
 
 		JButton btnSupprimer = new JButton("Supprimer");
+		btnSupprimer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				client.Suppr(txtCodeclient, txtCreation, txtPrenom, txtNom, txtVille, txtCp, txtRue, txtTel, txtMail, txtRemarques, txtId, (int) table.getValueAt(table.getSelectedRow(), 0));
+				ActuTable();
+			}
+		});
 		btnSupprimer.setRolloverIcon(new ImageIcon(PClients.class.getResource("/gestion/Garbage-Open-48-actif.png")));
 		btnSupprimer.setHorizontalAlignment(SwingConstants.LEFT);
 		btnSupprimer.setForeground(Color.WHITE);
@@ -180,6 +189,12 @@ public class PClients extends JPanel {
 		btnAcceuil.setIcon(new ImageIcon(FAcceuil.class.getResource("/gestion/Home-48.png")));
 		btnAcceuil.setBounds(12, 500, 113, 49);
 		panel.add(btnAcceuil);
+		
+		txtId = new JTextField();
+		txtId.setVisible(false);
+		txtId.setBounds(74, 60, 86, 20);
+		panel.add(txtId);
+		txtId.setColumns(10);
 		panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[] { lblClients, btnAjouter, btnRechercher,
 				btnModifier, btnSupprimer, btnAperu, btnImprimer, btnExporter, btnAcceuil }));
 
@@ -312,11 +327,12 @@ public class PClients extends JPanel {
 		model = new ClientTableModel();
 
 		table = new JTable(model);
+		table.getColumn("Id").setMinWidth(0);
+		table.getColumn("Id").setMaxWidth(0);
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				int i = table.getSelectedRow();
-				client.AfficherPClient(txtCodeclient, txtCreation, txtPrenom, txtNom, txtVille, txtCp, txtRue, txtTel, txtMail, txtRemarques,(int) table.getValueAt(i, 0));
+				RemplirChamps((int) table.getValueAt(table.getSelectedRow(), 0));
 			}
 		});
 		scrollPane.setViewportView(table);
@@ -354,5 +370,17 @@ public class PClients extends JPanel {
 	public void search() {
 		this.setVisible(false);
 		search.setVisible(true);
+	}
+	
+	public void ActuTable() {
+		ClientTableModel model = new ClientTableModel();
+		table.setModel(model);
+		table.getColumn("Id").setMinWidth(0);
+		table.getColumn("Id").setMaxWidth(0);
+	}
+	
+	public void RemplirChamps(int id) {
+		ClientTraitement client = new ClientTraitement();
+		client.Afficher(txtCodeclient, txtCreation, txtPrenom, txtNom, txtVille, txtCp, txtRue, txtTel, txtMail, txtRemarques, txtId, id);
 	}
 }
