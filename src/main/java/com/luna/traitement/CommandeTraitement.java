@@ -24,11 +24,16 @@ public class CommandeTraitement {
 		this.article = new ArticleDAOmysql(conn);
 	}
 	
-	public DefaultTableModel getLigneCommandeArticle(DefaultTableModel table) {
+	public Object[][] getLigneCommandeArticle() {
 		try {
 			state = conn.createStatement();
 			result = state.executeQuery("SELECT * FROM LigneCommande, Article WHERE LigneCommande.idArticle = Article.idArticle");
 			int i = 1;
+			result.last();
+			int taille = result.getRow();
+			Object[][] str = new Object[taille][6];
+			int compteur =0;
+			result.first();
 			while(result.next()) {
 				int id = result.getInt("idLigne");
 				String code = new String(result.getString("codeArt"));
@@ -37,18 +42,10 @@ public class CommandeTraitement {
 				float prix = result.getFloat("prixUnitaire");
 				float total = prix * qte;
 				
-				table.addRow(new Object[] {id,code,categorie,qte,prix,total});
-				
-			//	table.setValueAt(id,i,6);
-			//	table.setValueAt(code, i, 1);
-			//	table.setValueAt(categorie, i, 2);
-			//	table.setValueAt(qte, i, 3);
-			//	table.setValueAt(prix, i, 4);
-			//	table.setValueAt(total, i, 5);
-				
+				str[compteur] = new Object[] {id,code,categorie,qte,prix,total};
 				i++;
 			}
-			return table;
+			return str;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
