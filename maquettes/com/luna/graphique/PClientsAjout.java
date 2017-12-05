@@ -11,27 +11,33 @@ import javax.swing.JButton;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
+
+import com.luna.traitement.ClientTraitement;
+
 import javax.swing.UIManager;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.awt.event.ActionEvent;
 
 public class PClientsAjout extends JPanel {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_13;
-	private JTextField textField_15;
-	private JTextField textField_16;
-	private JTextField textField_18;
-	private JTextField textField_19;
-	private JTextField textField_6;
-	private JTextField textField_9;
-	private JTextField textField_4;
+	private JTextField txtCreation;
+	private JTextField txtCode;
+	private JTextField txtRue;
+	private JTextField txtNom;
+	private JTextField txtVille;
+	private JTextField txtCp;
+	private JTextField txtPrenom;
+	private JTextField txtTel;
+	private JTextField txtMail;
+	private JTextField txtRemarques;
 
 	/**
 	 * Create the panel.
 	 */
-	public PClientsAjout(PClients cli) {
+	public PClientsAjout(PClients cli, JLabel id) {
 		setLayout(null);
+		ClientTraitement client = new ClientTraitement();
+		id.setText("");
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 160, 560);
@@ -47,6 +53,13 @@ public class PClientsAjout extends JPanel {
 		panel.add(lblClients);
 		
 		JButton btnSauvegarder = new JButton("Sauvegarder");
+		btnSauvegarder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			client.Insert(txtCode, txtCreation, txtPrenom, txtNom, txtVille, txtCp, txtRue, txtTel, txtMail, txtRemarques);
+			masquer(cli);
+			cli.ActuTable();
+			}
+		});
 		btnSauvegarder.setRolloverIcon(new ImageIcon(PClientsAjout.class.getResource("/gestion/Save-48-actif.png")));
 		btnSauvegarder.setHorizontalAlignment(SwingConstants.LEFT);
 		btnSauvegarder.setForeground(Color.WHITE);
@@ -129,20 +142,21 @@ public class PClientsAjout extends JPanel {
 		lblCrLe.setBounds(295, 26, 46, 14);
 		panel_2.add(lblCrLe);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(379, 24, 175, 20);
-		panel_2.add(textField);
+		txtCreation = new JTextField();
+		txtCreation.setEditable(false);
+		txtCreation.setColumns(10);
+		txtCreation.setBounds(379, 24, 175, 20);
+		panel_2.add(txtCreation);
 		
 		JLabel lblCodeClient = new JLabel("Code client :");
 		lblCodeClient.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblCodeClient.setBounds(10, 26, 77, 14);
 		panel_2.add(lblCodeClient);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(97, 24, 175, 20);
-		panel_2.add(textField_1);
+		txtCode = new JTextField();
+		txtCode.setColumns(10);
+		txtCode.setBounds(97, 24, 175, 20);
+		panel_2.add(txtCode);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setLayout(null);
@@ -156,10 +170,10 @@ public class PClientsAjout extends JPanel {
 		label_4.setBounds(10, 80, 46, 14);
 		panel_3.add(label_4);
 		
-		textField_13 = new JTextField();
-		textField_13.setColumns(10);
-		textField_13.setBounds(97, 78, 457, 20);
-		panel_3.add(textField_13);
+		txtRue = new JTextField();
+		txtRue.setColumns(10);
+		txtRue.setBounds(97, 78, 457, 20);
+		panel_3.add(txtRue);
 		
 		JLabel label_6 = new JLabel("Ville :");
 		label_6.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -171,30 +185,30 @@ public class PClientsAjout extends JPanel {
 		label_10.setBounds(295, 30, 47, 14);
 		panel_3.add(label_10);
 		
-		textField_15 = new JTextField();
-		textField_15.setColumns(10);
-		textField_15.setBounds(379, 28, 175, 20);
-		panel_3.add(textField_15);
+		txtNom = new JTextField();
+		txtNom.setColumns(10);
+		txtNom.setBounds(379, 28, 175, 20);
+		panel_3.add(txtNom);
 		
-		textField_16 = new JTextField();
-		textField_16.setColumns(10);
-		textField_16.setBounds(97, 53, 175, 20);
-		panel_3.add(textField_16);
+		txtVille = new JTextField();
+		txtVille.setColumns(10);
+		txtVille.setBounds(97, 53, 175, 20);
+		panel_3.add(txtVille);
 		
 		JLabel label_12 = new JLabel("Code postal :");
 		label_12.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		label_12.setBounds(295, 55, 83, 14);
 		panel_3.add(label_12);
 		
-		textField_18 = new JTextField();
-		textField_18.setColumns(10);
-		textField_18.setBounds(379, 53, 175, 20);
-		panel_3.add(textField_18);
+		txtCp = new JTextField();
+		txtCp.setColumns(10);
+		txtCp.setBounds(379, 53, 175, 20);
+		panel_3.add(txtCp);
 		
-		textField_19 = new JTextField();
-		textField_19.setColumns(10);
-		textField_19.setBounds(97, 28, 175, 20);
-		panel_3.add(textField_19);
+		txtPrenom = new JTextField();
+		txtPrenom.setColumns(10);
+		txtPrenom.setBounds(97, 28, 175, 20);
+		panel_3.add(txtPrenom);
 		
 		JLabel label_13 = new JLabel("Pr\u00E9nom :");
 		label_13.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -213,20 +227,20 @@ public class PClientsAjout extends JPanel {
 		label_5.setBounds(10, 26, 46, 14);
 		panel_4.add(label_5);
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(97, 24, 175, 20);
-		panel_4.add(textField_6);
+		txtTel = new JTextField();
+		txtTel.setColumns(10);
+		txtTel.setBounds(97, 24, 175, 20);
+		panel_4.add(txtTel);
 		
 		JLabel label_9 = new JLabel("Mail :");
 		label_9.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		label_9.setBounds(295, 26, 46, 14);
 		panel_4.add(label_9);
 		
-		textField_9 = new JTextField();
-		textField_9.setColumns(10);
-		textField_9.setBounds(379, 24, 175, 20);
-		panel_4.add(textField_9);
+		txtMail = new JTextField();
+		txtMail.setColumns(10);
+		txtMail.setBounds(379, 24, 175, 20);
+		panel_4.add(txtMail);
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setLayout(null);
@@ -235,14 +249,19 @@ public class PClientsAjout extends JPanel {
 		panel_5.setBounds(12, 263, 564, 279);
 		panel_1.add(panel_5);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(10, 28, 544, 240);
-		panel_5.add(textField_4);
+		txtRemarques = new JTextField();
+		txtRemarques.setColumns(10);
+		txtRemarques.setBounds(10, 28, 544, 240);
+		panel_5.add(txtRemarques);
 	}
 	
 	public void masquer(PClients cli) {
 		this.setVisible(false);
 		cli.setVisible(true);
+	}
+	
+	public void dateCrea() {
+		LocalDate d = LocalDate.now();
+		txtCreation.setText(d.toString());
 	}
 }

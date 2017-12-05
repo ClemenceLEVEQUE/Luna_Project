@@ -14,6 +14,5 @@ public interface CommandeDAO {
 
 	public Commande getCommande(int idCommande);
 
-	public ArrayList<Commande> getAllCommande();
 
 }

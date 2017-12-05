@@ -1,5 +1,14 @@
 package com.luna.entities;
-
+/**La classe Article correspond au Article à disposition des client.
+* Il est caractérisé par les informations suivantes:
+* 
+* l'idArticle correspondant à l'identifiant de l'article
+* la categorie de l'article (categorie);
+* le code de l'article (codeArt);
+* le nom de l'article (nomArticle);
+* le Prix (prixUnitaire);
+* le stock disponible(stock);
+* */
 public class Article {
 	private int idArticle;
 	private String categorie;

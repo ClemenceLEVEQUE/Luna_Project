@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.Dimension;
+import javax.swing.JLabel;
 
 public class FClient extends JFrame {
 	private JPanel contentPane;
@@ -46,22 +47,27 @@ public class FClient extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JLabel lblId = new JLabel("");
+		lblId.setVisible(false);
+		lblId.setBounds(10, 11, 46, 14);
+		contentPane.add(lblId);
 
-		PClients cli = new PClients(this);
+		PClients cli = new PClients(this, lblId);
 		cli.setBounds(0,0,750,560);
 		getContentPane().add(cli);
 
-		PClientsAjout ajout = new PClientsAjout(cli);
+		PClientsAjout ajout = new PClientsAjout(cli, lblId);
 		ajout.setBounds(0,0,750,560);
 		getContentPane().add(ajout);
 		ajout.setVisible(false);
 
-		PClientsModif modif = new PClientsModif(cli);
+		PClientsModif modif = new PClientsModif(cli, lblId);
 		modif.setBounds(0,0,750,560);
 		getContentPane().add(modif);
 		modif.setVisible(false);
 
-		PClientsSearch search = new PClientsSearch(cli);
+		PClientsSearch search = new PClientsSearch(cli, lblId);
 		search.setBounds(0,0,750,560);
 		getContentPane().add(search);
 		search.setVisible(false);

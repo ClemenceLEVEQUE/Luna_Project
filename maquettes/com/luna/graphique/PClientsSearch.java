@@ -36,7 +36,7 @@ public class PClientsSearch extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PClientsSearch(PClients cli) {
+	public PClientsSearch(PClients cli, JLabel id) {
 		setLayout(null);
 
 		JPanel panel = new JPanel();
@@ -135,6 +135,7 @@ public class PClientsSearch extends JPanel {
 		panel_2.add(label_1);
 
 		textField = new JTextField();
+		textField.setEditable(false);
 		textField.setColumns(10);
 		textField.setBounds(379, 9, 175, 20);
 		panel_2.add(textField);
@@ -247,6 +248,8 @@ public class PClientsSearch extends JPanel {
 		ClientTableModel model = new ClientTableModel();
 
 		table = new JTable(model);
+		table.getColumn("Id").setMinWidth(0);
+		table.getColumn("Id").setMaxWidth(0);
 		scrollPane.setViewportView(table);
 		panel_1.add(lblTrierLaListe);
 		panel_1.add(comboBox);

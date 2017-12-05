@@ -30,6 +30,12 @@ import javax.swing.JTable;
 import javax.swing.event.AncestorListener;
 import javax.swing.event.AncestorEvent;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class PCommande extends JPanel {
 
@@ -43,6 +49,7 @@ public class PCommande extends JPanel {
 	private JTextField textField_3;
 	private JTable table;
 	private JTextField txtTotal;
+
 	/**
 	 * Create the panel.
 	 */
@@ -53,7 +60,7 @@ public class PCommande extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 210, 560);
 		panel.setLayout(null);
-		panel.setBackground(new Color(255,136,9));
+		panel.setBackground(new Color(255, 136, 9));
 		add(panel);
 
 		JLabel lblClients = new JLabel("Commande");
@@ -98,7 +105,8 @@ public class PCommande extends JPanel {
 		panel.add(btnRechercher);
 
 		JButton btnModifier = new JButton("Valider la commande");
-		btnModifier.setRolloverIcon(new ImageIcon(PCommande.class.getResource("/gestion/commande/Shopping-Cart-05-48-actif.png")));
+		btnModifier.setRolloverIcon(
+				new ImageIcon(PCommande.class.getResource("/gestion/commande/Shopping-Cart-05-48-actif.png")));
 		btnModifier.setHorizontalAlignment(SwingConstants.LEFT);
 		btnModifier.setForeground(Color.WHITE);
 		btnModifier.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -180,122 +188,128 @@ public class PCommande extends JPanel {
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(210, 0, 590, 560);
-		panel_1.setBackground(new Color(255,236,192));
+		panel_1.setBackground(new Color(255, 236, 192));
 		add(panel_1);
 		panel_1.setLayout(null);
-		
+
 		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new TitledBorder(null, "Informations g\u00E9n\u00E9rale", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_2.setBorder(new TitledBorder(null, "Informations g\u00E9n\u00E9rale", TitledBorder.LEADING,
+				TitledBorder.TOP, null, null));
 		panel_2.setBounds(10, 11, 570, 79);
-		panel_2.setBackground(new Color(255,236,192));
+		panel_2.setBackground(new Color(255, 236, 192));
 		panel_1.add(panel_2);
 		panel_2.setLayout(null);
-		
+
 		JLabel lblCommandeEnCours = new JLabel("Commande en cours :");
 		lblCommandeEnCours.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblCommandeEnCours.setBounds(10, 26, 130, 14);
 		panel_2.add(lblCommandeEnCours);
-		
+
 		JLabel lblNomDuClient = new JLabel("Nom du client :");
 		lblNomDuClient.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblNomDuClient.setBounds(10, 51, 130, 14);
 		panel_2.add(lblNomDuClient);
-		
+
 		JLabel lblDate = new JLabel("Date :");
 		lblDate.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblDate.setBounds(356, 26, 44, 14);
 		panel_2.add(lblDate);
-		
+
 		txtCommande = new JTextField();
 		txtCommande.setEnabled(false);
 		txtCommande.setBounds(150, 24, 150, 20);
 		panel_2.add(txtCommande);
 		txtCommande.setColumns(10);
-		
+
 		txtDate = new JTextField();
 		txtDate.setEnabled(false);
 		txtDate.setBounds(410, 24, 150, 20);
 		panel_2.add(txtDate);
 		txtDate.setColumns(10);
-		
-		JButton btnSelectCli = new JButton("S\u00E9lectionner le client");
-		btnSelectCli.setFocusable(false);
-		btnSelectCli.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnSelectCli.setBounds(150, 48, 410, 23);
-		panel_2.add(btnSelectCli);
-		
+
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new TitledBorder(null, "Commande", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel_3.setBounds(10, 101, 570, 334);
-		panel_3.setBackground(new Color(255,236,192));
+		panel_3.setBackground(new Color(255, 236, 192));
 		panel_1.add(panel_3);
 		panel_3.setLayout(null);
-		
-		JButton btnSlectionnerUnArticle = new JButton("<html>S\u00E9lectionner<br/>un article</html>");
-		btnSlectionnerUnArticle.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnSlectionnerUnArticle.setFocusable(false);
-		btnSlectionnerUnArticle.setBounds(10, 20, 140, 50);
-		panel_3.add(btnSlectionnerUnArticle);
-		
+		panel_3.setVisible(false);
+
 		JLabel lblCode = new JLabel("Code :");
 		lblCode.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblCode.setBounds(160, 26, 85, 14);
 		panel_3.add(lblCode);
-		
+
+		JComboBox<String> comboBoxCli = new JComboBox<String>();
+		comboBoxCli.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if (comboBoxCli.getSelectedItem().equals("Selectionnez un client...")) {
+					panel_3.setVisible(false);
+				} else {
+					panel_3.setVisible(true);
+					cde.NouvCommande(txtDate, txtCommande, comboBoxCli);
+				}
+			}
+		});
+		comboBoxCli.setModel(new DefaultComboBoxModel<String>(cde.comboBoxClient()));
+		comboBoxCli.setBounds(150, 49, 410, 20);
+		panel_2.add(comboBoxCli);
+
 		JLabel lblCatgorie = new JLabel("Cat\u00E9gorie :");
 		lblCatgorie.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblCatgorie.setBounds(10, 87, 64, 14);
 		panel_3.add(lblCatgorie);
-		
+
 		JLabel lblDsignation = new JLabel("D\u00E9signation :");
 		lblDsignation.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblDsignation.setBounds(160, 51, 85, 14);
 		panel_3.add(lblDsignation);
-		
+
 		JLabel lblMontant = new JLabel("Montant :");
 		lblMontant.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblMontant.setBounds(244, 87, 64, 14);
 		panel_3.add(lblMontant);
-		
+
 		JLabel lblQuantit = new JLabel("Quantit\u00E9 :");
 		lblQuantit.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblQuantit.setBounds(413, 87, 64, 14);
 		panel_3.add(lblQuantit);
-		
+
 		textField = new JTextField();
 		textField.setEnabled(false);
 		textField.setColumns(10);
 		textField.setBounds(255, 24, 150, 20);
 		panel_3.add(textField);
-		
+
 		textField_1 = new JTextField();
 		textField_1.setEnabled(false);
 		textField_1.setColumns(10);
 		textField_1.setBounds(255, 49, 305, 20);
 		panel_3.add(textField_1);
-		
+
 		textField_2 = new JTextField();
 		textField_2.setEnabled(false);
 		textField_2.setColumns(10);
 		textField_2.setBounds(84, 85, 150, 20);
 		panel_3.add(textField_2);
-		
+
 		textField_3 = new JTextField();
 		textField_3.setEnabled(false);
 		textField_3.setColumns(10);
 		textField_3.setBounds(318, 85, 85, 20);
 		panel_3.add(textField_3);
-		
+
 		JSpinner spinner = new JSpinner();
 		spinner.setBounds(487, 85, 73, 20);
 		panel_3.add(spinner);
-		
+
 		JToolBar toolBar = new JToolBar();
+		toolBar.setBorder(new EmptyBorder(0, 0, 0, 0));
 		toolBar.setFloatable(false);
 		toolBar.setBounds(117, 115, 360, 50);
-		toolBar.setBackground(new Color(255,236,192));
+		toolBar.setBackground(new Color(255, 236, 192));
 		panel_3.add(toolBar);
-		
+
 		JButton btnAjouter_1 = new JButton("Ajouter     ");
 		btnAjouter_1.setRolloverIcon(new ImageIcon(PCommande.class.getResource("/gestion/Add-New-48-actif.png")));
 		btnAjouter_1.setIcon(new ImageIcon(PCommande.class.getResource("/gestion/Add-New-48.png")));
@@ -306,7 +320,7 @@ public class PCommande extends JPanel {
 		btnAjouter_1.setContentAreaFilled(false);
 		btnAjouter_1.setBorder(new EmptyBorder(0, 0, 0, 0));
 		toolBar.add(btnAjouter_1);
-		
+
 		JButton btnModifier_1 = new JButton("Modifier     ");
 		btnModifier_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -321,7 +335,7 @@ public class PCommande extends JPanel {
 		btnModifier_1.setContentAreaFilled(false);
 		btnModifier_1.setBorder(new EmptyBorder(0, 0, 0, 0));
 		toolBar.add(btnModifier_1);
-		
+
 		JButton btnSupprimer_1 = new JButton("Supprimer");
 		btnSupprimer_1.setRolloverIcon(new ImageIcon(PCommande.class.getResource("/gestion/Cancel-48-actif.png")));
 		btnSupprimer_1.setIcon(new ImageIcon(PCommande.class.getResource("/gestion/Cancel-48.png")));
@@ -332,23 +346,27 @@ public class PCommande extends JPanel {
 		btnSupprimer_1.setContentAreaFilled(false);
 		btnSupprimer_1.setBorder(new EmptyBorder(0, 0, 0, 0));
 		toolBar.add(btnSupprimer_1);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 176, 550, 147);
 		panel_3.add(scrollPane);
-		
+
 		table = new JTable();
-		//DefaultTableModel model = (DefaultTableModel) table.getModel();
-		//model.addColumn(new String[] {"id", "Code article", "Cat\u00E9gorie", "Quantit\u00E9", "Prix unitaire", "Total"});
-		//model = cde.getLigneCommandeArticle(model);
-		//table.setModel(model);
-		//table.getColumn("id").setMinWidth(0);
-		//table.getColumn("id").setMaxWidth(0);
+
+		table.setModel(new DefaultTableModel(new Object[][] {},
+				new String[] { "id", "Code article", "Cat\u00E9gorie", "Quantit\u00E9", "Prix unitaire", "Total" }));
+		table.getColumn("id").setMinWidth(0);
+		table.getColumn("id").setMaxWidth(0);
 		scrollPane.setViewportView(table);
-		//cde.getLigneCommandeArticle(table);
-		
+
+		JComboBox<String> comboBoxArt = new JComboBox<String>();
+		comboBoxArt.setModel(new DefaultComboBoxModel<String>(cde.comboBoxArticle()));
+		comboBoxArt.setBounds(10, 20, 140, 50);
+		panel_3.add(comboBoxArt);
+
 		JButton button = new JButton("Valider la commande");
-		button.setRolloverIcon(new ImageIcon(PCommande.class.getResource("/gestion/commande/Shopping-Cart-05-48-actif.png")));
+		button.setRolloverIcon(
+				new ImageIcon(PCommande.class.getResource("/gestion/commande/Shopping-Cart-05-48-actif.png")));
 		button.setIcon(new ImageIcon(PCommande.class.getResource("/gestion/commande/Shopping-Cart-05-48.png")));
 		button.setHorizontalAlignment(SwingConstants.LEFT);
 		button.setForeground(Color.BLACK);
@@ -358,11 +376,11 @@ public class PCommande extends JPanel {
 		button.setBorder(new EmptyBorder(0, 0, 0, 0));
 		button.setBounds(390, 500, 190, 49);
 		panel_1.add(button);
-		
+
 		txtTotal = new JTextField();
 		txtTotal.setEnabled(false);
 		txtTotal.setFont(new Font("Tahoma", Font.BOLD, 13));
-		txtTotal.setBackground(new Color(255,136,9));
+		txtTotal.setBackground(new Color(255, 136, 9));
 		txtTotal.setBounds(440, 455, 126, 43);
 		panel_1.add(txtTotal);
 		txtTotal.setColumns(10);
@@ -371,9 +389,22 @@ public class PCommande extends JPanel {
 	public void setPCommandeSearch(PCommandeSearch search) {
 		this.search = search;
 	}
-	
+
 	public void search() {
 		this.setVisible(false);
 		search.setVisible(true);
+	}
+
+	public void ActuTab() {
+		CommandeTraitement cde = new CommandeTraitement();
+		if (txtCommande.getText().isEmpty()) {
+
+		} else {
+			table.setModel(
+					new DefaultTableModel(cde.getTouteLigne(Integer.parseInt(txtCommande.getText())), new String[] {
+							"id", "Code article", "Cat\u00E9gorie", "Quantit\u00E9", "Prix unitaire", "Total" }));
+			table.getColumn("id").setMinWidth(0);
+			table.getColumn("id").setMaxWidth(0);
+		}
 	}
 }

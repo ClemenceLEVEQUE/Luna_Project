@@ -3,6 +3,8 @@ package com.luna.graphique;
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -22,6 +24,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import com.luna.traitement.CommandeTraitement;
 
 public class PCommandeSearch extends JPanel {
 	private JTable table;
@@ -32,6 +37,7 @@ public class PCommandeSearch extends JPanel {
 	 */
 	public PCommandeSearch(PCommande cmde) {
 		setLayout(null);
+		CommandeTraitement cde = new CommandeTraitement();
 
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 210, 560);
@@ -101,6 +107,19 @@ public class PCommandeSearch extends JPanel {
 		panel.add(btnAcceuil);
 		
 		JButton btnSupprimer = new JButton("Supprimer");
+		btnSupprimer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int i = table.getSelectedRow();
+				if(i != -1) {
+					// Si ligne sélectionnée
+					cde.SupprCommande((int) table.getValueAt(i, 0));
+					ActuTable();
+				} else {
+					JOptionPane.showMessageDialog(btnSupprimer, "Aucune ligne de sélectionné.", "Suppression impossible",
+							JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		btnSupprimer.setIcon(new ImageIcon(PCommandeSearch.class.getResource("/gestion/Garbage-Open-48.png")));
 		btnSupprimer.setRolloverIcon(new ImageIcon(PCommandeSearch.class.getResource("/gestion/Garbage-Open-48-actif.png")));
 		btnSupprimer.setHorizontalAlignment(SwingConstants.LEFT);
@@ -123,6 +142,14 @@ public class PCommandeSearch extends JPanel {
 		panel_1.add(scrollPane);
 		
 		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			cde.getAllCommande(),
+			new String[] {
+				"id", "Num. de commande", "Code client", "Total TTC", "Date creation", "Date livr.", "Etat"
+			}
+		));
+		table.getColumn("id").setMinWidth(0);
+		table.getColumn("id").setMaxWidth(0);
 		scrollPane.setViewportView(table);
 		
 		JLabel lblTotalDesCommandes = new JLabel("Total des commandes :");
@@ -151,5 +178,17 @@ public class PCommandeSearch extends JPanel {
 	public void masquer(PCommande cmde) {
 		this.setVisible(false);
 		cmde.setVisible(true);
+	}
+	
+	public void ActuTable() {
+		CommandeTraitement cde = new CommandeTraitement();
+		table.setModel(new DefaultTableModel(
+			cde.getAllCommande(),
+			new String[] {
+				"id", "Num. de commande", "Code client", "Total TTC", "Date creation", "Date livr.", "Etat"
+			}
+		));
+		table.getColumn("id").setMinWidth(0);
+		table.getColumn("id").setMaxWidth(0);
 	}
 }

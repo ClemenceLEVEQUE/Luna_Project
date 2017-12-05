@@ -81,25 +81,25 @@ public class LigneCommandeDAOmysql implements LigneCommandeDAO {
 	}
 
 	@Override
-	public ArrayList<LigneCommande> getAllLigneCommande() {
+	public ArrayList<LigneCommande> getAllLignePourCommande(int idCommande) {
 		ArrayList<LigneCommande> cdes = new ArrayList<LigneCommande>();
-		LigneCommande cde = null;
 		try {
 			state = conn.createStatement();
-			result = state.executeQuery("SELECT * FROM LigneCommande");
-			
-			while (result.next()) {
-				cde = new LigneCommande();
+			result = state.executeQuery("SELECT * FROM LigneCommande WHERE idCommande = " + idCommande);
+			while(result.next()) {
+				LigneCommande cde = new LigneCommande();
 				cde.setIdCommande(result.getInt("idCommande"));
 				cde.setIdLigne(result.getInt("idLigne"));
 				cde.setIdArticle(result.getInt("idArticle"));
 				cde.setQuantite(result.getInt("quantite"));
+				
 				cdes.add(cde);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return cdes;
+
 	}
 
 }
