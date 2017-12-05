@@ -90,7 +90,7 @@ public class CommandeTraitement {
 	}
 	
 	public String[] comboBoxArticle() {
-		ArrayList<Article> list = article.getAllArticle();
+		ArrayList<Article> list = article.getAllArticle(0);
 		String[] str = new String[list.size()];
 		int i = 0;
 		for(Article art : list) {
