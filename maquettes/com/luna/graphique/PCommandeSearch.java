@@ -112,9 +112,7 @@ public class PCommandeSearch extends JPanel {
 				int i = table.getSelectedRow();
 				if(i != -1) {
 					// Si ligne sélectionnée
-					int c = (int) table.getValueAt(i, 0);
-					cde.SupprAllLigne(c);
-					cde.SupprCommande(c);
+					cde.SupprCommandeSearch((int) table.getValueAt(i, 0));
 					ActuTable();
 				} else {
 					JOptionPane.showMessageDialog(btnSupprimer, "Aucune ligne de sélectionné.", "Suppression impossible",

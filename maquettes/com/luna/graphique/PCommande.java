@@ -42,12 +42,15 @@ public class PCommande extends JPanel {
 	private PCommandeSearch search;
 	private JTextField txtCommande;
 	private JTextField txtDate;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField txtCode;
+	private JTextField txtDesignation;
+	private JTextField txtCateg;
+	private JTextField txtMontant;
 	private JTable table;
 	private JTextField txtTotal;
+	private JTextField txtId;
+	private JTextField txtIdart;
+	private JTextField txtIdLig;
 
 	/**
 	 * Create the panel.
@@ -86,10 +89,40 @@ public class PCommande extends JPanel {
 		btnList.setBounds(10, 80, 190, 49);
 		panel.add(btnList);
 
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(210, 0, 590, 560);
+		panel_1.setBackground(new Color(255, 236, 192));
+		add(panel_1);
+		panel_1.setLayout(null);
+
+		JPanel panel_3 = new JPanel();
+		panel_3.setBorder(new TitledBorder(null, "Commande", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_3.setBounds(10, 101, 570, 334);
+		panel_3.setBackground(new Color(255, 236, 192));
+		panel_1.add(panel_3);
+		panel_3.setLayout(null);
+		panel_3.setVisible(false);
+
+		JSpinner spinner = new JSpinner();
+		spinner.setForeground(Color.BLACK);
+		spinner.setBounds(487, 85, 73, 20);
+		panel_3.add(spinner);
+
 		JButton btnSupprimerCom = new JButton("Supprimer");
+		btnSupprimerCom.setEnabled(false);
 		btnSupprimerCom.addActionListener(new ActionListener() {
+			private JTextField txtNumCommande;
+
 			public void actionPerformed(ActionEvent e) {
-				cde.SupprAllLigne(idCommande);
+				cde.SupprCommande(txtId);
+				txtNumCommande.setText("");
+				txtDate.setText("");
+				txtDesignation.setText("");
+				txtCateg.setText("");
+				txtCode.setText("");
+				txtMontant.setText("");
+				spinner.setValue(0);
+				txtId.setText("");
 			}
 		});
 		btnSupprimerCom.setRolloverIcon(new ImageIcon(PCommande.class.getResource("/gestion/Cancel-48-actif.png")));
@@ -104,6 +137,11 @@ public class PCommande extends JPanel {
 		panel.add(btnSupprimerCom);
 
 		JButton btnValider = new JButton("Valider la commande");
+		btnValider.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cde.Valider(txtId);
+			}
+		});
 		btnValider.setRolloverIcon(
 				new ImageIcon(PCommande.class.getResource("/gestion/commande/Shopping-Cart-05-48-actif.png")));
 		btnValider.setHorizontalAlignment(SwingConstants.LEFT);
@@ -117,7 +155,13 @@ public class PCommande extends JPanel {
 		panel.add(btnValider);
 
 		JButton btnSupprimerAllLig = new JButton("<html>Supprimer toutes<br/>les lignes</html>");
-		btnSupprimerAllLig.setRolloverIcon(new ImageIcon(PCommande.class.getResource("/gestion/Garbage-Open-48-actif.png")));
+		btnSupprimerAllLig.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cde.SupprAllLigne(txtId);
+			}
+		});
+		btnSupprimerAllLig
+				.setRolloverIcon(new ImageIcon(PCommande.class.getResource("/gestion/Garbage-Open-48-actif.png")));
 		btnSupprimerAllLig.setHorizontalAlignment(SwingConstants.LEFT);
 		btnSupprimerAllLig.setForeground(Color.WHITE);
 		btnSupprimerAllLig.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -182,14 +226,14 @@ public class PCommande extends JPanel {
 		btnAcceuil.setIcon(new ImageIcon(FAcceuil.class.getResource("/gestion/Home-48.png")));
 		btnAcceuil.setBounds(12, 500, 113, 49);
 		panel.add(btnAcceuil);
+
+		txtId = new JTextField();
+		txtId.setVisible(false);
+		txtId.setBounds(124, 63, 86, 20);
+		panel.add(txtId);
+		txtId.setColumns(10);
 		panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[] { lblClients, btnList, btnSupprimerCom,
 				btnValider, btnSupprimerAllLig, btnAperu, btnImprimer, btnExporter, btnAcceuil }));
-
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(210, 0, 590, 560);
-		panel_1.setBackground(new Color(255, 236, 192));
-		add(panel_1);
-		panel_1.setLayout(null);
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new TitledBorder(null, "Informations g\u00E9n\u00E9rale", TitledBorder.LEADING,
@@ -226,14 +270,6 @@ public class PCommande extends JPanel {
 		panel_2.add(txtDate);
 		txtDate.setColumns(10);
 
-		JPanel panel_3 = new JPanel();
-		panel_3.setBorder(new TitledBorder(null, "Commande", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_3.setBounds(10, 101, 570, 334);
-		panel_3.setBackground(new Color(255, 236, 192));
-		panel_1.add(panel_3);
-		panel_3.setLayout(null);
-		panel_3.setVisible(false);
-
 		JLabel lblCode = new JLabel("Code :");
 		lblCode.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblCode.setBounds(160, 26, 85, 14);
@@ -246,7 +282,7 @@ public class PCommande extends JPanel {
 					panel_3.setVisible(false);
 				} else {
 					panel_3.setVisible(true);
-					cde.NouvCommande(txtDate, txtCommande, comboBoxCli);
+					cde.NouvCommande(txtDate, txtCommande, comboBoxCli, txtId);
 				}
 			}
 		});
@@ -274,33 +310,33 @@ public class PCommande extends JPanel {
 		lblQuantit.setBounds(413, 87, 64, 14);
 		panel_3.add(lblQuantit);
 
-		textField = new JTextField();
-		textField.setEnabled(false);
-		textField.setColumns(10);
-		textField.setBounds(255, 24, 150, 20);
-		panel_3.add(textField);
+		txtCode = new JTextField();
+		txtCode.setForeground(Color.BLACK);
+		txtCode.setEnabled(false);
+		txtCode.setColumns(10);
+		txtCode.setBounds(255, 24, 150, 20);
+		panel_3.add(txtCode);
 
-		textField_1 = new JTextField();
-		textField_1.setEnabled(false);
-		textField_1.setColumns(10);
-		textField_1.setBounds(255, 49, 305, 20);
-		panel_3.add(textField_1);
+		txtDesignation = new JTextField();
+		txtDesignation.setForeground(Color.BLACK);
+		txtDesignation.setEnabled(false);
+		txtDesignation.setColumns(10);
+		txtDesignation.setBounds(255, 49, 305, 20);
+		panel_3.add(txtDesignation);
 
-		textField_2 = new JTextField();
-		textField_2.setEnabled(false);
-		textField_2.setColumns(10);
-		textField_2.setBounds(84, 85, 150, 20);
-		panel_3.add(textField_2);
+		txtCateg = new JTextField();
+		txtCateg.setForeground(Color.BLACK);
+		txtCateg.setEnabled(false);
+		txtCateg.setColumns(10);
+		txtCateg.setBounds(84, 85, 150, 20);
+		panel_3.add(txtCateg);
 
-		textField_3 = new JTextField();
-		textField_3.setEnabled(false);
-		textField_3.setColumns(10);
-		textField_3.setBounds(318, 85, 85, 20);
-		panel_3.add(textField_3);
-
-		JSpinner spinner = new JSpinner();
-		spinner.setBounds(487, 85, 73, 20);
-		panel_3.add(spinner);
+		txtMontant = new JTextField();
+		txtMontant.setForeground(Color.BLACK);
+		txtMontant.setEnabled(false);
+		txtMontant.setColumns(10);
+		txtMontant.setBounds(318, 85, 85, 20);
+		panel_3.add(txtMontant);
 
 		JToolBar toolBar = new JToolBar();
 		toolBar.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -310,6 +346,13 @@ public class PCommande extends JPanel {
 		panel_3.add(toolBar);
 
 		JButton btnAjouter_1 = new JButton("Ajouter     ");
+		btnAjouter_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cde.AjoutLigne(Integer.parseInt(txtId.getText()), Integer.parseInt(txtIdart.getText()),
+						Integer.parseInt(spinner.getValue().toString()));
+				ActuTab();
+			}
+		});
 		btnAjouter_1.setRolloverIcon(new ImageIcon(PCommande.class.getResource("/gestion/Add-New-48-actif.png")));
 		btnAjouter_1.setIcon(new ImageIcon(PCommande.class.getResource("/gestion/Add-New-48.png")));
 		btnAjouter_1.setHorizontalAlignment(SwingConstants.LEFT);
@@ -323,6 +366,11 @@ public class PCommande extends JPanel {
 		JButton btnModifier_1 = new JButton("Modifier     ");
 		btnModifier_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int lig = table.getSelectedRow();
+				cde.UpdateLigne(Integer.parseInt(txtId.getText()), Integer.parseInt(txtIdart.getText()),
+						Integer.parseInt(spinner.getValue().toString()), (int) table.getValueAt(lig, 0));
+				ActuTab();
+				table.changeSelection(lig, 0, false, false);
 			}
 		});
 		btnModifier_1.setRolloverIcon(new ImageIcon(PCommande.class.getResource("/gestion/Data-Edit-48-actif.png")));
@@ -336,6 +384,13 @@ public class PCommande extends JPanel {
 		toolBar.add(btnModifier_1);
 
 		JButton btnSupprimer_1 = new JButton("Supprimer");
+		btnSupprimer_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int n = table.getSelectedRow();
+				cde.SupprLig((int) table.getValueAt(n, 0));
+				ActuTab();
+			}
+		});
 		btnSupprimer_1.setRolloverIcon(new ImageIcon(PCommande.class.getResource("/gestion/Cancel-48-actif.png")));
 		btnSupprimer_1.setIcon(new ImageIcon(PCommande.class.getResource("/gestion/Cancel-48.png")));
 		btnSupprimer_1.setHorizontalAlignment(SwingConstants.LEFT);
@@ -356,14 +411,48 @@ public class PCommande extends JPanel {
 				new String[] { "id", "Code article", "Cat\u00E9gorie", "Quantit\u00E9", "Prix unitaire", "Total" }));
 		table.getColumn("id").setMinWidth(0);
 		table.getColumn("id").setMaxWidth(0);
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cde.RemplirDepuisTab(txtCode, txtDesignation, txtMontant, txtCateg, txtIdart, spinner, txtIdLig,
+						(int) table.getValueAt(table.getSelectedRow(), 0));
+			}
+		});
 		scrollPane.setViewportView(table);
 
 		JComboBox<String> comboBoxArt = new JComboBox<String>();
+		comboBoxArt.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if (comboBoxArt.getSelectedItem().equals("Selectionnez un article...")) {
+					cde.ViderArt(spinner, txtCode, txtDesignation, txtMontant, txtCateg, txtIdart);
+				} else {
+					cde.RemplirArt(comboBoxArt.getSelectedItem().toString(), txtCode, txtDesignation, txtMontant,
+							txtCateg, txtIdart);
+				}
+			}
+		});
 		comboBoxArt.setModel(new DefaultComboBoxModel<String>(cde.comboBoxArticle()));
 		comboBoxArt.setBounds(10, 20, 140, 50);
 		panel_3.add(comboBoxArt);
 
+		txtIdart = new JTextField();
+		txtIdart.setVisible(false);
+		txtIdart.setBounds(10, 121, 86, 20);
+		panel_3.add(txtIdart);
+		txtIdart.setColumns(10);
+
+		txtIdLig = new JTextField();
+		txtIdLig.setVisible(false);
+		txtIdLig.setBounds(10, 152, 86, 20);
+		panel_3.add(txtIdLig);
+		txtIdLig.setColumns(10);
+
 		JButton button = new JButton("Valider la commande");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cde.Valider(txtId);
+			}
+		});
 		button.setRolloverIcon(
 				new ImageIcon(PCommande.class.getResource("/gestion/commande/Shopping-Cart-05-48-actif.png")));
 		button.setIcon(new ImageIcon(PCommande.class.getResource("/gestion/commande/Shopping-Cart-05-48.png")));
@@ -392,16 +481,16 @@ public class PCommande extends JPanel {
 	public void search() {
 		this.setVisible(false);
 		search.setVisible(true);
+		search.ActuTable();
 	}
 
 	public void ActuTab() {
 		CommandeTraitement cde = new CommandeTraitement();
-		if (txtCommande.getText().isEmpty()) {
+		if (txtId.getText().isEmpty()) {
 
 		} else {
-			table.setModel(
-					new DefaultTableModel(cde.getTouteLigne(Integer.parseInt(txtCommande.getText())), new String[] {
-							"id", "Code article", "Cat\u00E9gorie", "Quantit\u00E9", "Prix unitaire", "Total" }));
+			table.setModel(new DefaultTableModel(cde.getTouteLigne(Integer.parseInt(txtId.getText())), new String[] {
+					"id", "Code article", "Cat\u00E9gorie", "Quantit\u00E9", "Prix unitaire", "Total" }));
 			table.getColumn("id").setMinWidth(0);
 			table.getColumn("id").setMaxWidth(0);
 		}
