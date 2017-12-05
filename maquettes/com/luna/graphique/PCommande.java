@@ -338,12 +338,12 @@ public class PCommande extends JPanel {
 		panel_3.add(scrollPane);
 		
 		table = new JTable();
-		DefaultTableModel model = (DefaultTableModel) table.getModel();
-		model.addColumn(new String[] {"id", "Code article", "Cat\u00E9gorie", "Quantit\u00E9", "Prix unitaire", "Total"});
-		model = cde.getLigneCommandeArticle(model);
-		table.setModel(model);
-		table.getColumn("id").setMinWidth(0);
-		table.getColumn("id").setMaxWidth(0);
+		//DefaultTableModel model = (DefaultTableModel) table.getModel();
+		//model.addColumn(new String[] {"id", "Code article", "Cat\u00E9gorie", "Quantit\u00E9", "Prix unitaire", "Total"});
+		//model = cde.getLigneCommandeArticle(model);
+		//table.setModel(model);
+		//table.getColumn("id").setMinWidth(0);
+		//table.getColumn("id").setMaxWidth(0);
 		scrollPane.setViewportView(table);
 		//cde.getLigneCommandeArticle(table);
 		

@@ -11,7 +11,7 @@ public class TestDAOCommandeUpdate {
 	public static void main(String[] args) {
 CommandeDAO commandeDAO = new CommandeDAOmysql(GlobalConnection.getInstance());
 		
-		Commande Comm=new Commande(1,4,"20-02-2018","04-12-2017",'T');
+		Commande Comm=new Commande(1,4,"20-02-2018","04-12-2017",'T',"ùsù",4);
 		commandeDAO.updateCommande(Comm);
 		List<Commande> Commandes = commandeDAO.getAllCommande();
 		

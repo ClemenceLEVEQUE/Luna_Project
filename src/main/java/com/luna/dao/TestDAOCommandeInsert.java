@@ -8,7 +8,7 @@ public class TestDAOCommandeInsert {
 	public static void main(String[] args) {
 CommandeDAO commandeDAO = new CommandeDAOmysql(GlobalConnection.getInstance());
 		
-		Commande Comm=new Commande(4,"10-02-2018","04-12-2017",'T');
+		Commande Comm=new Commande(4,"10-02-2018","04-12-2017",'T',"sss",56);
 		commandeDAO.insertCommande(Comm);
 		commandeDAO.getCommande(5);
 		
