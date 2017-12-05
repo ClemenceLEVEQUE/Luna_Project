@@ -254,8 +254,10 @@ public class FProduit extends JFrame {
 		btnAjouter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				art.Ajouter(txtCode, txtDsignation, txtPrixUnitaire, txtCatgorie, slider, txtId);
-				ArticleTableModel model2 = new ArticleTableModel(dao.getAllArticle());
+				ArticleTableModel model2 = new ArticleTableModel(dao.getAllArticle(0));
 				table.setModel(model2);
+				table.getColumn("Id").setMinWidth(0);
+				table.getColumn("Id").setMaxWidth(0);
 			}
 		});
 		toolBar.add(btnAjouter);
@@ -277,9 +279,10 @@ public class FProduit extends JFrame {
 							"Modification impossible", JOptionPane.ERROR_MESSAGE);
 				} else {
 					art.Modifier(txtCode, txtDsignation, txtPrixUnitaire, txtCatgorie, slider, (int) table.getValueAt(table.getSelectedRow(),0));
-					ArticleTableModel model2 = new ArticleTableModel(dao.getAllArticle());
+					ArticleTableModel model2 = new ArticleTableModel(dao.getAllArticle(0));
 					table.setModel(model2);
-					table.changeSelection(i, 0, false, false);
+					table.getColumn("Id").setMinWidth(0);
+					table.getColumn("Id").setMaxWidth(0);
 				}
 			}
 		});
@@ -302,8 +305,10 @@ public class FProduit extends JFrame {
 							"Suppression impossible", JOptionPane.ERROR_MESSAGE);
 				} else {
 					art.Supprimer(txtCode, txtDsignation, txtPrixUnitaire, txtCatgorie, slider, txtId, (int) table.getValueAt(table.getSelectedRow(),0));
-					ArticleTableModel model2 = new ArticleTableModel(dao.getAllArticle());
+					ArticleTableModel model2 = new ArticleTableModel(dao.getAllArticle(0));
 					table.setModel(model2);
+					table.getColumn("Id").setMinWidth(0);
+					table.getColumn("Id").setMaxWidth(0);
 				}
 			}
 		});
@@ -334,12 +339,33 @@ public class FProduit extends JFrame {
 		btnEffacer.setBorder(new EmptyBorder(0, 0, 0, 0));
 		
 		JRadioButton rdbtnCode = new JRadioButton("Code");
+		rdbtnCode.setSelected(true);
+		rdbtnCode.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(rdbtnCode.isSelected()) {
+					ArticleTableModel model2 = new ArticleTableModel(dao.getAllArticle(1));
+					table.setModel(model2);
+					table.getColumn("Id").setMinWidth(0);
+					table.getColumn("Id").setMaxWidth(0);
+				}
+			}
+		});
 		rdbtnCode.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		rdbtnCode.setBackground(new Color(227, 241, 182));
 		rdbtnCode.setBounds(108, 524, 63, 23);
 		panel_1.add(rdbtnCode);
 		
 		JRadioButton rdbtnCatgorie = new JRadioButton("Cat\u00E9gorie");
+		rdbtnCatgorie.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(rdbtnCatgorie.isSelected()) {
+					ArticleTableModel model2 = new ArticleTableModel(dao.getAllArticle(2));
+					table.setModel(model2);
+					table.getColumn("Id").setMinWidth(0);
+					table.getColumn("Id").setMaxWidth(0);
+				}
+			}
+		});
 		rdbtnCatgorie.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		rdbtnCatgorie.setBackground(new Color(227, 241, 182));
 		rdbtnCatgorie.setBounds(173, 524, 79, 23);
@@ -362,11 +388,12 @@ public class FProduit extends JFrame {
 		panel_1.add(lblRechercher);
 		
 		textField = new JTextField();
+		textField.setEnabled(false);
 		textField.setBounds(387, 525, 189, 20);
 		panel_1.add(textField);
 		textField.setColumns(10);
 		
-		model = new ArticleTableModel(dao.getAllArticle());
+		model = new ArticleTableModel(dao.getAllArticle(0));
 		
 		table = new JTable(model);
 		table.addMouseListener(new MouseAdapter() {
@@ -375,6 +402,8 @@ public class FProduit extends JFrame {
 				art.AfficherArticle(txtCode, txtDsignation, txtPrixUnitaire, txtCatgorie, slider, txtId, (int) table.getValueAt(table.getSelectedRow(),0));
 			}
 		});
+		table.getColumn("Id").setMinWidth(0);
+		table.getColumn("Id").setMaxWidth(0);
 		scrollPane.setViewportView(table);
 	}
 	

@@ -88,12 +88,26 @@ public class ArticleDAOmysql implements ArticleDAO {
 		return art;
 	}
 
-	public ArrayList<Article> getAllArticle() {
+	public ArrayList<Article> getAllArticle(int sortby) {
 		ArrayList<Article> articles = new ArrayList<Article>();
 		Article article = null;
 		try {
 			state = conn.createStatement();
-			result = state.executeQuery("SELECT * FROM Article");
+			String str = new String("SELECT * FROM Article ORDER BY ");
+			switch(sortby) {
+			case 1:
+				str += "codeArt asc";
+				break;
+				
+			case 2:
+				str += "categorie asc";
+				break;
+				
+			default:
+				str += "codeArt asc";
+				break;
+			}
+			result = state.executeQuery(str);
 
 			while (result.next()) {
 				article = new Article();

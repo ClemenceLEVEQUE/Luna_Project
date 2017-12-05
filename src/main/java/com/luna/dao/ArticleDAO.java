@@ -13,5 +13,5 @@ public interface ArticleDAO {
 
 	public Article getArticle(int idArticle);
 
-	public ArrayList<Article> getAllArticle();
+	public ArrayList<Article> getAllArticle(int sortby);
 }
