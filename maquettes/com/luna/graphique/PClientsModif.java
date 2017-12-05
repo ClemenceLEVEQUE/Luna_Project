@@ -56,8 +56,8 @@ public class PClientsModif extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if (client.Save(txtCode, txtCreation, txtPrenom, txtNom, txtVille, txtCp, txtRue, txtTel, txtMail, txtRemarques, txtId)){
 					cli.RemplirChamps(Integer.parseInt(id.getText()));
-					cli.ActuTable();
-					search.ActuTable();
+					cli.ActuTable(0);
+					search.ActuTable(0);
 					masquer(cli);
 				}
 			}

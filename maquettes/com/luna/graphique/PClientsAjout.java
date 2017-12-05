@@ -58,8 +58,8 @@ public class PClientsAjout extends JPanel {
 				if (client.Insert(txtCode, txtCreation, txtPrenom, txtNom, txtVille, txtCp, txtRue, txtTel, txtMail,
 						txtRemarques)) {
 					masquer(cli);
-					cli.ActuTable();
-					search.ActuTable();
+					cli.ActuTable(0);
+					search.ActuTable(0);
 				}
 			}
 		});

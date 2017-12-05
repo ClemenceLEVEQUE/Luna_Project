@@ -40,7 +40,6 @@ import java.awt.event.ItemEvent;
 public class PCommande extends JPanel {
 
 	private PCommandeSearch search;
-	private ArticleTableModel model;
 	private JTextField txtCommande;
 	private JTextField txtDate;
 	private JTextField textField;
@@ -70,64 +69,64 @@ public class PCommande extends JPanel {
 		lblClients.setBounds(0, 5, 210, 64);
 		panel.add(lblClients);
 
-		JButton btnAjouter = new JButton("Commandes existante");
-		btnAjouter.addActionListener(new ActionListener() {
+		JButton btnList = new JButton("Commandes existante");
+		btnList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				search();
 			}
 		});
-		btnAjouter.setRolloverIcon(new ImageIcon(PCommande.class.getResource("/gestion/Receipt-48-actif.png")));
-		btnAjouter.setHorizontalAlignment(SwingConstants.LEFT);
-		btnAjouter.setForeground(Color.WHITE);
-		btnAjouter.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnAjouter.setFocusable(false);
-		btnAjouter.setContentAreaFilled(false);
-		btnAjouter.setBorder(new EmptyBorder(0, 0, 0, 0));
-		btnAjouter.setIcon(new ImageIcon(PCommande.class.getResource("/gestion/Receipt-48.png")));
-		btnAjouter.setBounds(10, 80, 190, 49);
-		panel.add(btnAjouter);
+		btnList.setRolloverIcon(new ImageIcon(PCommande.class.getResource("/gestion/Receipt-48-actif.png")));
+		btnList.setHorizontalAlignment(SwingConstants.LEFT);
+		btnList.setForeground(Color.WHITE);
+		btnList.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnList.setFocusable(false);
+		btnList.setContentAreaFilled(false);
+		btnList.setBorder(new EmptyBorder(0, 0, 0, 0));
+		btnList.setIcon(new ImageIcon(PCommande.class.getResource("/gestion/Receipt-48.png")));
+		btnList.setBounds(10, 80, 190, 49);
+		panel.add(btnList);
 
-		JButton btnRechercher = new JButton("Supprimer");
-		btnRechercher.addActionListener(new ActionListener() {
+		JButton btnSupprimerCom = new JButton("Supprimer");
+		btnSupprimerCom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				search();
+				cde.SupprAllLigne(idCommande);
 			}
 		});
-		btnRechercher.setRolloverIcon(new ImageIcon(PCommande.class.getResource("/gestion/Cancel-48-actif.png")));
-		btnRechercher.setHorizontalAlignment(SwingConstants.LEFT);
-		btnRechercher.setForeground(Color.WHITE);
-		btnRechercher.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnRechercher.setFocusable(false);
-		btnRechercher.setContentAreaFilled(false);
-		btnRechercher.setBorder(new EmptyBorder(0, 0, 0, 0));
-		btnRechercher.setIcon(new ImageIcon(PCommande.class.getResource("/gestion/Cancel-48.png")));
-		btnRechercher.setBounds(10, 130, 190, 49);
-		panel.add(btnRechercher);
+		btnSupprimerCom.setRolloverIcon(new ImageIcon(PCommande.class.getResource("/gestion/Cancel-48-actif.png")));
+		btnSupprimerCom.setHorizontalAlignment(SwingConstants.LEFT);
+		btnSupprimerCom.setForeground(Color.WHITE);
+		btnSupprimerCom.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnSupprimerCom.setFocusable(false);
+		btnSupprimerCom.setContentAreaFilled(false);
+		btnSupprimerCom.setBorder(new EmptyBorder(0, 0, 0, 0));
+		btnSupprimerCom.setIcon(new ImageIcon(PCommande.class.getResource("/gestion/Cancel-48.png")));
+		btnSupprimerCom.setBounds(10, 130, 190, 49);
+		panel.add(btnSupprimerCom);
 
-		JButton btnModifier = new JButton("Valider la commande");
-		btnModifier.setRolloverIcon(
+		JButton btnValider = new JButton("Valider la commande");
+		btnValider.setRolloverIcon(
 				new ImageIcon(PCommande.class.getResource("/gestion/commande/Shopping-Cart-05-48-actif.png")));
-		btnModifier.setHorizontalAlignment(SwingConstants.LEFT);
-		btnModifier.setForeground(Color.WHITE);
-		btnModifier.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnModifier.setFocusable(false);
-		btnModifier.setContentAreaFilled(false);
-		btnModifier.setBorder(new EmptyBorder(0, 0, 0, 0));
-		btnModifier.setIcon(new ImageIcon(PCommande.class.getResource("/gestion/commande/Shopping-Cart-05-48.png")));
-		btnModifier.setBounds(10, 230, 190, 49);
-		panel.add(btnModifier);
+		btnValider.setHorizontalAlignment(SwingConstants.LEFT);
+		btnValider.setForeground(Color.WHITE);
+		btnValider.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnValider.setFocusable(false);
+		btnValider.setContentAreaFilled(false);
+		btnValider.setBorder(new EmptyBorder(0, 0, 0, 0));
+		btnValider.setIcon(new ImageIcon(PCommande.class.getResource("/gestion/commande/Shopping-Cart-05-48.png")));
+		btnValider.setBounds(10, 230, 190, 49);
+		panel.add(btnValider);
 
-		JButton btnSupprimer = new JButton("<html>Supprimer toutes<br/>les lignes</html>");
-		btnSupprimer.setRolloverIcon(new ImageIcon(PCommande.class.getResource("/gestion/Garbage-Open-48-actif.png")));
-		btnSupprimer.setHorizontalAlignment(SwingConstants.LEFT);
-		btnSupprimer.setForeground(Color.WHITE);
-		btnSupprimer.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnSupprimer.setFocusable(false);
-		btnSupprimer.setContentAreaFilled(false);
-		btnSupprimer.setBorder(new EmptyBorder(0, 0, 0, 0));
-		btnSupprimer.setIcon(new ImageIcon(FAcceuil.class.getResource("/gestion/Garbage-Open-48.png")));
-		btnSupprimer.setBounds(10, 180, 190, 49);
-		panel.add(btnSupprimer);
+		JButton btnSupprimerAllLig = new JButton("<html>Supprimer toutes<br/>les lignes</html>");
+		btnSupprimerAllLig.setRolloverIcon(new ImageIcon(PCommande.class.getResource("/gestion/Garbage-Open-48-actif.png")));
+		btnSupprimerAllLig.setHorizontalAlignment(SwingConstants.LEFT);
+		btnSupprimerAllLig.setForeground(Color.WHITE);
+		btnSupprimerAllLig.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnSupprimerAllLig.setFocusable(false);
+		btnSupprimerAllLig.setContentAreaFilled(false);
+		btnSupprimerAllLig.setBorder(new EmptyBorder(0, 0, 0, 0));
+		btnSupprimerAllLig.setIcon(new ImageIcon(FAcceuil.class.getResource("/gestion/Garbage-Open-48.png")));
+		btnSupprimerAllLig.setBounds(10, 180, 190, 49);
+		panel.add(btnSupprimerAllLig);
 
 		JButton btnAperu = new JButton("Aper\u00E7u");
 		btnAperu.setRolloverIcon(new ImageIcon(PCommande.class.getResource("/gestion/Preview-48-actif.png")));
@@ -183,8 +182,8 @@ public class PCommande extends JPanel {
 		btnAcceuil.setIcon(new ImageIcon(FAcceuil.class.getResource("/gestion/Home-48.png")));
 		btnAcceuil.setBounds(12, 500, 113, 49);
 		panel.add(btnAcceuil);
-		panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[] { lblClients, btnAjouter, btnRechercher,
-				btnModifier, btnSupprimer, btnAperu, btnImprimer, btnExporter, btnAcceuil }));
+		panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[] { lblClients, btnList, btnSupprimerCom,
+				btnValider, btnSupprimerAllLig, btnAperu, btnImprimer, btnExporter, btnAcceuil }));
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(210, 0, 590, 560);

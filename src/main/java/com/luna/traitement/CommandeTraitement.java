@@ -154,13 +154,13 @@ public class CommandeTraitement {
 	}
 	
 	public void SupprCommande(int idCommande) {
-		// On commence par supprimer les lignes (contraintes d'integrites des Foreign Key)
+		cmde.removeCommande(idCommande);
+	}
+	
+	public void SupprAllLigne(int idCommande) {
 		ArrayList<LigneCommande> list = ligne.getAllLignePourCommande(idCommande);
 		for(LigneCommande lig : list) {
 			ligne.removeLigneCommande(lig.getIdLigne());
 		}
-		
-		// On fini par supprimer la commande
-		cmde.removeCommande(idCommande);
 	}
 }
