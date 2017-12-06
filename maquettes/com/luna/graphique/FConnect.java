@@ -117,6 +117,11 @@ public class FConnect extends JFrame {
 		panel_1.add(btnValider);
 
 		JButton btnAnnuler = new JButton("Annuler");
+		btnAnnuler.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(1);
+			}
+		});
 		panel_1.add(btnAnnuler);
 		btnValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
